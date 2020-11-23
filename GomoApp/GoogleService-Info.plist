@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>609935367633-k0u1gphn1teqft9g0ed94c5echuj8u7s.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.609935367633-k0u1gphn1teqft9g0ed94c5echuj8u7s</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBROPiEFzYoO-PY0J8twfsfRA7QJZ4dIDY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>609935367633</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.vtb.GomoApp</string>
+	<key>PROJECT_ID</key>
+	<string>gomoapp-d6ca3</string>
+	<key>STORAGE_BUCKET</key>
+	<string>gomoapp-d6ca3.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:609935367633:ios:2570252d72fa55df2ed4f0</string>
+	<key>DATABASE_URL</key>
+	<string>https://gomoapp-d6ca3.firebaseio.com</string>
+</dict>
+</plist>

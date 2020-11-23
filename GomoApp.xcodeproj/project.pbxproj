@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CB6E209E0161D0A8DCFDB50 /* Pods_GomoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8462FE7402E27D43C7227318 /* Pods_GomoApp.framework */; };
 		5E34B78F256C06F200980DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34B78E256C06F200980DE7 /* AppDelegate.swift */; };
 		5E34B791256C06F200980DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34B790256C06F200980DE7 /* SceneDelegate.swift */; };
 		5E34B793256C06F200980DE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34B792256C06F200980DE7 /* ViewController.swift */; };
@@ -15,6 +16,28 @@
 		5E34B79B256C06F400980DE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E34B799256C06F400980DE7 /* LaunchScreen.storyboard */; };
 		5E34B7A6256C06F500980DE7 /* GomoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34B7A5256C06F500980DE7 /* GomoAppTests.swift */; };
 		5E34B7B1256C06F500980DE7 /* GomoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34B7B0256C06F500980DE7 /* GomoAppUITests.swift */; };
+		5EE8E886256C0E220038E299 /* Defined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE8E885256C0E220038E299 /* Defined.swift */; };
+		5EE8E88B256C0E450038E299 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE8E88A256C0E450038E299 /* Constans.swift */; };
+		5EE8E890256C0E650038E299 /* BaseCLCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE8E88F256C0E650038E299 /* BaseCLCell.swift */; };
+		5EE8E895256C0E810038E299 /* BaseTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE8E894256C0E810038E299 /* BaseTBCell.swift */; };
+		5EF8CACD256C0ED6008A5855 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CACC256C0ED6008A5855 /* Menu.swift */; };
+		5EF8CAD2256C0EF0008A5855 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CAD1256C0EF0008A5855 /* Cart.swift */; };
+		5EF8CAD7256C0F06008A5855 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CAD6256C0F06008A5855 /* Table.swift */; };
+		5EF8CADC256C0F1B008A5855 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CADB256C0F1B008A5855 /* Bill.swift */; };
+		5EF8CAE1256C0F4B008A5855 /* DetailFoodControlerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CAE0256C0F4B008A5855 /* DetailFoodControlerViewController.swift */; };
+		5EF8CAE8256C0FC9008A5855 /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CAE6256C0FC9008A5855 /* FoodCell.swift */; };
+		5EF8CAE9256C0FC9008A5855 /* FoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF8CAE7256C0FC9008A5855 /* FoodCell.xib */; };
+		5EF8CAF2256C104A008A5855 /* SelectTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CAF1256C104A008A5855 /* SelectTableController.swift */; };
+		5EF8CAFD256C1093008A5855 /* TableCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CAFB256C1093008A5855 /* TableCCell.swift */; };
+		5EF8CAFE256C1093008A5855 /* TableCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF8CAFC256C1093008A5855 /* TableCCell.xib */; };
+		5EF8CB04256C10F9008A5855 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CB03256C10F9008A5855 /* CartViewController.swift */; };
+		5EF8CB0E256C112C008A5855 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CB0C256C112C008A5855 /* CartCell.swift */; };
+		5EF8CB0F256C112C008A5855 /* CartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF8CB0D256C112C008A5855 /* CartCell.xib */; };
+		5EF8CB18256C11C4008A5855 /* BillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CB17256C11C4008A5855 /* BillViewController.swift */; };
+		5EF8CB20256C11EA008A5855 /* DetailBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CB1F256C11EA008A5855 /* DetailBillViewController.swift */; };
+		5EF8CB27256C1219008A5855 /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CB25256C1219008A5855 /* BillCell.swift */; };
+		5EF8CB28256C1219008A5855 /* BillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF8CB26256C1219008A5855 /* BillCell.xib */; };
+		5EF8CB2D256C12DE008A5855 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5EF8CB2C256C12DE008A5855 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		54DCDE4FF47F3A26E2608DB9 /* Pods-GomoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GomoApp.debug.xcconfig"; path = "Target Support Files/Pods-GomoApp/Pods-GomoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5E34B78B256C06F200980DE7 /* GomoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GomoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E34B78E256C06F200980DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E34B790256C06F200980DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +73,30 @@
 		5E34B7AC256C06F500980DE7 /* GomoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GomoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E34B7B0256C06F500980DE7 /* GomoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomoAppUITests.swift; sourceTree = "<group>"; };
 		5E34B7B2256C06F500980DE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EE8E885256C0E220038E299 /* Defined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defined.swift; sourceTree = "<group>"; };
+		5EE8E88A256C0E450038E299 /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
+		5EE8E88F256C0E650038E299 /* BaseCLCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCLCell.swift; sourceTree = "<group>"; };
+		5EE8E894256C0E810038E299 /* BaseTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTBCell.swift; sourceTree = "<group>"; };
+		5EF8CACC256C0ED6008A5855 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		5EF8CAD1256C0EF0008A5855 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		5EF8CAD6256C0F06008A5855 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
+		5EF8CADB256C0F1B008A5855 /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
+		5EF8CAE0256C0F4B008A5855 /* DetailFoodControlerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodControlerViewController.swift; sourceTree = "<group>"; };
+		5EF8CAE6256C0FC9008A5855 /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
+		5EF8CAE7256C0FC9008A5855 /* FoodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCell.xib; sourceTree = "<group>"; };
+		5EF8CAF1256C104A008A5855 /* SelectTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableController.swift; sourceTree = "<group>"; };
+		5EF8CAFB256C1093008A5855 /* TableCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCCell.swift; sourceTree = "<group>"; };
+		5EF8CAFC256C1093008A5855 /* TableCCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCCell.xib; sourceTree = "<group>"; };
+		5EF8CB03256C10F9008A5855 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		5EF8CB0C256C112C008A5855 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
+		5EF8CB0D256C112C008A5855 /* CartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartCell.xib; sourceTree = "<group>"; };
+		5EF8CB17256C11C4008A5855 /* BillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillViewController.swift; sourceTree = "<group>"; };
+		5EF8CB1F256C11EA008A5855 /* DetailBillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBillViewController.swift; sourceTree = "<group>"; };
+		5EF8CB25256C1219008A5855 /* BillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCell.swift; sourceTree = "<group>"; };
+		5EF8CB26256C1219008A5855 /* BillCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillCell.xib; sourceTree = "<group>"; };
+		5EF8CB2C256C12DE008A5855 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8462FE7402E27D43C7227318 /* Pods_GomoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GomoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADACE7FE4D1E7A0AC39C0B0F /* Pods-GomoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GomoApp.release.xcconfig"; path = "Target Support Files/Pods-GomoApp/Pods-GomoApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CB6E209E0161D0A8DCFDB50 /* Pods_GomoApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +132,8 @@
 				5E34B7A4256C06F500980DE7 /* GomoAppTests */,
 				5E34B7AF256C06F500980DE7 /* GomoAppUITests */,
 				5E34B78C256C06F200980DE7 /* Products */,
+				DF073A0A46CB9F974E878381 /* Pods */,
+				B753C383ACEDC9F3BABF4EEC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,12 +150,19 @@
 		5E34B78D256C06F200980DE7 /* GomoApp */ = {
 			isa = PBXGroup;
 			children = (
+				5E34B7DF256C0BC800980DE7 /* Model */,
+				5E34B7DE256C0BB800980DE7 /* Base */,
+				5E34B7DD256C0BA500980DE7 /* Helper */,
+				5E34B7E3256C0C6400980DE7 /* Menu */,
+				5EF8CB02256C10E2008A5855 /* Cart */,
+				5EF8CAF0256C101E008A5855 /* SelectTable */,
+				5EF8CB16256C11A3008A5855 /* Bill */,
 				5E34B78E256C06F200980DE7 /* AppDelegate.swift */,
 				5E34B790256C06F200980DE7 /* SceneDelegate.swift */,
-				5E34B792256C06F200980DE7 /* ViewController.swift */,
 				5E34B794256C06F200980DE7 /* Main.storyboard */,
 				5E34B797256C06F400980DE7 /* Assets.xcassets */,
 				5E34B799256C06F400980DE7 /* LaunchScreen.storyboard */,
+				5EF8CB2C256C12DE008A5855 /* GoogleService-Info.plist */,
 				5E34B79C256C06F400980DE7 /* Info.plist */,
 			);
 			path = GomoApp;
@@ -128,6 +186,126 @@
 			path = GomoAppUITests;
 			sourceTree = "<group>";
 		};
+		5E34B7DD256C0BA500980DE7 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5EE8E885256C0E220038E299 /* Defined.swift */,
+				5EE8E88A256C0E450038E299 /* Constans.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		5E34B7DE256C0BB800980DE7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5EE8E88F256C0E650038E299 /* BaseCLCell.swift */,
+				5EE8E894256C0E810038E299 /* BaseTBCell.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		5E34B7DF256C0BC800980DE7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5EF8CACC256C0ED6008A5855 /* Menu.swift */,
+				5EF8CAD1256C0EF0008A5855 /* Cart.swift */,
+				5EF8CAD6256C0F06008A5855 /* Table.swift */,
+				5EF8CADB256C0F1B008A5855 /* Bill.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5E34B7E3256C0C6400980DE7 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				5EF8CAE5256C0F8D008A5855 /* Views */,
+				5E34B792256C06F200980DE7 /* ViewController.swift */,
+				5EF8CAE0256C0F4B008A5855 /* DetailFoodControlerViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		5EF8CAE5256C0F8D008A5855 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5EF8CAE6256C0FC9008A5855 /* FoodCell.swift */,
+				5EF8CAE7256C0FC9008A5855 /* FoodCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5EF8CAF0256C101E008A5855 /* SelectTable */ = {
+			isa = PBXGroup;
+			children = (
+				5EF8CAF9256C1065008A5855 /* Views */,
+				5EF8CAF1256C104A008A5855 /* SelectTableController.swift */,
+			);
+			path = SelectTable;
+			sourceTree = "<group>";
+		};
+		5EF8CAF9256C1065008A5855 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5EF8CAFB256C1093008A5855 /* TableCCell.swift */,
+				5EF8CAFC256C1093008A5855 /* TableCCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5EF8CB02256C10E2008A5855 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				5EF8CB0B256C110B008A5855 /* Views */,
+				5EF8CB03256C10F9008A5855 /* CartViewController.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		5EF8CB0B256C110B008A5855 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5EF8CB0C256C112C008A5855 /* CartCell.swift */,
+				5EF8CB0D256C112C008A5855 /* CartCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5EF8CB16256C11A3008A5855 /* Bill */ = {
+			isa = PBXGroup;
+			children = (
+				5EF8CB24256C11FC008A5855 /* Views */,
+				5EF8CB17256C11C4008A5855 /* BillViewController.swift */,
+				5EF8CB1F256C11EA008A5855 /* DetailBillViewController.swift */,
+			);
+			path = Bill;
+			sourceTree = "<group>";
+		};
+		5EF8CB24256C11FC008A5855 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5EF8CB25256C1219008A5855 /* BillCell.swift */,
+				5EF8CB26256C1219008A5855 /* BillCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B753C383ACEDC9F3BABF4EEC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8462FE7402E27D43C7227318 /* Pods_GomoApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF073A0A46CB9F974E878381 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				54DCDE4FF47F3A26E2608DB9 /* Pods-GomoApp.debug.xcconfig */,
+				ADACE7FE4D1E7A0AC39C0B0F /* Pods-GomoApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +313,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E34B7B5256C06F500980DE7 /* Build configuration list for PBXNativeTarget "GomoApp" */;
 			buildPhases = (
+				1956FB8A9CD8FF0A6CC30CE4 /* [CP] Check Pods Manifest.lock */,
 				5E34B787256C06F200980DE7 /* Sources */,
 				5E34B788256C06F200980DE7 /* Frameworks */,
 				5E34B789256C06F200980DE7 /* Resources */,
+				19809D350B547641CA90A404 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,7 +411,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EF8CB28256C1219008A5855 /* BillCell.xib in Resources */,
+				5EF8CB2D256C12DE008A5855 /* GoogleService-Info.plist in Resources */,
 				5E34B79B256C06F400980DE7 /* LaunchScreen.storyboard in Resources */,
+				5EF8CAFE256C1093008A5855 /* TableCCell.xib in Resources */,
+				5EF8CAE9256C0FC9008A5855 /* FoodCell.xib in Resources */,
+				5EF8CB0F256C112C008A5855 /* CartCell.xib in Resources */,
 				5E34B798256C06F400980DE7 /* Assets.xcassets in Resources */,
 				5E34B796256C06F200980DE7 /* Main.storyboard in Resources */,
 			);
@@ -253,14 +438,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1956FB8A9CD8FF0A6CC30CE4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GomoApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		19809D350B547641CA90A404 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GomoApp/Pods-GomoApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GomoApp/Pods-GomoApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GomoApp/Pods-GomoApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5E34B787256C06F200980DE7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5E34B793256C06F200980DE7 /* ViewController.swift in Sources */,
+				5EF8CADC256C0F1B008A5855 /* Bill.swift in Sources */,
+				5EF8CAD2256C0EF0008A5855 /* Cart.swift in Sources */,
 				5E34B78F256C06F200980DE7 /* AppDelegate.swift in Sources */,
+				5EF8CAE8256C0FC9008A5855 /* FoodCell.swift in Sources */,
+				5EF8CACD256C0ED6008A5855 /* Menu.swift in Sources */,
+				5EF8CB20256C11EA008A5855 /* DetailBillViewController.swift in Sources */,
+				5EE8E88B256C0E450038E299 /* Constans.swift in Sources */,
+				5EE8E890256C0E650038E299 /* BaseCLCell.swift in Sources */,
+				5EF8CAD7256C0F06008A5855 /* Table.swift in Sources */,
+				5EF8CAE1256C0F4B008A5855 /* DetailFoodControlerViewController.swift in Sources */,
+				5EF8CAFD256C1093008A5855 /* TableCCell.swift in Sources */,
+				5EF8CB18256C11C4008A5855 /* BillViewController.swift in Sources */,
+				5EF8CB0E256C112C008A5855 /* CartCell.swift in Sources */,
+				5EF8CAF2256C104A008A5855 /* SelectTableController.swift in Sources */,
+				5EF8CB04256C10F9008A5855 /* CartViewController.swift in Sources */,
+				5EF8CB27256C1219008A5855 /* BillCell.swift in Sources */,
 				5E34B791256C06F200980DE7 /* SceneDelegate.swift in Sources */,
+				5EE8E895256C0E810038E299 /* BaseTBCell.swift in Sources */,
+				5EE8E886256C0E220038E299 /* Defined.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +677,7 @@
 		};
 		5E34B7B6256C06F500980DE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54DCDE4FF47F3A26E2608DB9 /* Pods-GomoApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -451,6 +696,7 @@
 		};
 		5E34B7B7256C06F500980DE7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADACE7FE4D1E7A0AC39C0B0F /* Pods-GomoApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
