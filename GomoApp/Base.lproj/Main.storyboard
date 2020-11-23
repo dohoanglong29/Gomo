@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5cR-uG-OiG">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,7 +12,7 @@
         <!--GOMO-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Gomo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="GomoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +87,7 @@
         <!--Bill View Controller-->
         <scene sceneID="ZLn-VL-vUb">
             <objects>
-                <viewController storyboardIdentifier="BillViewController" id="huQ-WZ-WlW" customClass="BillViewController" customModule="Gomo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BillViewController" id="huQ-WZ-WlW" customClass="BillViewController" customModule="GomoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0e3-dE-zH1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,12 +113,15 @@
                     <navigationItem key="navigationItem" id="psY-ec-YCN">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Se9-w4-PIj">
-                            <rect key="frame" x="141.66666666666666" y="6" width="130.99999999999997" height="32"/>
+                            <rect key="frame" x="100.66666666666669" y="4.6666666666666679" width="213" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="First"/>
-                                <segment title="Second"/>
+                                <segment title="Hiện Tại"/>
+                                <segment title="Đã thanh toán"/>
                             </segments>
+                            <connections>
+                                <action selector="btnSelectBill:" destination="huQ-WZ-WlW" eventType="valueChanged" id="9tJ-5g-V90"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
@@ -133,7 +136,7 @@
         <!--Detail Bill View Controller-->
         <scene sceneID="fEI-Sp-iz5">
             <objects>
-                <viewController storyboardIdentifier="DetailBillViewController" id="QwZ-P3-5Vz" customClass="DetailBillViewController" customModule="Gomo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailBillViewController" id="QwZ-P3-5Vz" customClass="DetailBillViewController" customModule="GomoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4AR-6l-ssH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -292,7 +295,7 @@
         <!--Select Table Controller-->
         <scene sceneID="shb-Da-Qa2">
             <objects>
-                <viewController storyboardIdentifier="SelectTableController" id="61m-tG-fTE" customClass="SelectTableController" customModule="Gomo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectTableController" id="61m-tG-fTE" customClass="SelectTableController" customModule="GomoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="df0-ev-pnh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -331,6 +334,110 @@
             </objects>
             <point key="canvasLocation" x="1112" y="1568"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="WE0-Ay-nuB">
+            <objects>
+                <viewController id="mWh-fK-TQr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bcC-A8-wbz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gomo" translatesAutoresizingMaskIntoConstraints="NO" id="AFD-xE-dKY">
+                                <rect key="frame" x="12" y="10" width="390" height="147.33333333333334"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên đăng nhập " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhf-Qr-J5l">
+                                <rect key="frame" x="20" y="187.33333333333334" width="374" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tên đăng nhập" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FfF-kC-kPP">
+                                <rect key="frame" x="20" y="215.33333333333334" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="uve-LP-OK8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q5K-ky-aw8">
+                                <rect key="frame" x="20" y="255.33333333333334" width="374" height="0.33333333333334281"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="COc-t3-awF"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mật Khẩu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dq-hQ-tsN">
+                                <rect key="frame" x="20" y="275.66666666666669" width="374" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6yH-tz-K1e">
+                                <rect key="frame" x="20" y="303.66666666666669" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pdP-tY-4UA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BG1-HT-EOV">
+                                <rect key="frame" x="20" y="343.66666666666669" width="374" height="0.66666666666668561"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="HN3-nN-qMT"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mvx-y9-feJ">
+                                <rect key="frame" x="62" y="394.33333333333331" width="290" height="45"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="fMc-1L-Lmj"/>
+                                </constraints>
+                                <state key="normal" title="Đăng nhập"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufa-Iy-2pc">
+                                <rect key="frame" x="20" y="449.33333333333331" width="374" height="30"/>
+                                <state key="normal" title="Quên mật khẩu"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Mti-TD-Eo8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Mvx-y9-feJ" firstAttribute="centerX" secondItem="bcC-A8-wbz" secondAttribute="centerX" id="1N4-Qr-1fU"/>
+                            <constraint firstItem="q5K-ky-aw8" firstAttribute="top" secondItem="FfF-kC-kPP" secondAttribute="bottom" id="4Qf-9f-psv"/>
+                            <constraint firstItem="Mti-TD-Eo8" firstAttribute="trailing" secondItem="ufa-Iy-2pc" secondAttribute="trailing" constant="20" id="7cp-LT-yl3"/>
+                            <constraint firstItem="5dq-hQ-tsN" firstAttribute="leading" secondItem="Mti-TD-Eo8" secondAttribute="leading" constant="20" id="GLn-EQ-bZC"/>
+                            <constraint firstItem="AFD-xE-dKY" firstAttribute="height" secondItem="bcC-A8-wbz" secondAttribute="height" multiplier="0.2" id="HLo-RR-bcO"/>
+                            <constraint firstItem="BG1-HT-EOV" firstAttribute="leading" secondItem="Mti-TD-Eo8" secondAttribute="leading" constant="20" id="Ij9-bB-S9p"/>
+                            <constraint firstItem="Rhf-Qr-J5l" firstAttribute="leading" secondItem="Mti-TD-Eo8" secondAttribute="leading" constant="20" id="N1A-yF-LX6"/>
+                            <constraint firstItem="Mti-TD-Eo8" firstAttribute="trailing" secondItem="FfF-kC-kPP" secondAttribute="trailing" constant="20" id="N6v-36-NZh"/>
+                            <constraint firstItem="AFD-xE-dKY" firstAttribute="top" secondItem="Mti-TD-Eo8" secondAttribute="top" constant="10" id="P6S-VG-nXH"/>
+                            <constraint firstItem="FfF-kC-kPP" firstAttribute="top" secondItem="Rhf-Qr-J5l" secondAttribute="bottom" constant="10" id="PRL-wV-Iww"/>
+                            <constraint firstItem="Mvx-y9-feJ" firstAttribute="width" secondItem="bcC-A8-wbz" secondAttribute="width" multiplier="0.7" id="S5e-nu-58F"/>
+                            <constraint firstItem="Mti-TD-Eo8" firstAttribute="trailing" secondItem="5dq-hQ-tsN" secondAttribute="trailing" constant="20" id="Sqk-3y-seb"/>
+                            <constraint firstItem="FfF-kC-kPP" firstAttribute="leading" secondItem="Mti-TD-Eo8" secondAttribute="leading" constant="20" id="UJs-Yz-xmN"/>
+                            <constraint firstItem="Mti-TD-Eo8" firstAttribute="trailing" secondItem="q5K-ky-aw8" secondAttribute="trailing" constant="20" id="Xeg-fw-n6h"/>
+                            <constraint firstItem="BG1-HT-EOV" firstAttribute="top" secondItem="6yH-tz-K1e" secondAttribute="bottom" id="XzE-E8-9i3"/>
+                            <constraint firstItem="Mti-TD-Eo8" firstAttribute="trailing" secondItem="Rhf-Qr-J5l" secondAttribute="trailing" constant="20" id="aSF-mA-M3T"/>
+                            <constraint firstItem="Mti-TD-Eo8" firstAttribute="trailing" secondItem="6yH-tz-K1e" secondAttribute="trailing" constant="20" id="ctT-9W-Ibu"/>
+                            <constraint firstItem="6yH-tz-K1e" firstAttribute="top" secondItem="5dq-hQ-tsN" secondAttribute="bottom" constant="10" id="eAY-3f-ang"/>
+                            <constraint firstItem="AFD-xE-dKY" firstAttribute="leading" secondItem="Mti-TD-Eo8" secondAttribute="leading" constant="12" id="env-ey-FhG"/>
+                            <constraint firstItem="ufa-Iy-2pc" firstAttribute="leading" secondItem="Mti-TD-Eo8" secondAttribute="leading" constant="20" id="fZv-za-zj6"/>
+                            <constraint firstItem="5dq-hQ-tsN" firstAttribute="top" secondItem="q5K-ky-aw8" secondAttribute="bottom" constant="20" id="fbS-N7-JFI"/>
+                            <constraint firstItem="Mvx-y9-feJ" firstAttribute="top" secondItem="BG1-HT-EOV" secondAttribute="bottom" constant="50" id="gEh-TT-Py6"/>
+                            <constraint firstItem="Mti-TD-Eo8" firstAttribute="trailing" secondItem="AFD-xE-dKY" secondAttribute="trailing" constant="12" id="i7o-tf-vCb"/>
+                            <constraint firstItem="Mti-TD-Eo8" firstAttribute="trailing" secondItem="BG1-HT-EOV" secondAttribute="trailing" constant="20" id="n0q-jg-HiA"/>
+                            <constraint firstItem="6yH-tz-K1e" firstAttribute="leading" secondItem="Mti-TD-Eo8" secondAttribute="leading" constant="20" id="nw7-4O-zQh"/>
+                            <constraint firstItem="q5K-ky-aw8" firstAttribute="leading" secondItem="Mti-TD-Eo8" secondAttribute="leading" constant="20" id="vRC-rT-K1s"/>
+                            <constraint firstItem="Rhf-Qr-J5l" firstAttribute="top" secondItem="AFD-xE-dKY" secondAttribute="bottom" constant="30" id="xal-8T-o93"/>
+                            <constraint firstItem="ufa-Iy-2pc" firstAttribute="top" secondItem="Mvx-y9-feJ" secondAttribute="bottom" constant="10" id="zMN-RA-gAF"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eXr-2K-Zfp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1893" y="824"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="FG2-QQ-oJ9">
             <objects>
@@ -347,7 +454,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AKI-oR-w8L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1504" y="733"/>
+            <point key="canvasLocation" x="-777" y="818"/>
         </scene>
         <!--Item-->
         <scene sceneID="av3-TQ-pbw">
@@ -371,7 +478,7 @@
         <!--Detail Food Controler View Controller-->
         <scene sceneID="SeL-ON-H6c">
             <objects>
-                <viewController storyboardIdentifier="DetailFoodControlerViewController" id="SyJ-J7-MmX" customClass="DetailFoodControlerViewController" customModule="Gomo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailFoodControlerViewController" id="SyJ-J7-MmX" customClass="DetailFoodControlerViewController" customModule="GomoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FZm-DU-zBS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -528,7 +635,7 @@
         <!--Cart View Controller-->
         <scene sceneID="zl7-Nh-6qL">
             <objects>
-                <viewController storyboardIdentifier="CartViewController" hidesBottomBarWhenPushed="YES" id="1lM-0B-Lsr" customClass="CartViewController" customModule="Gomo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CartViewController" hidesBottomBarWhenPushed="YES" id="1lM-0B-Lsr" customClass="CartViewController" customModule="GomoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Awr-hP-OVt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -700,6 +807,7 @@
         <image name="bill" width="85.333335876464844" height="85.333335876464844"/>
         <image name="cart2" width="21.333333969116211" height="21.333333969116211"/>
         <image name="doc.append.fill.rtl" catalog="system" width="115" height="128"/>
+        <image name="gomo" width="333.33334350585938" height="128.33332824707031"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="img1" width="3840" height="2160"/>
         <image name="logo" width="128" height="128"/>
@@ -723,8 +831,8 @@
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
-
-
-

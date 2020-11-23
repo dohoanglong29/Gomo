@@ -17,31 +17,57 @@ class BillViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         BillCell.registerCellByNib(tableView)
-        getDataBill()
+        getBillPresent()
         
     }
     
-    
-    func getDataBill(){
-            Defined.ref.child("Bill/Present").observe(DataEventType.value) { (DataSnapshot) in
-                if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
-                    self.bills.removeAll()
-                    for snap in snapshort {
-                        let id = snap.key
-                        if let value = snap.value as? [String: Any] {
-                            let detilbill = value["detilbill"] as! String
-                            let numbertable = value["numbertable"] as! String
-                            let status = value["status"] as! Int
-                            let total = value["total"] as! Int
-                            let date = value["date"] as! String
-                            let bill = Bill(id: id, numberTable: numbertable, detailFood: detilbill, Total: total , date: date)
-                            self.bills.append(bill)
-                            print(detilbill)
-                        }
+    func getBillPresent(){
+        Defined.ref.child("Bill/Present").observe(DataEventType.value) { (DataSnapshot) in
+            if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
+                self.bills.removeAll()
+                for snap in snapshort {
+                    let id = snap.key
+                    if let value = snap.value as? [String: Any] {
+                        let date = value["date"] as! String
+                        let detilbill = value["detilbill"] as! String
+                        let numbertable = value["numbertable"] as! String
+                        let total = value["total"] as! Int
+                        let bill = Bill(id: id,numberTable: numbertable, detailFood: detilbill, Total: total, date: date)
+                        self.bills.append(bill)
                     }
                 }
-                self.tableView.reloadData()
             }
+            self.tableView.reloadData()
+        }
+    }
+    
+    func getBillDone(){
+        Defined.ref.child("Bill/Done").observe(DataEventType.value) { (DataSnapshot) in
+            if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
+                self.bills.removeAll()
+                for snap in snapshort {
+                    let id = snap.key
+                    if let value = snap.value as? [String: Any] {
+                        let date = value["date"] as! String
+                        let detilbill = value["detilbill"] as! String
+                        let numbertable = value["numbertable"] as! String
+                        let total = value["total"] as! Int
+                        let bill = Bill(id: id,numberTable: numbertable, detailFood: detilbill, Total: total, date: date)
+                        self.bills.append(bill)
+                    }
+                }
+            }
+            self.tableView.reloadData()
+        }
+    }
+    
+    
+    @IBAction func btnSelectBill(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            getBillPresent()
+        }else{
+            getBillDone()
+        }
     }
     
 }
