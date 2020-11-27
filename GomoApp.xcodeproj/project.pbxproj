@@ -38,6 +38,8 @@
 		5EF8CB27256C1219008A5855 /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CB25256C1219008A5855 /* BillCell.swift */; };
 		5EF8CB28256C1219008A5855 /* BillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF8CB26256C1219008A5855 /* BillCell.xib */; };
 		5EF8CB2D256C12DE008A5855 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5EF8CB2C256C12DE008A5855 /* GoogleService-Info.plist */; };
+		988A459B2570D1B300254367 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988A459A2570D1B300254367 /* TabBarController.swift */; };
+		988A45A42570D20600254367 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988A45A32570D20600254367 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		5EF8CB26256C1219008A5855 /* BillCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillCell.xib; sourceTree = "<group>"; };
 		5EF8CB2C256C12DE008A5855 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8462FE7402E27D43C7227318 /* Pods_GomoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GomoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		988A459A2570D1B300254367 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		988A45A32570D20600254367 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ADACE7FE4D1E7A0AC39C0B0F /* Pods-GomoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GomoApp.release.xcconfig"; path = "Target Support Files/Pods-GomoApp/Pods-GomoApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +154,7 @@
 		5E34B78D256C06F200980DE7 /* GomoApp */ = {
 			isa = PBXGroup;
 			children = (
+				988A45A22570D1EE00254367 /* Login */,
 				5E34B7DF256C0BC800980DE7 /* Model */,
 				5E34B7DE256C0BB800980DE7 /* Base */,
 				5E34B7DD256C0BA500980DE7 /* Helper */,
@@ -157,6 +162,7 @@
 				5EF8CB02256C10E2008A5855 /* Cart */,
 				5EF8CAF0256C101E008A5855 /* SelectTable */,
 				5EF8CB16256C11A3008A5855 /* Bill */,
+				988A45992570D18800254367 /* Support */,
 				5E34B78E256C06F200980DE7 /* AppDelegate.swift */,
 				5E34B790256C06F200980DE7 /* SceneDelegate.swift */,
 				5E34B794256C06F200980DE7 /* Main.storyboard */,
@@ -287,6 +293,22 @@
 				5EF8CB26256C1219008A5855 /* BillCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		988A45992570D18800254367 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				988A459A2570D1B300254367 /* TabBarController.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		988A45A22570D1EE00254367 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				988A45A32570D20600254367 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		B753C383ACEDC9F3BABF4EEC /* Frameworks */ = {
@@ -495,6 +517,7 @@
 				5EE8E88B256C0E450038E299 /* Constans.swift in Sources */,
 				5EE8E890256C0E650038E299 /* BaseCLCell.swift in Sources */,
 				5EF8CAD7256C0F06008A5855 /* Table.swift in Sources */,
+				988A45A42570D20600254367 /* LoginViewController.swift in Sources */,
 				5EF8CAE1256C0F4B008A5855 /* DetailFoodControlerViewController.swift in Sources */,
 				5EF8CAFD256C1093008A5855 /* TableCCell.swift in Sources */,
 				5EF8CB18256C11C4008A5855 /* BillViewController.swift in Sources */,
@@ -503,6 +526,7 @@
 				5EF8CB04256C10F9008A5855 /* CartViewController.swift in Sources */,
 				5EF8CB27256C1219008A5855 /* BillCell.swift in Sources */,
 				5E34B791256C06F200980DE7 /* SceneDelegate.swift in Sources */,
+				988A459B2570D1B300254367 /* TabBarController.swift in Sources */,
 				5EE8E895256C0E810038E299 /* BaseTBCell.swift in Sources */,
 				5EE8E886256C0E220038E299 /* Defined.swift in Sources */,
 			);

@@ -11,4 +11,5 @@ class Constans {
     static let detailFood = "DetailFoodControlerViewController"
     static let note = "note"
     static let detailsTransaction = "ViewTransaction"
+    static let tabbar = "TabBarController"
 }
