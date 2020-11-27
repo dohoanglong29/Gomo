@@ -23,7 +23,6 @@ class DetailFoodControlerViewController: UIViewController {
     @IBOutlet weak var btnTru: UIButton!
     
     
-    
     var ImgFood = ""
     var NameFood = ""
     var PriceFood:Int = 1
@@ -35,7 +34,6 @@ class DetailFoodControlerViewController: UIViewController {
         super.viewDidLoad()
         setUp()
         customsButton()
-        
     }
     
     func customsButton(){
@@ -47,12 +45,15 @@ class DetailFoodControlerViewController: UIViewController {
     }
     
     func setUp(){
+        Defined.formatter.groupingSeparator = "."
+        Defined.formatter.numberStyle = .decimal
         imageFood.sd_setImage(with: URL(string: ImgFood ), completed: nil)
         lblFood.text = NameFood
         lblNote.text = NoteFood
-        lblPrice.text = String(PriceFood) + "đ"
+        lblPrice.text = "\(Defined.formatter.string(from: NSNumber(value: PriceFood ))!)" + " VNĐ"
         lblCount.text = String(NumberCount)
-        lblTotal.text = String(PriceFood) + "đ"
+        lblTotal.text = "\(Defined.formatter.string(from: NSNumber(value: PriceFood ))!)" + " VNĐ"
+      
     }
     
     
@@ -61,18 +62,30 @@ class DetailFoodControlerViewController: UIViewController {
     }
     
     @IBAction func btnIncrease(_ sender: Any) {
-        NumberCount += 1
-        lblCount.text = String(NumberCount)
-        lblTotal.text = String(NumberCount * PriceFood)
-        lblSoLuong.text = "Số Lượng:\(NumberCount)"
+        if NumberCount > 9{
+            print("aa")
+        }else{
+            NumberCount += 1
+            setUpDetailMenu()
+        }
         
     }
     
     @IBAction func btnReduction(_ sender: Any) {
-        NumberCount -= 1
+        if NumberCount < 2{
+            NumberCount = 1
+            setUpDetailMenu()
+        }else{
+            NumberCount -= 1
+            setUpDetailMenu()
+        }
+    }
+    
+    func setUpDetailMenu() {
         lblCount.text = String(NumberCount)
-        lblTotal.text = String(NumberCount * PriceFood)
-        lblSoLuong.text = "Số Lượng:\(NumberCount)"
+        //lblTotal.text = String(NumberCount * PriceFood) + " VNĐ"
+        lblSoLuong.text = "Số Lượng: \(NumberCount)"
+        lblTotal.text = "\(Defined.formatter.string(from: NSNumber(value: NumberCount * PriceFood ))!)" + " VNĐ"
     }
     
     

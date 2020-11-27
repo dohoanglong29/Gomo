@@ -10,7 +10,9 @@ import Firebase
 import RxSwift
 
 class CartViewController: UIViewController {
-
+    
+    @IBOutlet weak var inageCartNill: UIImageView!
+    @IBOutlet weak var btnAddFood: UIBarButtonItem!
     @IBOutlet weak var lblTable: UITextField!
     @IBOutlet weak var lblNameCustoms: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -26,7 +28,10 @@ class CartViewController: UIViewController {
         super.viewDidLoad()
         CartCell.registerCellByNib(tableView)
         getDataCart()
+        inageCartNill.isHidden = true
     }
+    
+  
     
     func dateFormatTime(date : Date) -> String {
         let dateFormatter = DateFormatter()
@@ -53,7 +58,7 @@ class CartViewController: UIViewController {
                         self.amount += pricefood
                         self.listFood += namefood + "x" + String(countfood) + "  "
                         print(self.listFood)
-                        self.lblTotal.text = "Giá Tiền: " + String(self.amount) + "đ"
+                        self.lblTotal.text = "Giá Tiền: " + String(self.amount) + " VNĐ"
                     }
                 }
                 self.tableView.reloadData()
@@ -63,16 +68,23 @@ class CartViewController: UIViewController {
     
     
     @IBAction func btnOder(_ sender: Any) {
-        let dateThis = dateFormatTime(date: Date())
-        let cartDict = [
-            "detilbill": listFood ,
-            "total": amount,
-            "status": 0,
-            "date":dateThis,
-            "numbertable":self.idTable,] as [String: Any]
-        Defined.ref.child("Bill/Present/\(Int(self.idTable) ?? 0)").setValue(cartDict)
-        Defined.ref.child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 3])
-
+        if (amount == 0){
+            let alert = UIAlertController(title: "Gomo ", message: "Giỏ hàng của bạn vẫn còn trống", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            let dateThis = dateFormatTime(date: Date())
+            let cartDict = [
+                "detilbill": listFood ,
+                "total": amount,
+                "status": 0,
+                "date":dateThis,
+                "numbertable":self.idTable,] as [String: Any]
+            Defined.ref.child("Bill/Present/\(Int(self.idTable) ?? 0)").setValue(cartDict)
+            Defined.ref.child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 3])
+            print(amount)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @IBAction func btnDeleteCart(_ sender: Any) {
@@ -90,18 +102,19 @@ class CartViewController: UIViewController {
             }
         }))
         self.present(alert, animated: true)
-        
     }
     
     @IBAction func btnAddFood(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
         vc.idTable = idTable
-        self.navigationController?.pushViewController(vc, animated: true)    }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension CartViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return carts.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -115,11 +128,15 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
         let m = carts[indexPath.row]
         vc.ImgFood = m.image ?? ""
         vc.NameFood = m.name ?? ""
-       // vc.NoteFood = m.note ?? ""
         vc.PriceFood = m.price ?? 1
         vc.idTable = idTable
         self.present(vc, animated: true, completion: nil)
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            }
+        }
+    }
     
-}
+

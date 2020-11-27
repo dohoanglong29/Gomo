@@ -32,7 +32,7 @@ class CartCell: BaseTBCell {
     func setUpData(data: Cart)  {
         iconFood.sd_setImage(with: URL(string: data.image ?? ""), completed: nil)
         nameFood.text = data.name
-        priceFood.text = "Gia Tiền: " + String(data.price!) + "đ"
+        priceFood.text = "Gia Tiền: " + String(data.price!) + " VNĐ"
         countFood.text = "Số Lượng: " + String(data.count!)
 
     }

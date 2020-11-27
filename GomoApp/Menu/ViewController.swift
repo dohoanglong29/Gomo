@@ -35,6 +35,7 @@ class ViewController: UIViewController {
     
     @IBAction func btnCart(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.cart) as! CartViewController
+        vc.btnAddFood.isEnabled = false
         vc.idTable = idTable
         self.navigationController?.pushViewController(vc, animated: true)
         

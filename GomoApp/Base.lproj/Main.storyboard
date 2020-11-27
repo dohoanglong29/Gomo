@@ -649,10 +649,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YNl-v3-dAS">
+                                <rect key="frame" x="0.0" y="162" width="414" height="524"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="1lM-0B-Lsr" id="W6J-Vk-Q7J"/>
+                                    <outlet property="delegate" destination="1lM-0B-Lsr" id="gOs-gk-bjV"/>
+                                </connections>
+                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dky-du-BPD">
                                 <rect key="frame" x="0.0" y="686" width="414" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng Tiền: 1.400.000đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FiW-CC-Uay">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tổng Tiền: 0 VNĐ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FiW-CC-Uay">
                                         <rect key="frame" x="15" y="15.666666666666629" width="289.66666666666669" height="19"/>
                                         <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -681,63 +689,73 @@
                                     <constraint firstAttribute="trailing" secondItem="LHl-b0-aJA" secondAttribute="trailing" id="yNy-JW-PWX"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YNl-v3-dAS">
-                                <rect key="frame" x="0.0" y="110.33333333333331" width="414" height="575.66666666666674"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="1lM-0B-Lsr" id="W6J-Vk-Q7J"/>
-                                    <outlet property="delegate" destination="1lM-0B-Lsr" id="gOs-gk-bjV"/>
-                                </connections>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVX-Rp-J5O">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="110.33333333333333"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhà Hàng GOMO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ce1-7F-glY">
-                                        <rect key="frame" x="15" y="10" width="384" height="19"/>
-                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="17"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="H0R-kc-M17">
+                                        <rect key="frame" x="20" y="10" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Tim-9a-5h6"/>
+                                            <constraint firstAttribute="width" constant="100" id="jPw-kF-BTc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gomo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLL-wT-cLO">
+                                        <rect key="frame" x="130" y="15.000000000000004" width="274" height="44.333333333333343"/>
+                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-ItalicMT" family="Times New Roman" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Khách hàng:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVV-2S-WrN">
-                                        <rect key="frame" x="15" y="44" width="94" height="19"/>
-                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23/07/2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEq-qZ-LPa">
+                                        <rect key="frame" x="130" y="69.333333333333329" width="274" height="19"/>
+                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-ItalicMT" family="Times New Roman" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bàn:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unr-pa-vJm">
-                                        <rect key="frame" x="15" y="78" width="35" height="19"/>
-                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Địa chỉ: Số 123 đường Hồ Tùng Mậu - Quận Cầu Giấy - Hà Nội  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1e-AT-DbZ">
+                                        <rect key="frame" x="10" y="115.00000000000001" width="394" height="37.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-ItalicMT" family="Times New Roman" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="unr-pa-vJm" firstAttribute="top" secondItem="uVV-2S-WrN" secondAttribute="bottom" constant="15" id="41I-Ng-jm5"/>
-                                    <constraint firstItem="uVV-2S-WrN" firstAttribute="leading" secondItem="JVX-Rp-J5O" secondAttribute="leading" constant="15" id="LrE-Co-8Co"/>
-                                    <constraint firstItem="ce1-7F-glY" firstAttribute="top" secondItem="JVX-Rp-J5O" secondAttribute="top" constant="10" id="fnq-uM-daE"/>
-                                    <constraint firstAttribute="trailing" secondItem="ce1-7F-glY" secondAttribute="trailing" constant="15" id="fpj-Ty-jd4"/>
-                                    <constraint firstItem="ce1-7F-glY" firstAttribute="leading" secondItem="JVX-Rp-J5O" secondAttribute="leading" constant="15" id="laH-xE-aXx"/>
-                                    <constraint firstItem="uVV-2S-WrN" firstAttribute="top" secondItem="ce1-7F-glY" secondAttribute="bottom" constant="15" id="u9g-3q-Wlc"/>
-                                    <constraint firstItem="unr-pa-vJm" firstAttribute="leading" secondItem="JVX-Rp-J5O" secondAttribute="leading" constant="15" id="vpI-hT-p4R"/>
-                                    <constraint firstItem="ce1-7F-glY" firstAttribute="centerX" secondItem="JVX-Rp-J5O" secondAttribute="centerX" id="zSK-7j-7Fk"/>
+                                    <constraint firstItem="hEq-qZ-LPa" firstAttribute="leading" secondItem="H0R-kc-M17" secondAttribute="trailing" constant="10" id="2pD-IO-bDV"/>
+                                    <constraint firstItem="XLL-wT-cLO" firstAttribute="leading" secondItem="H0R-kc-M17" secondAttribute="trailing" constant="10" id="5HP-cc-sAt"/>
+                                    <constraint firstAttribute="trailing" secondItem="XLL-wT-cLO" secondAttribute="trailing" constant="10" id="Huq-Wm-m3K"/>
+                                    <constraint firstAttribute="trailing" secondItem="P1e-AT-DbZ" secondAttribute="trailing" constant="10" id="PCt-Sd-HyM"/>
+                                    <constraint firstItem="XLL-wT-cLO" firstAttribute="top" secondItem="JVX-Rp-J5O" secondAttribute="top" constant="15" id="WFv-fg-d16"/>
+                                    <constraint firstItem="P1e-AT-DbZ" firstAttribute="top" secondItem="H0R-kc-M17" secondAttribute="bottom" constant="5" id="WxD-jq-PGE"/>
+                                    <constraint firstItem="H0R-kc-M17" firstAttribute="top" secondItem="JVX-Rp-J5O" secondAttribute="top" constant="10" id="dQS-3l-lJL"/>
+                                    <constraint firstItem="H0R-kc-M17" firstAttribute="leading" secondItem="JVX-Rp-J5O" secondAttribute="leading" constant="20" id="dfG-d8-MuX"/>
+                                    <constraint firstAttribute="trailing" secondItem="hEq-qZ-LPa" secondAttribute="trailing" constant="10" id="gBz-Cg-8Ij"/>
+                                    <constraint firstItem="hEq-qZ-LPa" firstAttribute="top" secondItem="XLL-wT-cLO" secondAttribute="bottom" constant="10" id="gNm-ZI-EuX"/>
+                                    <constraint firstItem="P1e-AT-DbZ" firstAttribute="leading" secondItem="JVX-Rp-J5O" secondAttribute="leading" constant="10" id="rDF-Xz-a8v"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cartNill" translatesAutoresizingMaskIntoConstraints="NO" id="MP3-mM-4zA">
+                                <rect key="frame" x="50" y="294.33333333333331" width="314" height="147.33333333333331"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ure-Vb-Jg3"/>
                         <color key="backgroundColor" systemColor="systemGray3Color"/>
                         <constraints>
                             <constraint firstItem="Ure-Vb-Jg3" firstAttribute="trailing" secondItem="YNl-v3-dAS" secondAttribute="trailing" id="3sE-3p-oCz"/>
                             <constraint firstItem="JVX-Rp-J5O" firstAttribute="leading" secondItem="Ure-Vb-Jg3" secondAttribute="leading" id="4Ds-mT-BEz"/>
+                            <constraint firstItem="MP3-mM-4zA" firstAttribute="height" secondItem="Awr-hP-OVt" secondAttribute="height" multiplier="0.2" id="4LG-m3-TR9"/>
+                            <constraint firstItem="MP3-mM-4zA" firstAttribute="leading" secondItem="Ure-Vb-Jg3" secondAttribute="leading" constant="50" id="6cC-8M-IyJ"/>
                             <constraint firstItem="dky-du-BPD" firstAttribute="leading" secondItem="Ure-Vb-Jg3" secondAttribute="leading" id="FdC-Ke-ydW"/>
                             <constraint firstItem="YNl-v3-dAS" firstAttribute="leading" secondItem="Ure-Vb-Jg3" secondAttribute="leading" id="FuZ-xg-uIh"/>
+                            <constraint firstItem="Ure-Vb-Jg3" firstAttribute="trailing" secondItem="MP3-mM-4zA" secondAttribute="trailing" constant="50" id="Qzq-L0-9fg"/>
                             <constraint firstItem="JVX-Rp-J5O" firstAttribute="top" secondItem="Ure-Vb-Jg3" secondAttribute="top" id="Rwa-rK-74N"/>
-                            <constraint firstItem="JVX-Rp-J5O" firstAttribute="height" secondItem="Awr-hP-OVt" secondAttribute="height" multiplier="0.15" id="XUz-tW-UtG"/>
+                            <constraint firstItem="JVX-Rp-J5O" firstAttribute="height" secondItem="Awr-hP-OVt" secondAttribute="height" multiplier="0.22" id="XUz-tW-UtG"/>
                             <constraint firstItem="Ure-Vb-Jg3" firstAttribute="trailing" secondItem="dky-du-BPD" secondAttribute="trailing" id="dTj-iZ-OGg"/>
                             <constraint firstAttribute="bottom" secondItem="dky-du-BPD" secondAttribute="bottom" id="fLn-sh-56D"/>
-                            <constraint firstItem="YNl-v3-dAS" firstAttribute="top" secondItem="JVX-Rp-J5O" secondAttribute="bottom" id="fgA-N8-h4N"/>
+                            <constraint firstItem="YNl-v3-dAS" firstAttribute="top" secondItem="JVX-Rp-J5O" secondAttribute="bottom" id="hr9-BE-Cm1"/>
                             <constraint firstItem="dky-du-BPD" firstAttribute="top" secondItem="YNl-v3-dAS" secondAttribute="bottom" id="pc2-MZ-fAY"/>
                             <constraint firstItem="Ure-Vb-Jg3" firstAttribute="trailing" secondItem="JVX-Rp-J5O" secondAttribute="trailing" id="s0N-oN-buj"/>
+                            <constraint firstItem="MP3-mM-4zA" firstAttribute="centerX" secondItem="Awr-hP-OVt" secondAttribute="centerX" id="t7o-f8-CUA"/>
+                            <constraint firstItem="MP3-mM-4zA" firstAttribute="centerY" secondItem="Awr-hP-OVt" secondAttribute="centerY" id="vMc-3a-SgH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3Ib-DR-bok">
@@ -759,6 +777,8 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnAddFood" destination="tMG-Pp-K3q" id="6BX-Ey-F9q"/>
+                        <outlet property="inageCartNill" destination="MP3-mM-4zA" id="4QV-us-lMg"/>
                         <outlet property="lblTotal" destination="FiW-CC-Uay" id="XVM-Ii-EcP"/>
                         <outlet property="tableView" destination="YNl-v3-dAS" id="l2b-PJ-63M"/>
                     </connections>
@@ -815,6 +835,7 @@
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="bill" width="85.333335876464844" height="85.333335876464844"/>
         <image name="cart2" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="cartNill" width="426" height="289"/>
         <image name="doc.append.fill.rtl" catalog="system" width="115" height="128"/>
         <image name="gomo" width="333.33334350585938" height="128.33332824707031"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
