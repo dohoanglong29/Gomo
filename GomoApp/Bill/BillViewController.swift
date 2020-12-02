@@ -13,11 +13,13 @@ class BillViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmented: UISegmentedControl!
     var bills = [Bill]()
+    var status = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         BillCell.registerCellByNib(tableView)
         getBillPresent()
+        status = "0"
         
     }
     
@@ -65,8 +67,11 @@ class BillViewController: UIViewController {
     @IBAction func btnSelectBill(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             getBillPresent()
+            status = "0"
         }else{
             getBillDone()
+            status = "1"
+            print(status)
         }
     }
     
@@ -93,9 +98,8 @@ extension BillViewController: UITableViewDelegate, UITableViewDataSource{
         vc.detailFood = detailBill.detailFood ?? ""
         vc.date = detailBill.date ?? ""
         vc.numberTb = detailBill.id ?? ""
-        
+        vc.status = status
         self.present(vc, animated: true, completion: nil)
     }
-    
-    
 }
+

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mWh-fK-TQr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mWh-fK-TQr">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -136,6 +136,7 @@
         <!--Detail Bill View Controller-->
         <scene sceneID="fEI-Sp-iz5">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mjd-oO-Gf1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="DetailBillViewController" id="QwZ-P3-5Vz" customClass="DetailBillViewController" customModule="GomoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4AR-6l-ssH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -280,7 +281,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btnPay" destination="PEP-6K-pH4" id="U2e-kR-5Ul"/>
+                        <outlet property="btnPay1" destination="PEP-6K-pH4" id="KS0-4Y-h2W"/>
                         <outlet property="lblAmount" destination="AbL-Rz-Dpx" id="Zqo-6w-tvz"/>
                         <outlet property="lblDate" destination="d4g-rA-vhz" id="t67-OE-Kv9"/>
                         <outlet property="lblDetailFood" destination="4YD-X7-hhj" id="85I-2e-Jc1"/>
@@ -288,7 +289,6 @@
                         <outlet property="subView" destination="nSa-eE-uhv" id="znH-Pw-tUa"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mjd-oO-Gf1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1866.6666666666667" y="817.66304347826099"/>
         </scene>
@@ -342,7 +342,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gomo" translatesAutoresizingMaskIntoConstraints="NO" id="AFD-xE-dKY">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background 2" translatesAutoresizingMaskIntoConstraints="NO" id="AFD-xE-dKY">
                                 <rect key="frame" x="12" y="10" width="390" height="147.33333333333334"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên đăng nhập " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhf-Qr-J5l">
@@ -832,12 +832,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Background 2" width="285" height="130.33332824707031"/>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="bill" width="85.333335876464844" height="85.333335876464844"/>
         <image name="cart2" width="21.333333969116211" height="21.333333969116211"/>
         <image name="cartNill" width="426" height="289"/>
         <image name="doc.append.fill.rtl" catalog="system" width="115" height="128"/>
-        <image name="gomo" width="333.33334350585938" height="128.33332824707031"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="img1" width="3840" height="2160"/>
         <image name="logo" width="128" height="128"/>

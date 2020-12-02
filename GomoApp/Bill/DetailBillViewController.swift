@@ -14,12 +14,13 @@ class DetailBillViewController: UIViewController {
     @IBOutlet weak var lblDetailFood: UILabel!
     @IBOutlet weak var lblAmount: UILabel!
     @IBOutlet weak var lblDate: UILabel!
-    @IBOutlet weak var btnPay: UIButton!
+    @IBOutlet weak var btnPay1: UIButton!
     @IBOutlet weak var numberTable: UILabel!
     var detailFood = ""
     var amount = 0
     var date = ""
     var numberTb = ""
+    var status = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,11 @@ class DetailBillViewController: UIViewController {
     }
     
     func setDataBill() {
+        if status == "1"{
+            btnPay1.isEnabled = false
+        }else{
+            btnPay1.isEnabled = true
+        }
         lblDetailFood.text = detailFood
         lblAmount.text = String(amount)
         lblDate.text = date
@@ -45,26 +51,24 @@ class DetailBillViewController: UIViewController {
     
     func getDataBill(){
         Defined.ref.child("Bill/Present").observe(DataEventType.value) { [self] (DataSnapshot) in
-                if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
-                   
-                    for snap in snapshort {
-                        let id = snap.key
-                        if let value = snap.value as? [String: Any] {
-                            let detilbill = value["detilbill"] as! String
-                            let total = value["total"] as! Int
-                            let date = value["date"] as! String
-                            
-                            if id == self.numberTb{
-                                self.lblDetailFood.text = detilbill
-                                self.lblDate.text = date
-                                self.lblAmount.text = String(total)
-                                billDone()
-                                
-                            }
+            if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
+                
+                for snap in snapshort {
+                    let id = snap.key
+                    if let value = snap.value as? [String: Any] {
+                        let detilbill = value["detilbill"] as! String
+                        let total = value["total"] as! Int
+                        let date = value["date"] as! String
+                        
+                        if id == self.numberTb{
+                            self.lblDetailFood.text = detilbill
+                            self.lblDate.text = date
+                            self.lblAmount.text = String(total)
                         }
                     }
                 }
             }
+        }
     }
     
     func billDone(){
