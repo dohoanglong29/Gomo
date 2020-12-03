@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var btnForgetPassword: UIButton!
-    @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtUserName: UITextField!
     override func viewDidLoad() {
@@ -20,10 +20,22 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func btnLogin(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.tabbar) as! TabBarController
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
         
+        if let email = txtUserName.text, let password = txtPassword.text{
+            Auth.auth().signIn(withEmail: email, password: password) {
+                [weak self] authResult, error in
+                
+                if let user = authResult{
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.tabbar) as! TabBarController
+                    vc.modalPresentationStyle = .fullScreen
+                    self?.present(vc, animated: true, completion: nil)
+                    
+                }else{
+                    print("test")
+                }
+                
+                
+            }
+        }
     }
-    
 }

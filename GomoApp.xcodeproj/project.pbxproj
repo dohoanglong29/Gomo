@@ -16,6 +16,10 @@
 		5E34B79B256C06F400980DE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E34B799256C06F400980DE7 /* LaunchScreen.storyboard */; };
 		5E34B7A6256C06F500980DE7 /* GomoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34B7A5256C06F500980DE7 /* GomoAppTests.swift */; };
 		5E34B7B1256C06F500980DE7 /* GomoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34B7B0256C06F500980DE7 /* GomoAppUITests.swift */; };
+		5EDF77612579356000047588 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF77602579356000047588 /* SettingViewController.swift */; };
+		5EDF776B257936C900047588 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF7769257936C900047588 /* SettingCell.swift */; };
+		5EDF776C257936C900047588 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EDF776A257936C900047588 /* SettingCell.xib */; };
+		5EDF7772257939E400047588 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF7771257939E400047588 /* ProfileViewController.swift */; };
 		5EE8E886256C0E220038E299 /* Defined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE8E885256C0E220038E299 /* Defined.swift */; };
 		5EE8E88B256C0E450038E299 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE8E88A256C0E450038E299 /* Constans.swift */; };
 		5EE8E890256C0E650038E299 /* BaseCLCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE8E88F256C0E650038E299 /* BaseCLCell.swift */; };
@@ -75,6 +79,10 @@
 		5E34B7AC256C06F500980DE7 /* GomoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GomoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E34B7B0256C06F500980DE7 /* GomoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomoAppUITests.swift; sourceTree = "<group>"; };
 		5E34B7B2256C06F500980DE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EDF77602579356000047588 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		5EDF7769257936C900047588 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		5EDF776A257936C900047588 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
+		5EDF7771257939E400047588 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5EE8E885256C0E220038E299 /* Defined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defined.swift; sourceTree = "<group>"; };
 		5EE8E88A256C0E450038E299 /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		5EE8E88F256C0E650038E299 /* BaseCLCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCLCell.swift; sourceTree = "<group>"; };
@@ -154,14 +162,15 @@
 		5E34B78D256C06F200980DE7 /* GomoApp */ = {
 			isa = PBXGroup;
 			children = (
-				988A45A22570D1EE00254367 /* Login */,
+				5EDF775E2579353600047588 /* Setting */,
 				5E34B7DF256C0BC800980DE7 /* Model */,
 				5E34B7DE256C0BB800980DE7 /* Base */,
 				5E34B7DD256C0BA500980DE7 /* Helper */,
+				988A45A22570D1EE00254367 /* Login */,
 				5E34B7E3256C0C6400980DE7 /* Menu */,
 				5EF8CB02256C10E2008A5855 /* Cart */,
-				5EF8CAF0256C101E008A5855 /* SelectTable */,
 				5EF8CB16256C11A3008A5855 /* Bill */,
+				5EF8CAF0256C101E008A5855 /* SelectTable */,
 				988A45992570D18800254367 /* Support */,
 				5E34B78E256C06F200980DE7 /* AppDelegate.swift */,
 				5E34B790256C06F200980DE7 /* SceneDelegate.swift */,
@@ -229,6 +238,33 @@
 				5EF8CAE0256C0F4B008A5855 /* DetailFoodControlerViewController.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		5EDF775E2579353600047588 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				5EDF77702579398100047588 /* Profire */,
+				5EDF775F2579354600047588 /* Views */,
+				5EDF77602579356000047588 /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		5EDF775F2579354600047588 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5EDF7769257936C900047588 /* SettingCell.swift */,
+				5EDF776A257936C900047588 /* SettingCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5EDF77702579398100047588 /* Profire */ = {
+			isa = PBXGroup;
+			children = (
+				5EDF7771257939E400047588 /* ProfileViewController.swift */,
+			);
+			path = Profire;
 			sourceTree = "<group>";
 		};
 		5EF8CAE5256C0F8D008A5855 /* Views */ = {
@@ -437,6 +473,7 @@
 				5EF8CB2D256C12DE008A5855 /* GoogleService-Info.plist in Resources */,
 				5E34B79B256C06F400980DE7 /* LaunchScreen.storyboard in Resources */,
 				5EF8CAFE256C1093008A5855 /* TableCCell.xib in Resources */,
+				5EDF776C257936C900047588 /* SettingCell.xib in Resources */,
 				5EF8CAE9256C0FC9008A5855 /* FoodCell.xib in Resources */,
 				5EF8CB0F256C112C008A5855 /* CartCell.xib in Resources */,
 				5E34B798256C06F400980DE7 /* Assets.xcassets in Resources */,
@@ -509,6 +546,7 @@
 			files = (
 				5E34B793256C06F200980DE7 /* ViewController.swift in Sources */,
 				5EF8CADC256C0F1B008A5855 /* Bill.swift in Sources */,
+				5EDF776B257936C900047588 /* SettingCell.swift in Sources */,
 				5EF8CAD2256C0EF0008A5855 /* Cart.swift in Sources */,
 				5E34B78F256C06F200980DE7 /* AppDelegate.swift in Sources */,
 				5EF8CAE8256C0FC9008A5855 /* FoodCell.swift in Sources */,
@@ -525,8 +563,10 @@
 				5EF8CAF2256C104A008A5855 /* SelectTableController.swift in Sources */,
 				5EF8CB04256C10F9008A5855 /* CartViewController.swift in Sources */,
 				5EF8CB27256C1219008A5855 /* BillCell.swift in Sources */,
+				5EDF77612579356000047588 /* SettingViewController.swift in Sources */,
 				5E34B791256C06F200980DE7 /* SceneDelegate.swift in Sources */,
 				988A459B2570D1B300254367 /* TabBarController.swift in Sources */,
+				5EDF7772257939E400047588 /* ProfileViewController.swift in Sources */,
 				5EE8E895256C0E810038E299 /* BaseTBCell.swift in Sources */,
 				5EE8E886256C0E220038E299 /* Defined.swift in Sources */,
 			);
@@ -705,6 +745,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZNF56539VV;
 				INFOPLIST_FILE = GomoApp/Info.plist;
@@ -714,6 +755,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vtb.GomoApp12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -725,15 +767,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZNF56539VV;
+				DEVELOPMENT_TEAM = LK52C45LY8;
 				INFOPLIST_FILE = GomoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vtb.GomoApp12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vtb.GomoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
