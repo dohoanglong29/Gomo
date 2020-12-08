@@ -12,6 +12,7 @@ struct Bill: Codable {
     var detailFood: String? = nil
     var Total:Int? = nil
     var date: String? = nil
+    var time:String? = nil
 
 
 }

@@ -58,7 +58,9 @@ class ViewController: UIViewController {
                         let imagefood = value["imagefood"] as! String
                         let notefood = value["notefood"] as! String
                         let pricefood = value["price"] as! Int
-                        let menu = Menu(id: id, name: namefood, image: imagefood, note: notefood, price: pricefood)
+                        let status = value["statusFood"] as? String
+                        print(status)
+                        let menu = Menu(id: id, name: namefood, image: imagefood, note: notefood, price: pricefood, statusFood: status)
                         self.menus.append(menu)
                     }
                 }
@@ -78,7 +80,8 @@ class ViewController: UIViewController {
                         let imagefood = value["imagefood"] as! String
                         let notefood = value["notefood"] as! String
                         let pricefood = value["price"] as! Int
-                        let menu = Menu(id: id, name: namefood, image: imagefood, note: notefood, price: pricefood)
+                        let status = value["statusFood"] as? String
+                        let menu = Menu(id: id, name: namefood, image: imagefood, note: notefood, price: pricefood,statusFood: status)
                         self.menus.append(menu)
                     }
                 }
@@ -98,18 +101,28 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = FoodCell.loadCell(collectionView, path: indexPath) as! FoodCell
         cell.setUpData(data: menus[indexPath.row])
+        if menus[indexPath.row].statusFood == "0" {
+            cell.bView.alpha = 0.5
+        }
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.detailFood) as! DetailFoodControlerViewController
         let m = menus[indexPath.row]
-        vc.ImgFood = m.image ?? ""
-        vc.NameFood = m.name ?? ""
-        vc.NoteFood = m.note ?? ""
-        vc.PriceFood = m.price ?? 1
-        vc.idTable = idTable
-        self.present(vc, animated: true, completion: nil)
+        if menus[indexPath.row].statusFood == "0" {
+            
+        }else{
+            vc.ImgFood = m.image ?? ""
+            vc.NameFood = m.name ?? ""
+            vc.NoteFood = m.note ?? ""
+            vc.PriceFood = m.price ?? 1
+            vc.idTable = idTable
+            self.present(vc, animated: true, completion: nil)
+        }
+        
+       
     }
 }
 

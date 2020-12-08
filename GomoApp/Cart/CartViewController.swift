@@ -18,6 +18,7 @@ class CartViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblTotal: UILabel!
     
+    let curentDateTime = Date()
     var carts = [Cart]()
     var idTable = ""
     var amount = 0
@@ -31,14 +32,12 @@ class CartViewController: UIViewController {
         inageCartNill.isHidden = true
     }
     
-  
-    
     func dateFormatTime(date : Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter.string(from: date)
-        
     }
+    
     
     func getDataCart(){
         Defined.ref.child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { (DataSnapshot) in
@@ -66,7 +65,6 @@ class CartViewController: UIViewController {
         }
     }
     
-    
     @IBAction func btnOder(_ sender: Any) {
         if (amount == 0){
             let alert = UIAlertController(title: "Gomo ", message: "Giỏ hàng của bạn vẫn còn trống", preferredStyle: UIAlertController.Style.alert)
@@ -74,11 +72,16 @@ class CartViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }else{
             let dateThis = dateFormatTime(date: Date())
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm dd/MM/yyyy"
+            let someDateTime = formatter.string(from: curentDateTime)
+
             let cartDict = [
-                "detilbill": listFood ,
+                "detilbill": listFood,
                 "total": amount,
                 "status": 0,
                 "date":dateThis,
+                "time":someDateTime,
                 "numbertable":self.idTable,] as [String: Any]
             Defined.ref.child("Bill/Present/\(Int(self.idTable) ?? 0)").setValue(cartDict)
             Defined.ref.child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 3])

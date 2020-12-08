@@ -34,7 +34,8 @@ class BillViewController: UIViewController {
                         let detilbill = value["detilbill"] as! String
                         let numbertable = value["numbertable"] as! String
                         let total = value["total"] as! Int
-                        let bill = Bill(id: id,numberTable: numbertable, detailFood: detilbill, Total: total, date: date)
+                        let time = value["time"] as! String
+                        let bill = Bill(id: id,numberTable: numbertable, detailFood: detilbill, Total: total, date: date ,time: time)
                         self.bills.append(bill)
                     }
                 }
@@ -54,7 +55,9 @@ class BillViewController: UIViewController {
                         let detilbill = value["detilbill"] as! String
                         let numbertable = value["numbertable"] as! String
                         let total = value["total"] as! Int
-                        let bill = Bill(id: id,numberTable: numbertable, detailFood: detilbill, Total: total, date: date)
+                        let time = value["time"] as! String
+                        print(time)
+                        let bill = Bill(id: id,numberTable: numbertable, detailFood: detilbill, Total: total, date: date, time: time)
                         self.bills.append(bill)
                     }
                 }
@@ -96,7 +99,7 @@ extension BillViewController: UITableViewDelegate, UITableViewDataSource{
         let detailBill = bills[indexPath.row]
         vc.amount = detailBill.Total ?? 0
         vc.detailFood = detailBill.detailFood ?? ""
-        vc.date = detailBill.date ?? ""
+        vc.date = detailBill.time ?? ""
         vc.numberTb = detailBill.id ?? ""
         vc.status = status
         self.present(vc, animated: true, completion: nil)

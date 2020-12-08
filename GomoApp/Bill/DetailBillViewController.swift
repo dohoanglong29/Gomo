@@ -10,6 +10,7 @@ import  Firebase
 
 class DetailBillViewController: UIViewController {
     
+    @IBOutlet weak var lblCollector: UILabel!
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var lblDetailFood: UILabel!
     @IBOutlet weak var lblAmount: UILabel!
@@ -59,10 +60,11 @@ class DetailBillViewController: UIViewController {
                         let detilbill = value["detilbill"] as! String
                         let total = value["total"] as! Int
                         let date = value["date"] as! String
+                        let time = value["time"] as! String
                         
                         if id == self.numberTb{
                             self.lblDetailFood.text = detilbill
-                            self.lblDate.text = date
+                            self.lblDate.text = time
                             self.lblAmount.text = String(total)
                         }
                     }

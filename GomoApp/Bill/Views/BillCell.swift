@@ -9,6 +9,7 @@ import UIKit
 
 class BillCell: BaseTBCell {
 
+    @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblNumberTable: UILabel!
     @IBOutlet weak var lblAmount: UILabel!
     override func awakeFromNib() {
@@ -24,6 +25,7 @@ class BillCell: BaseTBCell {
         
         lblNumberTable.text = "Hoá đơn bàn: \(String(data.numberTable ?? ""))"
         lblAmount.text = String(data.Total ?? 0) + " VND"
+        lblDate.text = String(data.time ?? "")
     }
     
     

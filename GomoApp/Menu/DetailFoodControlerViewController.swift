@@ -29,11 +29,17 @@ class DetailFoodControlerViewController: UIViewController {
     var NoteFood = ""
     var NumberCount = 1
     var idTable = ""
+    var unifyFood = ""
+    var unifyCount = 1
+    var unifyPrice = 1
+    var unifyId = ""
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
         customsButton()
+        getFoodsData()
     }
     
     func customsButton(){
@@ -54,6 +60,25 @@ class DetailFoodControlerViewController: UIViewController {
         lblCount.text = String(NumberCount)
         lblTotal.text = "\(Defined.formatter.string(from: NSNumber(value: PriceFood ))!)" + " VNĐ"
       
+    }
+    
+    func getFoodsData(){
+        Defined.ref.child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { (DataSnapshot) in
+            if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
+                for snap in snapshort {
+                    let id = snap.key
+                    if let value = snap.value as? [String: Any] {
+                        let namefood = value["namefood"] as! String
+                        let countfood = value["countfood"] as! Int
+                        let pricefood = value["pricefood"] as! Int
+                        if namefood == self.NameFood{
+                            self.unifyFood = namefood
+                            self.unifyId = id
+                        }
+                    }
+                }
+            }
+        }
     }
     
     
@@ -90,13 +115,25 @@ class DetailFoodControlerViewController: UIViewController {
     
     
     @IBAction func btnAddCart(_ sender: Any) {
-        let writeData: [String: Any] = [
-            "namefood": NameFood,
-            "countfood": NumberCount,
-            "pricefood": NumberCount * PriceFood,
-            "imagefood": ImgFood]
-        Defined.ref.child("Table/\(Int(idTable) ?? 0)/ListFood").childByAutoId().setValue(writeData)
-        self.dismiss(animated: true, completion: nil)
+        
+        if unifyFood == NameFood{
+            let writeData: [String: Any] = [
+                "namefood": NameFood,
+                "countfood": NumberCount,
+                "pricefood": NumberCount * PriceFood,
+                "imagefood": ImgFood]
+            Defined.ref.child("Table/\(Int(idTable) ?? 0)/ListFood").child(unifyId).updateChildValues(writeData)
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            let writeData: [String: Any] = [
+                "namefood": NameFood,
+                "countfood": NumberCount,
+                "pricefood": NumberCount * PriceFood,
+                "imagefood": ImgFood]
+            Defined.ref.child("Table/\(Int(idTable) ?? 0)/ListFood").childByAutoId().setValue(writeData)
+            self.dismiss(animated: true, completion: nil)
+        }
+       
         
         
     }
