@@ -11,10 +11,7 @@ import RxSwift
 
 class CartViewController: UIViewController {
     
-    @IBOutlet weak var inageCartNill: UIImageView!
     @IBOutlet weak var btnAddFood: UIBarButtonItem!
-    @IBOutlet weak var lblTable: UITextField!
-    @IBOutlet weak var lblNameCustoms: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblTotal: UILabel!
     
@@ -23,13 +20,12 @@ class CartViewController: UIViewController {
     var idTable = ""
     var amount = 0
     var listFood = ""
-    var idCart = 0
+    var idCart = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         CartCell.registerCellByNib(tableView)
         getDataCart()
-        inageCartNill.isHidden = true
     }
     
     func dateFormatTime(date : Date) -> String {
@@ -40,13 +36,15 @@ class CartViewController: UIViewController {
     
     
     func getDataCart(){
+        Defined.formatter.groupingSeparator = "."
+        Defined.formatter.numberStyle = .decimal
+
         Defined.ref.child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { (DataSnapshot) in
             self.carts.removeAll()
             self.amount = 0
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
                     let id = snap.key
-                    self.idCart = Int(id) ?? 0
                     if let value = snap.value as? [String: Any] {
                         let namefood = value["namefood"] as! String
                         let imagefood = value["imagefood"] as! String
@@ -54,10 +52,11 @@ class CartViewController: UIViewController {
                         let pricefood = value["pricefood"] as! Int
                         let cart = Cart(id: id, count: countfood, image: imagefood, name: namefood, price: pricefood)
                         self.carts.append(cart)
+                        print("bakol\(id)")
                         self.amount += pricefood
+                        self.idCart = id
                         self.listFood += namefood + "x" + String(countfood) + "  "
-                        print(self.listFood)
-                        self.lblTotal.text = "Giá Tiền: " + String(self.amount) + " VNĐ"
+                        self.lblTotal.text = "Giá Tiền: " + "\(Defined.formatter.string(from: NSNumber(value: self.amount ))!)" + " VNĐ"
                     }
                 }
                 self.tableView.reloadData()
@@ -91,14 +90,13 @@ class CartViewController: UIViewController {
     }
     
     @IBAction func btnDeleteCart(_ sender: Any) {
-        let alert = UIAlertController(title: "Delete Cart", message: "Are you sure to delete this cart?", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+        let alert = UIAlertController(title: "Gomo", message: "Bạn có muốn xoá giỏ hàng?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Đóng ", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Xoá ", style: .default, handler: { action in
             Defined.ref.child("Table/\(Int(self.idTable) ?? 0)/ListFood").removeValue { (error, reference) in
                 if error != nil {
                     print("Error: \(error!)")
                 } else {
-                    print("Remove successfully")
                     Defined.ref.child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 1])
                     self.navigationController?.popViewController(animated: true)
                 }
@@ -112,6 +110,7 @@ class CartViewController: UIViewController {
         vc.idTable = idTable
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
 }
 
 extension CartViewController: UITableViewDelegate, UITableViewDataSource{
@@ -122,24 +121,35 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CartCell.loadCell(tableView) as! CartCell
+        cell.delegate = self
         cell.setUpData(data: carts[indexPath.row])
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailFoodControlerViewController") as! DetailFoodControlerViewController
-        let m = carts[indexPath.row]
-        vc.ImgFood = m.image ?? ""
-        vc.NameFood = m.name ?? ""
-        vc.PriceFood = m.price ?? 1
-        vc.idTable = idTable
-        self.present(vc, animated: true, completion: nil)
-    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             }
         }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = carts[indexPath.row]
+        print(data.id)
     }
+    
+    }
+
+extension CartViewController: CartCellDelegate{
+    func didTapButton(with title: String, cateid: String) {
+        if title == "1" {
+            print(cateid)
+        
+            
+            
+        }
+    }
+    
+    
+}
     
 

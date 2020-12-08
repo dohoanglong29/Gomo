@@ -23,6 +23,17 @@ class ViewController: UIViewController {
         btnCart.layer.borderWidth = 0.1
         btnCart.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         btnCart.layer.cornerRadius = 35
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        collectionView.addGestureRecognizer(longPress)
+    }
+    
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizer.State.began {
+            let touchPoint = sender.location(in: collectionView)
+                 if let indexPath = collectionView.indexPathForItem(at: touchPoint) {
+                    print(indexPath)
+                 }
+            }
     }
     
     @IBAction func btnSelectMenu(_ sender: UISegmentedControl) {
@@ -94,6 +105,7 @@ class ViewController: UIViewController {
 
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return menus.count
     }

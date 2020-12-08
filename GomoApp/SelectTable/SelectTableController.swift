@@ -18,12 +18,21 @@ class SelectTableController: UIViewController {
         TableCCell.registerCellByNib(collectionView)
         getNumberTable()
         collectionView.reloadData()
-        
-
-        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        collectionView.addGestureRecognizer(longPress)
         let dateThis = dateFormatTime(date: Date())
         print(dateThis)
     }
+    
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizer.State.began {
+            let touchPoint = sender.location(in: collectionView)
+            if let indexPath = collectionView.indexPathForItem(at: touchPoint) {
+                
+            }
+        }
+    }
+    
     
     func dateFormatTime(date : Date) -> String {
         let dateFormatter = DateFormatter()
@@ -74,7 +83,7 @@ extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let tb = tables[indexPath.row]
-
+        
         switch tables[indexPath.row].statu {
         
         case 0:

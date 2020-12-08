@@ -74,6 +74,8 @@ class DetailFoodControlerViewController: UIViewController {
                         if namefood == self.NameFood{
                             self.unifyFood = namefood
                             self.unifyId = id
+                            self.unifyCount = countfood
+                            self.unifyPrice = pricefood
                         }
                     }
                 }
@@ -108,7 +110,6 @@ class DetailFoodControlerViewController: UIViewController {
     
     func setUpDetailMenu() {
         lblCount.text = String(NumberCount)
-        //lblTotal.text = String(NumberCount * PriceFood) + " VNĐ"
         lblSoLuong.text = "Số Lượng: \(NumberCount)"
         lblTotal.text = "\(Defined.formatter.string(from: NSNumber(value: NumberCount * PriceFood ))!)" + " VNĐ"
     }
@@ -119,8 +120,8 @@ class DetailFoodControlerViewController: UIViewController {
         if unifyFood == NameFood{
             let writeData: [String: Any] = [
                 "namefood": NameFood,
-                "countfood": NumberCount,
-                "pricefood": NumberCount * PriceFood,
+                "countfood": NumberCount + unifyCount,
+                "pricefood": NumberCount * PriceFood + unifyPrice,
                 "imagefood": ImgFood]
             Defined.ref.child("Table/\(Int(idTable) ?? 0)/ListFood").child(unifyId).updateChildValues(writeData)
             self.dismiss(animated: true, completion: nil)

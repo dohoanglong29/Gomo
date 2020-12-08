@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5cR-uG-OiG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5cR-uG-OiG">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -763,7 +763,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YNl-v3-dAS">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YNl-v3-dAS">
                                 <rect key="frame" x="0.0" y="162" width="414" height="524"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
@@ -847,20 +847,14 @@
                                     <constraint firstItem="P1e-AT-DbZ" firstAttribute="leading" secondItem="JVX-Rp-J5O" secondAttribute="leading" constant="10" id="rDF-Xz-a8v"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cartNill" translatesAutoresizingMaskIntoConstraints="NO" id="MP3-mM-4zA">
-                                <rect key="frame" x="50" y="294.33333333333331" width="314" height="147.33333333333331"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ure-Vb-Jg3"/>
                         <color key="backgroundColor" systemColor="systemGray3Color"/>
                         <constraints>
                             <constraint firstItem="Ure-Vb-Jg3" firstAttribute="trailing" secondItem="YNl-v3-dAS" secondAttribute="trailing" id="3sE-3p-oCz"/>
                             <constraint firstItem="JVX-Rp-J5O" firstAttribute="leading" secondItem="Ure-Vb-Jg3" secondAttribute="leading" id="4Ds-mT-BEz"/>
-                            <constraint firstItem="MP3-mM-4zA" firstAttribute="height" secondItem="Awr-hP-OVt" secondAttribute="height" multiplier="0.2" id="4LG-m3-TR9"/>
-                            <constraint firstItem="MP3-mM-4zA" firstAttribute="leading" secondItem="Ure-Vb-Jg3" secondAttribute="leading" constant="50" id="6cC-8M-IyJ"/>
                             <constraint firstItem="dky-du-BPD" firstAttribute="leading" secondItem="Ure-Vb-Jg3" secondAttribute="leading" id="FdC-Ke-ydW"/>
                             <constraint firstItem="YNl-v3-dAS" firstAttribute="leading" secondItem="Ure-Vb-Jg3" secondAttribute="leading" id="FuZ-xg-uIh"/>
-                            <constraint firstItem="Ure-Vb-Jg3" firstAttribute="trailing" secondItem="MP3-mM-4zA" secondAttribute="trailing" constant="50" id="Qzq-L0-9fg"/>
                             <constraint firstItem="JVX-Rp-J5O" firstAttribute="top" secondItem="Ure-Vb-Jg3" secondAttribute="top" id="Rwa-rK-74N"/>
                             <constraint firstItem="JVX-Rp-J5O" firstAttribute="height" secondItem="Awr-hP-OVt" secondAttribute="height" multiplier="0.22" id="XUz-tW-UtG"/>
                             <constraint firstItem="Ure-Vb-Jg3" firstAttribute="trailing" secondItem="dky-du-BPD" secondAttribute="trailing" id="dTj-iZ-OGg"/>
@@ -868,8 +862,6 @@
                             <constraint firstItem="YNl-v3-dAS" firstAttribute="top" secondItem="JVX-Rp-J5O" secondAttribute="bottom" id="hr9-BE-Cm1"/>
                             <constraint firstItem="dky-du-BPD" firstAttribute="top" secondItem="YNl-v3-dAS" secondAttribute="bottom" id="pc2-MZ-fAY"/>
                             <constraint firstItem="Ure-Vb-Jg3" firstAttribute="trailing" secondItem="JVX-Rp-J5O" secondAttribute="trailing" id="s0N-oN-buj"/>
-                            <constraint firstItem="MP3-mM-4zA" firstAttribute="centerX" secondItem="Awr-hP-OVt" secondAttribute="centerX" id="t7o-f8-CUA"/>
-                            <constraint firstItem="MP3-mM-4zA" firstAttribute="centerY" secondItem="Awr-hP-OVt" secondAttribute="centerY" id="vMc-3a-SgH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3Ib-DR-bok">
@@ -892,7 +884,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btnAddFood" destination="tMG-Pp-K3q" id="6BX-Ey-F9q"/>
-                        <outlet property="inageCartNill" destination="MP3-mM-4zA" id="4QV-us-lMg"/>
                         <outlet property="lblTotal" destination="FiW-CC-Uay" id="XVM-Ii-EcP"/>
                         <outlet property="tableView" destination="YNl-v3-dAS" id="l2b-PJ-63M"/>
                     </connections>
@@ -1090,7 +1081,6 @@
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="bill" width="85.333335876464844" height="85.333335876464844"/>
         <image name="cart2" width="21.333333969116211" height="21.333333969116211"/>
-        <image name="cartNill" width="426" height="289"/>
         <image name="doc.append.fill.rtl" catalog="system" width="115" height="128"/>
         <image name="hinhnen" width="240" height="360"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
