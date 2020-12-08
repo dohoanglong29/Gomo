@@ -18,6 +18,10 @@ class TableCCell: BaseCLCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+       setUp()
+    }
+    
+    func setUp(){
         statusTable.layer.cornerRadius = 20
         statusTable.layer.borderWidth = 2
     }

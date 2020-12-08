@@ -63,11 +63,12 @@
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="QkK-EY-Vih">
-                            <rect key="frame" x="122.66666666666669" y="5" width="169" height="34"/>
+                            <rect key="frame" x="66" y="5.6666666666666679" width="282" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Đồ ăn"/>
                                 <segment title="Thức uống"/>
+                                <segment title="Khác"/>
                             </segments>
                             <connections>
                                 <action selector="btnSelectMenu:" destination="BYZ-38-t0r" eventType="valueChanged" id="bk4-Z5-wBe"/>
@@ -82,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="79.6875"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="79.076086956521749"/>
         </scene>
         <!--Bill View Controller-->
         <scene sceneID="ZLn-VL-vUb">
@@ -136,6 +137,7 @@
         <!--Detail Bill View Controller-->
         <scene sceneID="fEI-Sp-iz5">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mjd-oO-Gf1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="DetailBillViewController" id="QwZ-P3-5Vz" customClass="DetailBillViewController" customModule="GomoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4AR-6l-ssH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -298,9 +300,8 @@
                         <outlet property="subView" destination="nSa-eE-uhv" id="znH-Pw-tUa"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mjd-oO-Gf1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1866.6666666666667" y="817.66304347826099"/>
+            <point key="canvasLocation" x="1961" y="828"/>
         </scene>
         <!--Select Table Controller-->
         <scene sceneID="shb-Da-Qa2">

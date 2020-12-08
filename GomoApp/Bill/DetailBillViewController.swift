@@ -22,12 +22,14 @@ class DetailBillViewController: UIViewController {
     var date = ""
     var numberTb = ""
     var status = ""
+    var time = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         customView()
         setDataBill()
         getDataBill()
+        setUp()
     }
     
     func customView(){
@@ -38,6 +40,11 @@ class DetailBillViewController: UIViewController {
         subView.layer.shadowColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     }
     
+    func setUp(){
+        Defined.formatter.groupingSeparator = "."
+        Defined.formatter.numberStyle = .decimal
+    }
+    
     func setDataBill() {
         if status == "1"{
             btnPay1.isEnabled = false
@@ -45,7 +52,7 @@ class DetailBillViewController: UIViewController {
             btnPay1.isEnabled = true
         }
         lblDetailFood.text = detailFood
-        lblAmount.text = String(amount)
+        lblAmount.text = "\(Defined.formatter.string(from: NSNumber(value: amount ))!)" + " VNĐ"
         lblDate.text = date
         numberTable.text = "Bàn số: \(numberTb)"
     }
@@ -65,7 +72,7 @@ class DetailBillViewController: UIViewController {
                         if id == self.numberTb{
                             self.lblDetailFood.text = detilbill
                             self.lblDate.text = time
-                            self.lblAmount.text = String(total)
+                            self.lblAmount.text = "\(Defined.formatter.string(from: NSNumber(value: total ))!)" + " VNĐ"
                         }
                     }
                 }
@@ -78,6 +85,7 @@ class DetailBillViewController: UIViewController {
             "detilbill": detailFood ,
             "total": amount,
             "date":date,
+            "time": time,
             "numbertable":numberTb,] as [String: Any]
         Defined.ref.child("Bill/Done").childByAutoId().setValue(billDone)
     }

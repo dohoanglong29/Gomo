@@ -115,6 +115,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
         cell.setUpData(data: menus[indexPath.row])
         if menus[indexPath.row].statusFood == "0" {
             cell.bView.alpha = 0.5
+        }else{
+            cell.bView.alpha = 1
         }
         
         return cell
