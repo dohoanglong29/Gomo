@@ -22,7 +22,6 @@ class DetailFoodControlerViewController: UIViewController {
     @IBOutlet weak var btnCong: UIButton!
     @IBOutlet weak var btnTru: UIButton!
     
-    
     var ImgFood = ""
     var NameFood = ""
     var PriceFood:Int = 1
@@ -33,7 +32,6 @@ class DetailFoodControlerViewController: UIViewController {
     var unifyCount = 1
     var unifyPrice = 1
     var unifyId = ""
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

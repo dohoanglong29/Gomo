@@ -12,4 +12,15 @@ class Constans {
     static let note = "note"
     static let detailsTransaction = "ViewTransaction"
     static let tabbar = "TabBarController"
+    // Login
+    static let notification = "Gomo"
+    static let isemptyLogin = "vui lòng nhập đủ thông tin"
+    static let checkEmail = "Vui lòng kiểm tra email và password"
+    static let validateEmail = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    static let alertEmail = "Không đúng định dạng Email"
+    
+    
+
+
+
 }

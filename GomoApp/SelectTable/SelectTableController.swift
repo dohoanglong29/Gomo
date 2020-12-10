@@ -21,18 +21,27 @@ class SelectTableController: UIViewController {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         collectionView.addGestureRecognizer(longPress)
         let dateThis = dateFormatTime(date: Date())
-        print(dateThis)
     }
     
     @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizer.State.began {
             let touchPoint = sender.location(in: collectionView)
             if let indexPath = collectionView.indexPathForItem(at: touchPoint) {
-                
+                let tb = tables[indexPath.row]
+                if tables[indexPath.row].statu == 3{
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "ActionTableViewController") as! ActionTableViewController
+                    vc.modalPresentationStyle = .fullScreen
+                    vc.modalTransitionStyle = .crossDissolve
+                    vc.modalPresentationStyle = .overCurrentContext
+                    vc.idTable = String(tb.NumberTable ?? 1)
+                    self.present(vc, animated: true, completion: nil)
+                }else{
+                    print("null")
+                }
             }
         }
     }
-    
+
     
     func dateFormatTime(date : Date) -> String {
         let dateFormatter = DateFormatter()
@@ -45,14 +54,13 @@ class SelectTableController: UIViewController {
             self.tables.removeAll()
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
-                    let id = snap.key
+                    _ = snap.key
                     if let value = snap.value as? [String: Any] {
                         let statu = value["statu"] as! Int
                         let numberTable = value["NumberTable"] as! Int
                         let table = Table(statu: statu, NumberTable: numberTable)
                         self.tables.append(table)
                     }
-                    
                 }
                 self.collectionView.reloadData()
             }
@@ -82,10 +90,9 @@ extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataS
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let tb = tables[indexPath.row]
-        
         switch tables[indexPath.row].statu {
-        
         case 0:
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.cart) as! CartViewController
             vc.idTable = String(tb.NumberTable ?? 0)

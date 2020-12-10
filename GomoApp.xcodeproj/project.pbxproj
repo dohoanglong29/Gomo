@@ -16,6 +16,8 @@
 		5E34B79B256C06F400980DE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E34B799256C06F400980DE7 /* LaunchScreen.storyboard */; };
 		5E34B7A6256C06F500980DE7 /* GomoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34B7A5256C06F500980DE7 /* GomoAppTests.swift */; };
 		5E34B7B1256C06F500980DE7 /* GomoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34B7B0256C06F500980DE7 /* GomoAppUITests.swift */; };
+		5EA1B6FD258244FC00276AC4 /* ActionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA1B6FC258244FC00276AC4 /* ActionTableViewController.swift */; };
+		5EC273DF2581312F00261C64 /* Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC273DE2581312F00261C64 /* Employees.swift */; };
 		5EDF77612579356000047588 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF77602579356000047588 /* SettingViewController.swift */; };
 		5EDF776B257936C900047588 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF7769257936C900047588 /* SettingCell.swift */; };
 		5EDF776C257936C900047588 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EDF776A257936C900047588 /* SettingCell.xib */; };
@@ -79,6 +81,8 @@
 		5E34B7AC256C06F500980DE7 /* GomoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GomoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E34B7B0256C06F500980DE7 /* GomoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomoAppUITests.swift; sourceTree = "<group>"; };
 		5E34B7B2256C06F500980DE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EA1B6FC258244FC00276AC4 /* ActionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTableViewController.swift; sourceTree = "<group>"; };
+		5EC273DE2581312F00261C64 /* Employees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employees.swift; sourceTree = "<group>"; };
 		5EDF77602579356000047588 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		5EDF7769257936C900047588 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		5EDF776A257936C900047588 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 				5EF8CAD1256C0EF0008A5855 /* Cart.swift */,
 				5EF8CAD6256C0F06008A5855 /* Table.swift */,
 				5EF8CADB256C0F1B008A5855 /* Bill.swift */,
+				5EC273DE2581312F00261C64 /* Employees.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 			children = (
 				5EF8CAF9256C1065008A5855 /* Views */,
 				5EF8CAF1256C104A008A5855 /* SelectTableController.swift */,
+				5EA1B6FC258244FC00276AC4 /* ActionTableViewController.swift */,
 			);
 			path = SelectTable;
 			sourceTree = "<group>";
@@ -549,8 +555,10 @@
 				5EDF776B257936C900047588 /* SettingCell.swift in Sources */,
 				5EF8CAD2256C0EF0008A5855 /* Cart.swift in Sources */,
 				5E34B78F256C06F200980DE7 /* AppDelegate.swift in Sources */,
+				5EA1B6FD258244FC00276AC4 /* ActionTableViewController.swift in Sources */,
 				5EF8CAE8256C0FC9008A5855 /* FoodCell.swift in Sources */,
 				5EF8CACD256C0ED6008A5855 /* Menu.swift in Sources */,
+				5EC273DF2581312F00261C64 /* Employees.swift in Sources */,
 				5EF8CB20256C11EA008A5855 /* DetailBillViewController.swift in Sources */,
 				5EE8E88B256C0E450038E299 /* Constans.swift in Sources */,
 				5EE8E890256C0E650038E299 /* BaseCLCell.swift in Sources */,
