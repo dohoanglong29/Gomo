@@ -17,11 +17,17 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var btnHidePassword: UIButton!
     var checkEmail = ""
+    var employees = [Employees]()
+    var emailthis:String?
+    var birtday1 = ""
+    var address1 = ""
+    var avatar1 = ""
+    var email1 = ""
+    var name1 = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-        getEmployeesData()
     }
     
     func setUpView() {
@@ -53,9 +59,14 @@ class LoginViewController: UIViewController {
             
            
             Auth.auth().signIn(withEmail: email, password: password) {
-                [weak self] user, error in
-                if user != nil{
-                   
+                [weak self] authResult, error in
+                if authResult != nil{
+                    let user = Auth.auth().currentUser
+                    if let u = user{
+                        let email = u.email
+                        self?.emailthis = email
+                    }
+                    self?.getDataEmployees()
                     let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.tabbar) as! TabBarController
                     vc.modalPresentationStyle = .fullScreen
                     self?.present(vc, animated: true, completion: nil)
@@ -71,23 +82,31 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func getEmployeesData(){
-        Defined.ref.child("Employees").observe(DataEventType.value) { (DataSnapshot) in
+    func getDataEmployees(){
+        Defined.ref.child("Employees").observe(DataEventType.value) { [self] (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
+                self.employees.removeAll()
                 for snap in snapshort {
                     let id = snap.key
                     if let value = snap.value as? [String: Any] {
-                        let address = value["address"] as! String
-                        let avatar = value["avatar"] as! String
-                        let birthday = value["birthday"] as! String
-                        let email = value["email"] as! String
-                        let password = value["password"] as! String
-                        let name = value["name"] as! String
-                        let tempEmail = String(id) + "@gmail.com"
-                        tempEmail == self.checkEmail
-                       
-                        
-                        
+                        let address = value["address"] as? String
+                        let avatar = value["avatar"] as? String
+                        let birtday = value["birthday"] as? String
+                        let email = value["email"] as? String
+                        let name = value["name"] as? String
+                        if emailthis == email {
+                            email1 = email ?? ""
+                            Defined.defaults.set(email1, forKey: "email" )
+                            address1 = address ?? ""
+                            Defined.defaults.set(address1, forKey: "address" )
+                            birtday1 = birtday ?? ""
+                            Defined.defaults.set(birtday1, forKey: "birtday" )
+                            name1 = name ?? ""
+                            Defined.defaults.set(name1, forKey: "name" )
+                            avatar1 = avatar ?? ""
+                            Defined.defaults.set(avatar1, forKey: "avatar")
+
+                        }
                     }
                 }
             }

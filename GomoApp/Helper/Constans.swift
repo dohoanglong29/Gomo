@@ -12,6 +12,8 @@ class Constans {
     static let note = "note"
     static let detailsTransaction = "ViewTransaction"
     static let tabbar = "TabBarController"
+    static let profile = "ProfileViewController"
+
     // Login
     static let notification = "Gomo"
     static let isemptyLogin = "vui lòng nhập đủ thông tin"
