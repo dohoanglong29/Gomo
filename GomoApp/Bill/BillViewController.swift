@@ -33,9 +33,10 @@ class BillViewController: UIViewController {
                         let date = value["date"] as! String
                         let detilbill = value["detilbill"] as! String
                         let numbertable = value["numbertable"] as! String
+                        let listpricefood = value["listpricefood"] as? String
                         let total = value["total"] as! Int
                         let time = value["time"] as! String
-                        let bill = Bill(id: id,numberTable: numbertable, detailFood: detilbill, Total: total, date: date ,time: time)
+                        let bill = Bill(id: id,numberTable: numbertable, detailFood: detilbill, Total: total, date: date ,time: time,listpricefood: listpricefood)
                         self.bills.append(bill)
                     }
                 }
@@ -53,11 +54,11 @@ class BillViewController: UIViewController {
                     if let value = snap.value as? [String: Any] {
                         let date = value["date"] as! String
                         let detilbill = value["detilbill"] as! String
+                        let listpricefood = value["listpricefood"] as? String
                         let numbertable = value["numbertable"] as! String
                         let total = value["total"] as! Int
                         let time = value["time"] as? String
-                        print(time)
-                        let bill = Bill(id: id,numberTable: numbertable, detailFood: detilbill, Total: total, date: date, time: time)
+                        let bill = Bill(id: id,numberTable: numbertable, detailFood: detilbill, Total: total, date: date, time: time,listpricefood: listpricefood)
                         self.bills.append(bill)
                     }
                 }
@@ -65,6 +66,8 @@ class BillViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+    
+    
     
     
     @IBAction func btnSelectBill(_ sender: UISegmentedControl) {
@@ -103,6 +106,7 @@ extension BillViewController: UITableViewDelegate, UITableViewDataSource{
         vc.numberTb = detailBill.id ?? ""
         vc.status = status
         vc.time = detailBill.time ?? ""
+        vc.listpricefood = detailBill.listpricefood ?? ""
         self.present(vc, animated: true, completion: nil)
     }
 }

@@ -20,6 +20,7 @@ class CartViewController: UIViewController {
     var idTable = ""
     var amount = 0
     var listFood = ""
+    var listPriceFood = ""
     var idCart = ""
     
     override func viewDidLoad() {
@@ -39,7 +40,7 @@ class CartViewController: UIViewController {
         Defined.formatter.groupingSeparator = "."
         Defined.formatter.numberStyle = .decimal
 
-        Defined.ref.child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { (DataSnapshot) in
+        Defined.ref.child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { [self] (DataSnapshot) in
             self.carts.removeAll()
             self.amount = 0
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
@@ -52,10 +53,11 @@ class CartViewController: UIViewController {
                         let pricefood = value["pricefood"] as! Int
                         let cart = Cart(id: id, count: countfood, image: imagefood, name: namefood, price: pricefood)
                         self.carts.append(cart)
-                        print("bakol\(id)")
                         self.amount += pricefood
                         self.idCart = id
-                        self.listFood += namefood + "x" + String(countfood) + "  "
+                        self.listPriceFood += String(pricefood) + "/"
+                        print(listPriceFood)
+                        self.listFood += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  +  " = " + String(pricefood) + "/"
                         self.lblTotal.text = "Giá Tiền: " + "\(Defined.formatter.string(from: NSNumber(value: self.amount ))!)" + " VNĐ"
                     }
                 }
@@ -74,9 +76,12 @@ class CartViewController: UIViewController {
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm dd/MM/yyyy"
             let someDateTime = formatter.string(from: curentDateTime)
+            
+          
 
             let cartDict = [
                 "detilbill": listFood,
+                "listpricefood": listPriceFood,
                 "total": amount,
                 "status": 0,
                 "date":dateThis,

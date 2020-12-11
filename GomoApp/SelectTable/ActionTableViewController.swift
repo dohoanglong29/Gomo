@@ -101,7 +101,7 @@ class ActionTableViewController: UIViewController {
                         let pricefood = value["pricefood"] as! Int
                         // lấy tiền và danh sách món ăn
                         self.amount1 += pricefood
-                        self.listFood1 += namefood + "x" + String(countfood) + "  "
+                        self.listFood1 += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  + "/"
                        
                     }
                 }

@@ -16,6 +16,8 @@
 		5E34B79B256C06F400980DE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E34B799256C06F400980DE7 /* LaunchScreen.storyboard */; };
 		5E34B7A6256C06F500980DE7 /* GomoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34B7A5256C06F500980DE7 /* GomoAppTests.swift */; };
 		5E34B7B1256C06F500980DE7 /* GomoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34B7B0256C06F500980DE7 /* GomoAppUITests.swift */; };
+		5E5CD34B2583E4DA0032FF11 /* DetailFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5CD3492583E4DA0032FF11 /* DetailFoodCell.swift */; };
+		5E5CD34C2583E4DA0032FF11 /* DetailFoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E5CD34A2583E4DA0032FF11 /* DetailFoodCell.xib */; };
 		5EA1B6FD258244FC00276AC4 /* ActionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA1B6FC258244FC00276AC4 /* ActionTableViewController.swift */; };
 		5EC273DF2581312F00261C64 /* Employees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC273DE2581312F00261C64 /* Employees.swift */; };
 		5EDF77612579356000047588 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDF77602579356000047588 /* SettingViewController.swift */; };
@@ -81,6 +83,8 @@
 		5E34B7AC256C06F500980DE7 /* GomoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GomoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E34B7B0256C06F500980DE7 /* GomoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GomoAppUITests.swift; sourceTree = "<group>"; };
 		5E34B7B2256C06F500980DE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E5CD3492583E4DA0032FF11 /* DetailFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodCell.swift; sourceTree = "<group>"; };
+		5E5CD34A2583E4DA0032FF11 /* DetailFoodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailFoodCell.xib; sourceTree = "<group>"; };
 		5EA1B6FC258244FC00276AC4 /* ActionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTableViewController.swift; sourceTree = "<group>"; };
 		5EC273DE2581312F00261C64 /* Employees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employees.swift; sourceTree = "<group>"; };
 		5EDF77602579356000047588 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +337,8 @@
 			children = (
 				5EF8CB25256C1219008A5855 /* BillCell.swift */,
 				5EF8CB26256C1219008A5855 /* BillCell.xib */,
+				5E5CD3492583E4DA0032FF11 /* DetailFoodCell.swift */,
+				5E5CD34A2583E4DA0032FF11 /* DetailFoodCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -479,6 +485,7 @@
 				5EF8CB2D256C12DE008A5855 /* GoogleService-Info.plist in Resources */,
 				5E34B79B256C06F400980DE7 /* LaunchScreen.storyboard in Resources */,
 				5EF8CAFE256C1093008A5855 /* TableCCell.xib in Resources */,
+				5E5CD34C2583E4DA0032FF11 /* DetailFoodCell.xib in Resources */,
 				5EDF776C257936C900047588 /* SettingCell.xib in Resources */,
 				5EF8CAE9256C0FC9008A5855 /* FoodCell.xib in Resources */,
 				5EF8CB0F256C112C008A5855 /* CartCell.xib in Resources */,
@@ -552,6 +559,7 @@
 			files = (
 				5E34B793256C06F200980DE7 /* ViewController.swift in Sources */,
 				5EF8CADC256C0F1B008A5855 /* Bill.swift in Sources */,
+				5E5CD34B2583E4DA0032FF11 /* DetailFoodCell.swift in Sources */,
 				5EDF776B257936C900047588 /* SettingCell.swift in Sources */,
 				5EF8CAD2256C0EF0008A5855 /* Cart.swift in Sources */,
 				5E34B78F256C06F200980DE7 /* AppDelegate.swift in Sources */,

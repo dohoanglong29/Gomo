@@ -10,25 +10,27 @@ import  Firebase
 
 class DetailBillViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblCollector: UILabel!
     @IBOutlet weak var subView: UIView!
-    @IBOutlet weak var lblDetailFood: UILabel!
     @IBOutlet weak var lblAmount: UILabel!
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var btnPay1: UIButton!
     @IBOutlet weak var numberTable: UILabel!
+    var listFood:[String] = []
+    var listPrice:[Int] = []
     var detailFood = ""
     var amount = 0
     var date = ""
     var numberTb = ""
     var status = ""
     var time = ""
+    var listpricefood = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         customView()
         setDataBill()
-        getDataBill()
         setUp()
     }
     
@@ -41,8 +43,24 @@ class DetailBillViewController: UIViewController {
     }
     
     func setUp(){
+        DetailFoodCell.registerCellByNib(tableView)
         Defined.formatter.groupingSeparator = "."
         Defined.formatter.numberStyle = .decimal
+        lblCollector.text = Defined.defaults.value(forKey: "name") as? String
+        let tempfood = self.detailFood.split{$0 == "/"}.map(String.init)
+        let tempPrice = self.listpricefood.split{$0 == "/"}.map(String.init)
+        
+        for i in 0..<tempfood.count{
+            self.listFood.append(tempfood[i])
+        }
+        for i in 0..<tempPrice.count{
+            self.listPrice.append(Int(tempPrice[i]) ?? 0)
+        }
+        let total = listPrice.reduce(0, +)
+        print("asas\(total)")
+        lblAmount.text = "\(Defined.formatter.string(from: NSNumber(value: total ))!)" + " VNĐ"
+        lblDate.text = date
+        numberTable.text = "Bàn số: \(numberTb)"
     }
     
     func setDataBill() {
@@ -51,35 +69,8 @@ class DetailBillViewController: UIViewController {
         }else{
             btnPay1.isEnabled = true
         }
-        lblDetailFood.text = detailFood
-        lblAmount.text = "\(Defined.formatter.string(from: NSNumber(value: amount ))!)" + " VNĐ"
-        lblDate.text = date
-        numberTable.text = "Bàn số: \(numberTb)"
+        
     }
-    
-    func getDataBill(){
-        Defined.ref.child("Bill/Present").observe(DataEventType.value) { [self] (DataSnapshot) in
-            if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
-                
-                for snap in snapshort {
-                    let id = snap.key
-                    if let value = snap.value as? [String: Any] {
-                        let detilbill = value["detilbill"] as! String
-                        let total = value["total"] as! Int
-                        let date = value["date"] as! String
-                        let time = value["time"] as! String
-                        
-                        if id == self.numberTb{
-                            self.lblDetailFood.text = detilbill
-                            self.lblDate.text = time
-                            self.lblAmount.text = "\(Defined.formatter.string(from: NSNumber(value: total ))!)" + " VNĐ"
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
     func billDone(){
         let billDone = [
             "detilbill": detailFood ,
@@ -134,3 +125,18 @@ extension UIView {
         return image
     }
 }
+extension DetailBillViewController: UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listFood.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = DetailFoodCell.loadCell(tableView) as! DetailFoodCell
+        let fo = listFood[indexPath.row]
+        cell.setUp(name: fo)
+        return cell
+    }
+   
+}
+
