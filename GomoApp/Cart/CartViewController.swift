@@ -56,8 +56,9 @@ class CartViewController: UIViewController {
                         self.amount += pricefood
                         self.idCart = id
                         self.listPriceFood += String(pricefood) + "/"
-                        print(listPriceFood)
-                        self.listFood += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  +  " = " + String(pricefood) + "/"
+                        self.listFood += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  +  "/"
+                       // self.listFood += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  +  " = " + String(pricefood) + "/"
+
                         self.lblTotal.text = "Giá Tiền: " + "\(Defined.formatter.string(from: NSNumber(value: self.amount ))!)" + " VNĐ"
                     }
                 }
@@ -89,7 +90,6 @@ class CartViewController: UIViewController {
                 "numbertable":self.idTable,] as [String: Any]
             Defined.ref.child("Bill/Present/\(Int(self.idTable) ?? 0)").setValue(cartDict)
             Defined.ref.child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 3])
-            print(amount)
             self.navigationController?.popViewController(animated: true)
         }
     }

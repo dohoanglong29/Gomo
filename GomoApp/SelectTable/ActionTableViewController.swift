@@ -25,6 +25,8 @@ class ActionTableViewController: UIViewController {
     var listFood2 = ""
     var dateThis = ""
     var timeThis = ""
+    var listpricefood1 = ""
+    var listpricefood2 = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,7 @@ class ActionTableViewController: UIViewController {
         getDataBill()
         let merge = [
             "detilbill": listFood1 + listFood2  ,
+            "listpricefood": listpricefood1 + listpricefood2  ,
             "total": amount1 + amount2,
             "date":dateThis,
             "time": timeThis,
@@ -72,11 +75,13 @@ class ActionTableViewController: UIViewController {
                     if let value = snap.value as? [String: Any] {
                         let date = value["date"] as! String
                         let detilbill = value["detilbill"] as! String
+                        let listpricefood = value["listpricefood"] as? String
                         let total = value["total"] as! Int
                         let time = value["time"] as! String
                         let tableThat = txtSelectTable.text
                         // lấy thông tin của bàn được chọn
                         if id == tableThat {
+                            self.listpricefood1 += listpricefood ?? ""
                             self.amount2 = total
                             self.listFood2 = detilbill
                             self.dateThis = date
@@ -100,9 +105,9 @@ class ActionTableViewController: UIViewController {
                         let countfood = value["countfood"] as! Int
                         let pricefood = value["pricefood"] as! Int
                         // lấy tiền và danh sách món ăn
+                        self.listpricefood2 += String(pricefood) + "/"
                         self.amount1 += pricefood
-                        self.listFood1 += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  + "/"
-                       
+                        self.listFood1 += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  +  " = " + String(pricefood) + "/"
                     }
                 }
             }

@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,39 +16,35 @@
                 <rect key="frame" x="0.0" y="0.0" width="377" height="42"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rhr-T7-R7Y">
-                        <rect key="frame" x="15" y="7.5" width="20" height="15.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="2bS-Vs-8Xg"/>
-                            <constraint firstAttribute="width" constant="20" id="TNp-Ar-Tkt"/>
-                        </constraints>
-                        <imageReference key="image" image="pencil" catalog="system" renderingMode="original"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQa-yu-zX7">
-                        <rect key="frame" x="45" y="6.5" width="322" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <rect key="frame" x="20" y="10" width="226" height="22"/>
+                        <fontDescription key="fontDescription" name="TimesNewRomanPS-ItalicMT" family="Times New Roman" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="= 89.00.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c7-58-Zwy">
+                        <rect key="frame" x="246" y="11.5" width="111" height="19"/>
+                        <fontDescription key="fontDescription" name="TimesNewRomanPS-ItalicMT" family="Times New Roman" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="rhr-T7-R7Y" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="OW4-7N-Gri"/>
-                    <constraint firstItem="rhr-T7-R7Y" firstAttribute="centerY" secondItem="IQa-yu-zX7" secondAttribute="centerY" id="QV2-D4-dXi"/>
-                    <constraint firstAttribute="trailing" secondItem="IQa-yu-zX7" secondAttribute="trailing" constant="10" id="T1g-vn-Vnw"/>
-                    <constraint firstAttribute="bottom" secondItem="rhr-T7-R7Y" secondAttribute="bottom" constant="5" id="WjN-9Z-DES"/>
-                    <constraint firstItem="rhr-T7-R7Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Wll-0J-24f"/>
-                    <constraint firstItem="IQa-yu-zX7" firstAttribute="leading" secondItem="rhr-T7-R7Y" secondAttribute="trailing" constant="10" id="m00-E6-cG6"/>
-                    <constraint firstItem="rhr-T7-R7Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="v7u-IC-JfM"/>
+                    <constraint firstAttribute="bottom" secondItem="IQa-yu-zX7" secondAttribute="bottom" constant="10" id="0Td-S7-aEf"/>
+                    <constraint firstItem="IQa-yu-zX7" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.6" id="7Xr-cn-3nW"/>
+                    <constraint firstItem="3c7-58-Zwy" firstAttribute="leading" secondItem="IQa-yu-zX7" secondAttribute="trailing" id="95D-Gx-SCz"/>
+                    <constraint firstItem="IQa-yu-zX7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ARn-Me-NN6"/>
+                    <constraint firstItem="IQa-yu-zX7" firstAttribute="centerY" secondItem="3c7-58-Zwy" secondAttribute="centerY" id="bSz-lS-LqL"/>
+                    <constraint firstAttribute="trailing" secondItem="3c7-58-Zwy" secondAttribute="trailing" constant="20" id="bse-AW-8nd"/>
+                    <constraint firstItem="IQa-yu-zX7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="nKC-1n-Kve"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="lblDetailPrice" destination="3c7-58-Zwy" id="sVu-ny-esN"/>
                 <outlet property="lblDetailfood" destination="IQa-yu-zX7" id="l4P-iw-xwa"/>
             </connections>
             <point key="canvasLocation" x="-421.01449275362324" y="7.3660714285714279"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="pencil" catalog="system" width="128" height="113"/>
-    </resources>
 </document>

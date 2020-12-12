@@ -77,7 +77,6 @@ class BillViewController: UIViewController {
         }else{
             getBillDone()
             status = "1"
-            print(status)
         }
     }
     
@@ -96,9 +95,6 @@ extension BillViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailBillViewController") as! DetailBillViewController
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overCurrentContext
         let detailBill = bills[indexPath.row]
         vc.amount = detailBill.Total ?? 0
         vc.detailFood = detailBill.detailFood ?? ""

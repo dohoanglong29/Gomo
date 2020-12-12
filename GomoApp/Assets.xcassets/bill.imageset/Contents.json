@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "iconfinder_6_3319634 (1).png",
+      "filename" : "icons8-cloud-print-30.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "iconfinder_6_3319634 (1)-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "iconfinder_6_3319634 (1)-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
