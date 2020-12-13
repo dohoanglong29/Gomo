@@ -8,6 +8,7 @@
 import Foundation
 struct Bill: Codable {
     var id: String? = nil
+    var othermoney :String? = nil
     var numberTable: String? = nil
     var detailFood: String? = nil
     var detailPrice: String? = nil

@@ -293,7 +293,7 @@
                                             <constraint firstAttribute="height" constant="25" id="NA4-oc-Jjo"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="TimesNewRomanPS-ItalicMT" family="Times New Roman" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <action selector="changePrice:" destination="QwZ-P3-5Vz" eventType="editingChanged" id="OBp-uU-l5j"/>
                                         </connections>
@@ -374,8 +374,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btnPay1" destination="PEP-6K-pH4" id="KS0-4Y-h2W"/>
-                        <outlet property="lblAmount" destination="AbL-Rz-Dpx" id="Zqo-6w-tvz"/>
+                        <outlet property="btnPay1" destination="PEP-6K-pH4" id="Kec-qH-izh"/>
+                        <outlet property="lblAmount" destination="AbL-Rz-Dpx" id="G9R-7c-ZXa"/>
                         <outlet property="lblCollector" destination="Mu0-ba-DIc" id="H1D-nM-ZRh"/>
                         <outlet property="lblDate" destination="d4g-rA-vhz" id="t67-OE-Kv9"/>
                         <outlet property="lblNote" destination="hr1-S5-QtY" id="4rh-zN-qFX"/>
@@ -383,8 +383,8 @@
                         <outlet property="numberTable" destination="y0m-kJ-CH7" id="cGp-Op-RGc"/>
                         <outlet property="subView" destination="nSa-eE-uhv" id="znH-Pw-tUa"/>
                         <outlet property="tableView" destination="xCJ-IC-NBm" id="6fj-lG-ytW"/>
-                        <outlet property="txtChiecKhau" destination="4KY-Fb-L7L" id="gvb-Gg-a21"/>
-                        <outlet property="txtTruTien" destination="rkz-pm-xMa" id="OPn-Tm-oay"/>
+                        <outlet property="txtChiecKhau" destination="4KY-Fb-L7L" id="Nmb-ev-MZb"/>
+                        <outlet property="txtTruTien" destination="rkz-pm-xMa" id="FGH-ZQ-yHP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mjd-oO-Gf1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

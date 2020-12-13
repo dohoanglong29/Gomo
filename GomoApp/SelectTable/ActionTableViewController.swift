@@ -35,6 +35,7 @@ class ActionTableViewController: UIViewController {
         dismissPickerView()
         getNumberTable()
         getDataCart()
+        getDataBill()
     }
     
     func setUpView(){
@@ -47,13 +48,14 @@ class ActionTableViewController: UIViewController {
     @IBAction func btnConfirm(_ sender: Any) {
         getDataBill()
         let merge = [
-            "detilbill": listFood1 + listFood2  ,
-            "listpricefood": listpricefood1 + listpricefood2  ,
+            "detilbill": listFood1 + listFood2,
+            "listpricefood": listpricefood1 + listpricefood2 ,
             "total": amount1 + amount2,
             "date":dateThis,
             "time": timeThis,
             "numbertable":idTable,] as [String: Any]
         Defined.ref.child("Bill/Present").child("/\(idTableThis)").updateChildValues(merge)
+        Defined.ref.child("Table").child(self.idTable).child("ListFood").removeValue()
         Defined.ref.child("Bill/Present/\(Int(idTable) ?? 0)").removeValue { (error, reference) in
             if error != nil {
                 print(error as Any)
@@ -81,7 +83,8 @@ class ActionTableViewController: UIViewController {
                         let tableThat = txtSelectTable.text
                         // lấy thông tin của bàn được chọn
                         if id == tableThat {
-                            self.listpricefood1 += listpricefood ?? ""
+                            self.listpricefood2 = listpricefood ?? ""
+                            print("backol\(listpricefood2)")
                             self.amount2 = total
                             self.listFood2 = detilbill
                             self.dateThis = date
@@ -105,9 +108,10 @@ class ActionTableViewController: UIViewController {
                         let countfood = value["countfood"] as! Int
                         let pricefood = value["pricefood"] as! Int
                         // lấy tiền và danh sách món ăn
-                        self.listpricefood2 += String(pricefood) + "/"
+                        self.listpricefood1 += String(pricefood) + "/"
+                        print("backol2\(self.listpricefood1)")
                         self.amount1 += pricefood
-                        self.listFood1 += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  +  " = " + String(pricefood) + "/"
+                        self.listFood1 += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  + "/"
                     }
                 }
             }

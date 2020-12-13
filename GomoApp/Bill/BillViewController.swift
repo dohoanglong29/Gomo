@@ -98,10 +98,10 @@ extension BillViewController: UITableViewDelegate, UITableViewDataSource{
         let detailBill = bills[indexPath.row]
         vc.amount = detailBill.Total ?? 0
         vc.detailFood = detailBill.detailFood ?? ""
-        vc.date = detailBill.time ?? ""
+        vc.date = detailBill.date ?? ""
+        vc.time = detailBill.time ?? ""
         vc.numberTb = detailBill.id ?? ""
         vc.status = status
-        vc.time = detailBill.time ?? ""
         vc.listpricefood = detailBill.listpricefood ?? ""
         self.present(vc, animated: true, completion: nil)
     }
