@@ -53,7 +53,7 @@ class ActionTableViewController: UIViewController {
             "total": amount1 + amount2,
             "date":dateThis,
             "time": timeThis,
-            "numbertable":idTable,] as [String: Any]
+            "numbertable":idTableThis,] as [String: Any]
         Defined.ref.child("Bill/Present").child("/\(idTableThis)").updateChildValues(merge)
         Defined.ref.child("Table").child(self.idTable).child("ListFood").removeValue()
         Defined.ref.child("Bill/Present/\(Int(idTable) ?? 0)").removeValue { (error, reference) in
@@ -73,23 +73,24 @@ class ActionTableViewController: UIViewController {
         Defined.ref.child("Bill/Present").observe(DataEventType.value) { [self] (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
-                    var id = snap.key
+                    let id = snap.key
                     if let value = snap.value as? [String: Any] {
                         let date = value["date"] as! String
                         let detilbill = value["detilbill"] as! String
                         let listpricefood = value["listpricefood"] as? String
                         let total = value["total"] as! Int
                         let time = value["time"] as! String
-                        let tableThat = txtSelectTable.text
+                        
+                        let idtableThat = txtSelectTable.text
                         // lấy thông tin của bàn được chọn
-                        if id == tableThat {
+                        if id == idtableThat {
                             self.listpricefood2 = listpricefood ?? ""
                             print("backol\(listpricefood2)")
                             self.amount2 = total
                             self.listFood2 = detilbill
                             self.dateThis = date
                             self.timeThis = time
-                            idTableThis = tableThat ?? ""
+                            idTableThis = idtableThat ?? ""
                         }
                     }
                 }

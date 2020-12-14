@@ -12,6 +12,7 @@ class SelectTableController: UIViewController {
     
     var tables = [Table]()
     var status = 1
+    
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,9 +57,10 @@ class SelectTableController: UIViewController {
                 for snap in snapshort {
                     _ = snap.key
                     if let value = snap.value as? [String: Any] {
+                        let nameCreactor = value["nameCreactor"] as? String
                         let statu = value["statu"] as! Int
                         let numberTable = value["NumberTable"] as! Int
-                        let table = Table(statu: statu, NumberTable: numberTable)
+                        let table = Table(statu: statu, NumberTable: numberTable, nameCreactor: nameCreactor)
                         self.tables.append(table)
                     }
                 }
@@ -79,11 +81,11 @@ extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataS
         cell.setUp(data: tables[indexPath.row])
         switch tables[indexPath.row].statu  {
         case 0:
-            cell.statusTable.layer.borderColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+            cell.subView.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
         case 1:
-            cell.statusTable.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            cell.subView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         default:
-            cell.statusTable.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            cell.subView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         }
         return cell
     }

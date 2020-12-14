@@ -46,6 +46,8 @@
 		5EF8CB27256C1219008A5855 /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8CB25256C1219008A5855 /* BillCell.swift */; };
 		5EF8CB28256C1219008A5855 /* BillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF8CB26256C1219008A5855 /* BillCell.xib */; };
 		5EF8CB2D256C12DE008A5855 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5EF8CB2C256C12DE008A5855 /* GoogleService-Info.plist */; };
+		9833171F2587100C001A06AA /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9833171E2587100C001A06AA /* TutorialViewController.swift */; };
+		98331728258711DA001A06AA /* AddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98331727258711DA001A06AA /* AddTableViewController.swift */; };
 		988A459B2570D1B300254367 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988A459A2570D1B300254367 /* TabBarController.swift */; };
 		988A45A42570D20600254367 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988A45A32570D20600254367 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
@@ -114,6 +116,8 @@
 		5EF8CB26256C1219008A5855 /* BillCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillCell.xib; sourceTree = "<group>"; };
 		5EF8CB2C256C12DE008A5855 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8462FE7402E27D43C7227318 /* Pods_GomoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GomoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9833171E2587100C001A06AA /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		98331727258711DA001A06AA /* AddTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewController.swift; sourceTree = "<group>"; };
 		988A459A2570D1B300254367 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		988A45A32570D20600254367 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ADACE7FE4D1E7A0AC39C0B0F /* Pods-GomoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GomoApp.release.xcconfig"; path = "Target Support Files/Pods-GomoApp/Pods-GomoApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 		5EDF775E2579353600047588 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				98331726258711C3001A06AA /* AddTable */,
+				9833171D25870FEA001A06AA /* Tutorial */,
 				5EDF77702579398100047588 /* Profire */,
 				5EDF775F2579354600047588 /* Views */,
 				5EDF77602579356000047588 /* SettingViewController.swift */,
@@ -341,6 +347,22 @@
 				5E5CD34A2583E4DA0032FF11 /* DetailFoodCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9833171D25870FEA001A06AA /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				9833171E2587100C001A06AA /* TutorialViewController.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		98331726258711C3001A06AA /* AddTable */ = {
+			isa = PBXGroup;
+			children = (
+				98331727258711DA001A06AA /* AddTableViewController.swift */,
+			);
+			path = AddTable;
 			sourceTree = "<group>";
 		};
 		988A45992570D18800254367 /* Support */ = {
@@ -573,6 +595,7 @@
 				5EF8CAD7256C0F06008A5855 /* Table.swift in Sources */,
 				988A45A42570D20600254367 /* LoginViewController.swift in Sources */,
 				5EF8CAE1256C0F4B008A5855 /* DetailFoodControlerViewController.swift in Sources */,
+				9833171F2587100C001A06AA /* TutorialViewController.swift in Sources */,
 				5EF8CAFD256C1093008A5855 /* TableCCell.swift in Sources */,
 				5EF8CB18256C11C4008A5855 /* BillViewController.swift in Sources */,
 				5EF8CB0E256C112C008A5855 /* CartCell.swift in Sources */,
@@ -585,6 +608,7 @@
 				5EDF7772257939E400047588 /* ProfileViewController.swift in Sources */,
 				5EE8E895256C0E810038E299 /* BaseTBCell.swift in Sources */,
 				5EE8E886256C0E220038E299 /* Defined.swift in Sources */,
+				98331728258711DA001A06AA /* AddTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,7 +793,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vtb.GomoApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vtb.GomoAppaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -791,7 +815,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vtb.GomoApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vtb.GomoAppaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

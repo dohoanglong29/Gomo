@@ -78,7 +78,6 @@ class CartViewController: UIViewController {
             formatter.dateFormat = "HH:mm dd/MM/yyyy"
             let someDateTime = formatter.string(from: curentDateTime)
             
-          
 
             let cartDict = [
                 "detilbill": listFood,

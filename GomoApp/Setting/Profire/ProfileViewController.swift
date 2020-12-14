@@ -16,12 +16,14 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblAge: UILabel!
     @IBOutlet weak var lblAdd: UILabel!
+    @IBOutlet weak var lblSex: UILabel!
+    @IBOutlet weak var lblPhone: UILabel!
     
-    let name = Defined.defaults.value(forKey: "name") as! String
-    let avatar1 = Defined.defaults.value(forKey: "avatar") as! String
-    let email = Defined.defaults.value(forKey: "email") as! String
-    let add = Defined.defaults.value(forKey: "address") as! String
-    let birtday = Defined.defaults.value(forKey: "birtday") as! String
+    let name = Defined.defaults.value(forKey: "name") as? String
+    let avatar1 = Defined.defaults.value(forKey: "avatar") as? String
+    let email = Defined.defaults.value(forKey: "email") as? String
+    let add = Defined.defaults.value(forKey: "address") as? String
+    let birtday = Defined.defaults.value(forKey: "birtday") as? String
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,7 @@ class ProfileViewController: UIViewController {
         subView.layer.shadowOpacity = 0.3
         subView.layer.cornerRadius = 20
         
-        avatar.sd_setImage(with: URL(string: avatar1), completed: nil)
+        avatar.sd_setImage(with: URL(string: avatar1 ?? ""), completed: nil)
         lblName.text = name
         lblAge.text = birtday
         lblAdd.text = add
