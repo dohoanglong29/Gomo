@@ -14,10 +14,12 @@ class Constans {
     static let tabbar = "TabBarController"
     static let profile = "ProfileViewController"
     static let addTable = "AddTableViewController"
+    
  
    
     // Login
     static let notification = "Gomo"
+    static let idAdmin = "115133369612982521880"
     static let creactTable = "Bạn có muốn thêm bàn không ?"
     static let isemptyLogin = "vui lòng nhập đủ thông tin"
     static let checkEmail = "Vui lòng kiểm tra email và password"
@@ -25,6 +27,9 @@ class Constans {
     static let alertEmail = "Không đúng định dạng Email"
     static let note = "note"
     static let pay = "Số tiền giảm không được lớn hơn số tiền thanh toán"
+    
+    // actionTable
+    static let selectTable = "Đang ở bàn hiện tại"
 
 
 

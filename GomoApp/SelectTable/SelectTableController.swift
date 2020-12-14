@@ -102,6 +102,7 @@ extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataS
         case 1:
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
             vc.idTable = String(tb.NumberTable ?? 0)
+            vc.statusTable1 = "1"
             Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(tb.NumberTable ?? 0))").updateChildValues(["statu": 0])
             self.navigationController?.pushViewController(vc, animated: true)
             

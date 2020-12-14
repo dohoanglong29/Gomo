@@ -10,15 +10,29 @@ import Firebase
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var search1Bar: UISearchBar!
     @IBOutlet weak var segmented: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var btnCart: UIButton!
     var menus = [Menu]()
+    var strFood = [Menu]()
+    let searchController = UISearchController(searchResultsController: nil)
+
+    var statusTable1 = ""
     var idTable = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getFoodsData()
+        if statusTable1 == "1"{
+            btnCart.isHidden = false
+        }else{
+            btnCart.isHidden = true
+        }
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        self.navigationItem.searchController = searchController
+
         FoodCell.registerCellByNib(collectionView)
         btnCart.layer.borderWidth = 0.1
         btnCart.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
@@ -48,6 +62,7 @@ class ViewController: UIViewController {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.cart) as! CartViewController
         vc.btnAddFood.isEnabled = false
         vc.idTable = idTable
+        vc.statustable = statusTable1
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -70,12 +85,12 @@ class ViewController: UIViewController {
                         let notefood = value["notefood"] as! String
                         let pricefood = value["price"] as! Int
                         let status = value["statusFood"] as? String
-                        print(status)
                         let menu = Menu(id: id, name: namefood, image: imagefood, note: notefood, price: pricefood, statusFood: status)
                         self.menus.append(menu)
                     }
                 }
             }
+            self.strFood = self.menus
             self.collectionView.reloadData()
         }
     }
@@ -97,6 +112,7 @@ class ViewController: UIViewController {
                     }
                 }
             }
+            self.strFood = self.menus
             self.collectionView.reloadData()
         }
     }
@@ -107,13 +123,13 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return menus.count
+        return strFood.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = FoodCell.loadCell(collectionView, path: indexPath) as! FoodCell
-        cell.setUpData(data: menus[indexPath.row])
-        if menus[indexPath.row].statusFood == "0" {
+        cell.setUpData(data: strFood[indexPath.row])
+        if strFood[indexPath.row].statusFood == "0" {
             cell.bView.alpha = 0.5
         }else{
             cell.bView.alpha = 1
@@ -124,7 +140,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.detailFood) as! DetailFoodControlerViewController
-        let m = menus[indexPath.row]
+        let m = strFood[indexPath.row]
         if menus[indexPath.row].statusFood == "0" {
             
         }else{
@@ -139,4 +155,13 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
        
     }
 }
-
+extension ViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        if searchController.searchBar.text! == "" {
+            strFood = menus
+        } else {
+            strFood = menus.filter {$0.name!.lowercased().contains(searchController.searchBar.text!.lowercased())}
+        }
+        collectionView.reloadData()
+    }
+}

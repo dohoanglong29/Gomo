@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5cR-uG-OiG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5cR-uG-OiG">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -48,11 +48,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="oMN-Bw-IQr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9Uy-SZ-rwD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oMN-Bw-IQr" secondAttribute="trailing" id="FVH-Z9-4cX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="K4e-hq-UO8" secondAttribute="trailing" constant="30" id="KJ1-Vm-Jwq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="K4e-hq-UO8" secondAttribute="bottom" constant="30" id="R0g-gm-F5w"/>
                             <constraint firstItem="oMN-Bw-IQr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Uwo-9I-q9u"/>
-                            <constraint firstItem="oMN-Bw-IQr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tCn-Cm-xED"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oMN-Bw-IQr" secondAttribute="bottom" id="ynF-ze-dFG"/>
                         </constraints>
                     </view>
@@ -1191,8 +1191,8 @@
                                             <action selector="btnBack:" destination="25e-f6-poQ" eventType="touchUpInside" id="2V8-Vm-2eh"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiO-CJ-9Ug">
-                                        <rect key="frame" x="124" y="70" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gộp bàn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiO-CJ-9Ug">
+                                        <rect key="frame" x="112.66666666666666" y="70" width="64.666666666666657" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

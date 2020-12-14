@@ -19,6 +19,7 @@ class CartViewController: UIViewController {
     var carts = [Cart]()
     var idTable = ""
     var amount = 0
+    var statustable = ""
     var listFood = ""
     var listPriceFood = ""
     var idCart = ""
@@ -40,7 +41,7 @@ class CartViewController: UIViewController {
         Defined.formatter.groupingSeparator = "."
         Defined.formatter.numberStyle = .decimal
 
-        Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { [self] (DataSnapshot) in
+        Defined.ref.child("Account").child(Constans.idAdmin).child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { [self] (DataSnapshot) in
             self.carts.removeAll()
             self.amount = 0
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
@@ -57,8 +58,6 @@ class CartViewController: UIViewController {
                         self.idCart = id
                         self.listPriceFood += String(pricefood) + "/"
                         self.listFood += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  +  "/"
-                       // self.listFood += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  +  " = " + String(pricefood) + "/"
-
                         self.lblTotal.text = "Giá Tiền: " + "\(Defined.formatter.string(from: NSNumber(value: self.amount ))!)" + " VNĐ"
                     }
                 }
@@ -69,9 +68,7 @@ class CartViewController: UIViewController {
     
     @IBAction func btnOder(_ sender: Any) {
         if (amount == 0){
-            let alert = UIAlertController(title: "Gomo ", message: "Giỏ hàng của bạn vẫn còn trống", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.showDialog(title: Constans.notification, message: "Giỏ hàng của bạn vẫn còn trống")
         }else{
             let dateThis = dateFormatTime(date: Date())
             let formatter = DateFormatter()
@@ -87,8 +84,8 @@ class CartViewController: UIViewController {
                 "date":dateThis,
                 "time":someDateTime,
                 "numbertable":self.idTable,] as [String: Any]
-            Defined.ref.child("Account").child("115133369612982521880").child("Bill/Present/\(Int(self.idTable) ?? 0)").setValue(cartDict)
-            Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 3])
+            Defined.ref.child("Account").child(Constans.idAdmin).child("Bill/Present/\(Int(self.idTable) ?? 0)").setValue(cartDict)
+            Defined.ref.child("Account").child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 3])
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -97,12 +94,19 @@ class CartViewController: UIViewController {
         let alert = UIAlertController(title: "Gomo", message: "Bạn có muốn xoá giỏ hàng?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Đóng ", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Xoá ", style: .default, handler: { action in
-            Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(self.idTable) ?? 0)/ListFood").removeValue { (error, reference) in
+            Defined.ref.child("Account").child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)/ListFood").removeValue { (error, reference) in
                 if error != nil {
                     print("Error: \(error!)")
                 } else {
-                    Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 1])
-                    self.navigationController?.popViewController(animated: true)
+                    Defined.ref.child("Account").child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 1])
+                    
+                    let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+                    
+                    if self.statustable == "1"{
+                        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+                    }else{
+                        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 4], animated: true)
+                    }
                 }
             }
         }))
@@ -113,6 +117,17 @@ class CartViewController: UIViewController {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
         vc.idTable = idTable
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func showDialog(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                                        switch action.style{
+                                        case .default: break
+                                        case .cancel: break
+                                        case .destructive: break
+                                        }}))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
@@ -147,13 +162,10 @@ extension CartViewController: CartCellDelegate{
     func didTapButton(with title: String, cateid: String) {
         if title == "1" {
             print(cateid)
-        
-            
-            
         }
     }
-    
-    
 }
+
+
     
 
