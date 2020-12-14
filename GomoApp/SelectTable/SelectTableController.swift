@@ -51,7 +51,7 @@ class SelectTableController: UIViewController {
     }
     
     func getNumberTable(){
-        Defined.ref.child("Table").observe(DataEventType.value) { (DataSnapshot) in
+        Defined.ref.child("Account").child("115133369612982521880").child("Table").observe(DataEventType.value) { (DataSnapshot) in
             self.tables.removeAll()
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
@@ -102,7 +102,7 @@ extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataS
         case 1:
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
             vc.idTable = String(tb.NumberTable ?? 0)
-            Defined.ref.child("Table/\(Int(tb.NumberTable ?? 0))").updateChildValues(["statu": 0])
+            Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(tb.NumberTable ?? 0))").updateChildValues(["statu": 0])
             self.navigationController?.pushViewController(vc, animated: true)
             
         default:

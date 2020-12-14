@@ -59,7 +59,7 @@ class ViewController: UIViewController {
   
     
     func getFoodsData(){
-        Defined.ref.child("Menu/Food").observe(DataEventType.value) { (DataSnapshot) in
+        Defined.ref.child("Account").child("115133369612982521880").child("Menu/Food").observe(DataEventType.value) { (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 self.menus.removeAll()
                 for snap in snapshort {
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
     }
     
     func getDrinksData(){
-        Defined.ref.child("Menu/Drink").observe(DataEventType.value) { (DataSnapshot) in
+        Defined.ref.child("Account").child("115133369612982521880").child("Menu/Drink").observe(DataEventType.value) { (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 self.menus.removeAll()
                 for snap in snapshort {

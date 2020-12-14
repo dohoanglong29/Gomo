@@ -54,13 +54,13 @@ class ActionTableViewController: UIViewController {
             "date":dateThis,
             "time": timeThis,
             "numbertable":idTableThis,] as [String: Any]
-        Defined.ref.child("Bill/Present").child("/\(idTableThis)").updateChildValues(merge)
-        Defined.ref.child("Table").child(self.idTable).child("ListFood").removeValue()
-        Defined.ref.child("Bill/Present/\(Int(idTable) ?? 0)").removeValue { (error, reference) in
+        Defined.ref.child("Account").child("115133369612982521880").child("Bill/Present").child("/\(idTableThis)").updateChildValues(merge)
+        Defined.ref.child("Account").child("115133369612982521880").child("Table").child(self.idTable).child("ListFood").removeValue()
+        Defined.ref.child("Account").child("115133369612982521880").child("Bill/Present/\(Int(idTable) ?? 0)").removeValue { (error, reference) in
             if error != nil {
                 print(error as Any)
             } else {
-                Defined.ref.child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 1])
+                Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 1])
                 self.dismiss(animated: true, completion: nil)
 
             }
@@ -70,7 +70,7 @@ class ActionTableViewController: UIViewController {
     
     // lấy hoá đơn của bàn gộp
     func getDataBill(){
-        Defined.ref.child("Bill/Present").observe(DataEventType.value) { [self] (DataSnapshot) in
+        Defined.ref.child("Account").child("115133369612982521880").child("Bill/Present").observe(DataEventType.value) { [self] (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
                     let id = snap.key
@@ -100,7 +100,7 @@ class ActionTableViewController: UIViewController {
     
     // lấy hoá đơn của bàn gộp bị gộp
     func getDataCart(){
-        Defined.ref.child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { (DataSnapshot) in
+        Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
                     _ = snap.key
@@ -121,7 +121,7 @@ class ActionTableViewController: UIViewController {
     
     // lấy tất cả bản đã có hoá đơn
     func getNumberTable(){
-        Defined.ref.child("Table").observe(DataEventType.value) { (DataSnapshot) in
+        Defined.ref.child("Account").child("115133369612982521880").child("Table").observe(DataEventType.value) { (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
                     _ = snap.key

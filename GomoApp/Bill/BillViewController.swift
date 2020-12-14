@@ -24,7 +24,7 @@ class BillViewController: UIViewController {
     }
     
     func getBillPresent(){
-        Defined.ref.child("Bill/Present").observe(DataEventType.value) { (DataSnapshot) in
+        Defined.ref.child("Account").child("115133369612982521880").child("Bill/Present").observe(DataEventType.value) { (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 self.bills.removeAll()
                 for snap in snapshort {
@@ -46,7 +46,7 @@ class BillViewController: UIViewController {
     }
     
     func getBillDone(){
-        Defined.ref.child("Bill/Done").observe(DataEventType.value) { (DataSnapshot) in
+        Defined.ref.child("Account").child("115133369612982521880").child("Bill/Done").observe(DataEventType.value) { (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 self.bills.removeAll()
                 for snap in snapshort {

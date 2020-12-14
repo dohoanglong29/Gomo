@@ -19,7 +19,7 @@ class AddTableViewController: UIViewController {
     }
     
     func getNumberTable(){
-        Defined.ref.child("Table").observe(DataEventType.value) { (DataSnapshot) in
+        Defined.ref.child("Account").child("115133369612982521880").child("Table").observe(DataEventType.value) { (DataSnapshot) in
             self.tables.removeAll()
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
@@ -45,7 +45,7 @@ class AddTableViewController: UIViewController {
                 "NumberTable": self.tables.count + 1,
                 "statu": 1,
                 "nameCreactor": self.name ?? "",] as [String: Any]
-            Defined.ref.child("Table").child(String("\(self.tables.count + 1)")).setValue(addTable)
+            Defined.ref.child("Account").child("115133369612982521880").child("Table").child(String("\(self.tables.count + 1)")).setValue(addTable)
             
            })
            let cancel = UIAlertAction(title: "Đóng", style: .default, handler: { action in

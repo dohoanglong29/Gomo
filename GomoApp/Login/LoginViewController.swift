@@ -83,7 +83,7 @@ class LoginViewController: UIViewController {
     }
     
     func getDataEmployees(){
-        Defined.ref.child("Employees").observe(DataEventType.value) { [self] (DataSnapshot) in
+        Defined.ref.child("Account").child("115133369612982521880").child("Employees").observe(DataEventType.value) { [self] (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 self.employees.removeAll()
                 for snap in snapshort {

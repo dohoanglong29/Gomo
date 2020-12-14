@@ -40,7 +40,7 @@ class CartViewController: UIViewController {
         Defined.formatter.groupingSeparator = "."
         Defined.formatter.numberStyle = .decimal
 
-        Defined.ref.child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { [self] (DataSnapshot) in
+        Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { [self] (DataSnapshot) in
             self.carts.removeAll()
             self.amount = 0
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
@@ -87,8 +87,8 @@ class CartViewController: UIViewController {
                 "date":dateThis,
                 "time":someDateTime,
                 "numbertable":self.idTable,] as [String: Any]
-            Defined.ref.child("Bill/Present/\(Int(self.idTable) ?? 0)").setValue(cartDict)
-            Defined.ref.child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 3])
+            Defined.ref.child("Account").child("115133369612982521880").child("Bill/Present/\(Int(self.idTable) ?? 0)").setValue(cartDict)
+            Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 3])
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -97,11 +97,11 @@ class CartViewController: UIViewController {
         let alert = UIAlertController(title: "Gomo", message: "Bạn có muốn xoá giỏ hàng?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Đóng ", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Xoá ", style: .default, handler: { action in
-            Defined.ref.child("Table/\(Int(self.idTable) ?? 0)/ListFood").removeValue { (error, reference) in
+            Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(self.idTable) ?? 0)/ListFood").removeValue { (error, reference) in
                 if error != nil {
                     print("Error: \(error!)")
                 } else {
-                    Defined.ref.child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 1])
+                    Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 1])
                     self.navigationController?.popViewController(animated: true)
                 }
             }

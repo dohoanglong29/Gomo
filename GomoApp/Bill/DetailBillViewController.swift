@@ -102,17 +102,17 @@ class DetailBillViewController: UIViewController {
             "note":lblNote.text ?? "",
             "totalpay": lblTotalPay.text ?? "",
             "numbertable":numberTb,] as [String: Any]
-        Defined.ref.child("Bill/Done").child(numberTb).setValue(billDone)
+        Defined.ref.child("Account").child("115133369612982521880").child("Bill/Done").child(numberTb).setValue(billDone)
     }
     
     
     func billPay()  {
-        Defined.ref.child("Bill/Present/\(Int(self.numberTb) ?? 0)").removeValue { (error, reference) in
+        Defined.ref.child("Account").child("115133369612982521880").child("Bill/Present/\(Int(self.numberTb) ?? 0)").removeValue { (error, reference) in
             if error != nil {
                 print("Error: \(error!)")
             } else {
-                Defined.ref.child("Table").child(self.numberTb).child("ListFood").removeValue()
-                Defined.ref.child("Table/\(Int(self.numberTb) ?? 0)").updateChildValues(["statu": 1])
+                Defined.ref.child("Account").child("115133369612982521880").child("Table").child(self.numberTb).child("ListFood").removeValue()
+                Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(self.numberTb) ?? 0)").updateChildValues(["statu": 1])
                 self.dismiss(animated: true, completion: nil)
             }
         }
