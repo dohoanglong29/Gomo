@@ -36,7 +36,6 @@ class CartViewController: UIViewController {
         return dateFormatter.string(from: date)
     }
     
-    
     func getDataCart(){
         Defined.formatter.groupingSeparator = "."
         Defined.formatter.numberStyle = .decimal
@@ -119,6 +118,7 @@ class CartViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    
     func showDialog(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -129,42 +129,32 @@ class CartViewController: UIViewController {
                                         }}))
         self.present(alert, animated: true, completion: nil)
     }
-    
 }
 
 extension CartViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return carts.count
-        
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CartCell.loadCell(tableView) as! CartCell
-        cell.delegate = self
         cell.setUpData(data: carts[indexPath.row])
         return cell
     }
     
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == .delete) {
-            }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Xoá ") { [self] (action, indexPath) in
+            let c = self.carts[indexPath.row]
+            Defined.ref.child("Account").child(Constans.idAdmin).child("Table").child("\(self.idTable)").child("ListFood").removeValue { (error, reference) in}
         }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = carts[indexPath.row]
-        print(data.id)
-    }
-    
-    }
+        let share = UITableViewRowAction(style: .normal, title: "Sửa") { (action, indexPath) in
+        }
+        share.backgroundColor = UIColor.blue
 
-extension CartViewController: CartCellDelegate{
-    func didTapButton(with title: String, cateid: String) {
-        if title == "1" {
-            print(cateid)
-        }
+        return [delete, share]
     }
 }
+
 
 
     

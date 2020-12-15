@@ -8,11 +8,6 @@
 import UIKit
 import SDWebImage
 
-
-protocol CartCellDelegate: AnyObject {
-    func didTapButton(with title: String, cateid: String)
-}
-
 class CartCell: BaseTBCell {
     @IBOutlet weak var iconFood: UIImageView!
     @IBOutlet weak var nameFood: UILabel!
@@ -20,17 +15,13 @@ class CartCell: BaseTBCell {
     @IBOutlet weak var countFood: UILabel!
     var cateid = ""
 
-    var delegate: CartCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
-    
-   
     
     func setUpData(data: Cart )  {
         Defined.formatter.groupingSeparator = "."
@@ -40,14 +31,6 @@ class CartCell: BaseTBCell {
         cateid = data.id ?? ""
         priceFood.text = "Gia Tiền: " + "\(Defined.formatter.string(from: NSNumber(value: data.price ?? 0 ))!)"  + " VNĐ"
         countFood.text = "Số Lượng: " + String(data.count!)
-
     }
-    
-    
-    @IBAction func btnTang(_ sender: Any) {
-        delegate?.didTapButton(with: "1", cateid: cateid)
-    }
-    
-    
 }
 
