@@ -168,7 +168,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.detailFood) as! DetailFoodControlerViewController
         let m = strFood[indexPath.row]
         if menus[indexPath.row].statusFood == "0" {
-            
         }else{
             vc.ImgFood = m.image ?? ""
             vc.NameFood = m.name ?? ""

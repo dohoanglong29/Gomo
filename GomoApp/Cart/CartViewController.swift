@@ -99,13 +99,7 @@ class CartViewController: UIViewController {
                 } else {
                     Defined.ref.child("Account").child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 1])
                     
-                    let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
-                    
-                    if self.statustable == "1"{
-                        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
-                    }else{
-                        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 4], animated: true)
-                    }
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }))
@@ -144,10 +138,22 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Xoá ") { [self] (action, indexPath) in
-            let c = self.carts[indexPath.row]
-            Defined.ref.child("Account").child(Constans.idAdmin).child("Table").child("\(self.idTable)").child("ListFood").removeValue { (error, reference) in}
+            Defined.ref.child("Account").child(Constans.idAdmin).child("Table").child("\(self.idTable)").child("ListFood/\(idCart)").removeValue { (error, reference) in}
         }
         let share = UITableViewRowAction(style: .normal, title: "Sửa") { (action, indexPath) in
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditFoodCartViewcontroler") as! EditFoodCartViewcontroler
+            vc.modalPresentationStyle = .fullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            let c = self.carts[indexPath.row]
+            vc.namef = c.name ?? ""
+            vc.imagef = c.image ?? ""
+            vc.pricef = c.price ?? 0
+            vc.idCartFood = c.id ?? ""
+            vc.idTable = self.idTable
+            vc.countFood = c.count ?? 0
+            self.present(vc, animated: true, completion: nil)
+            
         }
         share.backgroundColor = UIColor.blue
 

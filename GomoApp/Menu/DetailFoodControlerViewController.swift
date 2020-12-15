@@ -22,6 +22,7 @@ class DetailFoodControlerViewController: UIViewController {
     @IBOutlet weak var btnCong: UIButton!
     @IBOutlet weak var btnTru: UIButton!
     
+    var resetfood = ""
     var ImgFood = ""
     var NameFood = ""
     var PriceFood:Int = 1
