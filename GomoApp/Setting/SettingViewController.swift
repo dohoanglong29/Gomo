@@ -24,6 +24,7 @@ class SettingViewController: UIViewController {
         SettingCell.registerCellByNib(tableView)
         setUp()
     }
+     
     func setUp(){
         avatar.layer.cornerRadius = avatar.bounds.width/2
         avatar.layer.borderWidth = 1
@@ -61,10 +62,12 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.addTable) as! AddTableViewController
             self.navigationController?.pushViewController(vc, animated: true)
         default:
-            print("1")
+            Defined.defaults.removeObject(forKey: "email")
+            Defined.defaults.removeObject(forKey: "avatar")
+            Defined.defaults.removeObject(forKey: "name")
+            Defined.defaults.removeObject(forKey: "avatar")
+            Defined.defaults.removeObject(forKey: "birtday")
+            Defined.defaults.removeObject(forKey: "address")
         }
     }
-    
-    
-    
 }

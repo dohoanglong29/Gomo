@@ -84,6 +84,7 @@ class DetailBillViewController: UIViewController {
             btnPay1.isEnabled = false
             txtTruTien.isEnabled = false
             txtChiecKhau.isEnabled = false
+            lblNote.isEnabled = false
         }else{
             btnPay1.isEnabled = true
         }
@@ -98,11 +99,11 @@ class DetailBillViewController: UIViewController {
             "total": total,
             "discount": txtChiecKhau.text ?? "",
             "time":time,
-            "date":lblDate.text ?? "",
+            "date":date,
             "note":lblNote.text ?? "",
             "totalpay": lblTotalPay.text ?? "",
             "numbertable":numberTb,] as [String: Any]
-        Defined.ref.child("Account").child("115133369612982521880").child("Bill/Done").child(numberTb).setValue(billDone)
+        Defined.ref.child("Account").child("115133369612982521880").child("Bill/Done").childByAutoId().setValue(billDone)
     }
     
     

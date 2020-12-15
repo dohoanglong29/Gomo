@@ -51,10 +51,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btnSelectMenu(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0{
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
             getFoodsData()
-        }else{
+        case 1:
             getDrinksData()
+        default:
+            getOthersData()
         }
     }
     
@@ -108,6 +112,28 @@ class ViewController: UIViewController {
                         let pricefood = value["price"] as! Int
                         let status = value["statusFood"] as? String
                         let menu = Menu(id: id, name: namefood, image: imagefood, note: notefood, price: pricefood,statusFood: status)
+                        self.menus.append(menu)
+                    }
+                }
+            }
+            self.strFood = self.menus
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func getOthersData(){
+        Defined.ref.child("Account").child("115133369612982521880").child("Menu/Other").observe(DataEventType.value) { (DataSnapshot) in
+            if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
+                self.menus.removeAll()
+                for snap in snapshort {
+                    let id = snap.key
+                    if let value = snap.value as? [String: Any] {
+                        let namefood = value["namefood"] as! String
+                        let imagefood = value["imagefood"] as! String
+                        let notefood = value["notefood"] as! String
+                        let pricefood = value["price"] as! Int
+                        let status = value["statusFood"] as? String
+                        let menu = Menu(id: id, name: namefood, image: imagefood, note: notefood, price: pricefood, statusFood: status)
                         self.menus.append(menu)
                     }
                 }
