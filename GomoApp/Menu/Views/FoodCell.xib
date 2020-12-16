@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,23 +11,23 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FoodCell" customModule="GomoApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
+            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
+                <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5V9-x1-Jni">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
+                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img1" translatesAutoresizingMaskIntoConstraints="NO" id="REQ-HZ-WrE">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="160"/>
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                             </imageView>
                             <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKC-kK-39D">
-                                <rect key="frame" x="0.0" y="128" width="150" height="32"/>
+                                <rect key="frame" x="0.0" y="128" width="160" height="32"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzg-Aj-sQK">
-                                        <rect key="frame" x="0.0" y="7" width="150" height="18"/>
+                                        <rect key="frame" x="0.0" y="7" width="160" height="18"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="textColor" red="0.9969819188117981" green="0.99712461233139038" blue="0.99695068597793579" alpha="0.9838331937789917" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -46,7 +46,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bKC-kK-39D" secondAttribute="trailing" id="38F-8T-dUv"/>
                             <constraint firstAttribute="bottom" secondItem="bKC-kK-39D" secondAttribute="bottom" id="3uK-Fi-NSK"/>
-                            <constraint firstAttribute="width" constant="150" id="5d7-c1-cYG"/>
+                            <constraint firstAttribute="width" constant="160" id="5d7-c1-cYG"/>
                             <constraint firstAttribute="trailing" secondItem="REQ-HZ-WrE" secondAttribute="trailing" id="M6R-Kq-Tkl"/>
                             <constraint firstItem="bKC-kK-39D" firstAttribute="leading" secondItem="5V9-x1-Jni" secondAttribute="leading" id="V7L-aZ-4Bj"/>
                             <constraint firstItem="REQ-HZ-WrE" firstAttribute="top" secondItem="5V9-x1-Jni" secondAttribute="top" id="ZjF-sk-nVl"/>
@@ -67,14 +67,14 @@
                 <constraint firstItem="5V9-x1-Jni" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="o9e-I2-mAk"/>
                 <constraint firstItem="5V9-x1-Jni" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="tAr-Am-YHi"/>
             </constraints>
-            <size key="customSize" width="150" height="160"/>
+            <size key="customSize" width="160" height="160"/>
             <connections>
                 <outlet property="bView" destination="5V9-x1-Jni" id="Hyc-qW-c0G"/>
                 <outlet property="imageFood" destination="REQ-HZ-WrE" id="jYY-iv-r1Z"/>
                 <outlet property="lblView" destination="bKC-kK-39D" id="Lpv-BI-tMd"/>
                 <outlet property="nameFood" destination="dzg-Aj-sQK" id="W5B-FS-012"/>
             </connections>
-            <point key="canvasLocation" x="223.18840579710147" y="92.410714285714278"/>
+            <point key="canvasLocation" x="230.43478260869566" y="92.410714285714278"/>
         </collectionViewCell>
     </objects>
     <resources>

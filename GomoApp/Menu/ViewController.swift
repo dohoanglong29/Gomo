@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     var menus = [Menu]()
     var strFood = [Menu]()
     let searchController = UISearchController(searchResultsController: nil)
-
+    
     var statusTable1 = ""
     var idTable = ""
     
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         self.navigationItem.searchController = searchController
-
+        
         FoodCell.registerCellByNib(collectionView)
         btnCart.layer.borderWidth = 0.1
         btnCart.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
@@ -44,10 +44,10 @@ class ViewController: UIViewController {
     @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizer.State.began {
             let touchPoint = sender.location(in: collectionView)
-                 if let indexPath = collectionView.indexPathForItem(at: touchPoint) {
-                    print(indexPath)
-                 }
+            if let indexPath = collectionView.indexPathForItem(at: touchPoint) {
+                print(indexPath)
             }
+        }
     }
     
     @IBAction func btnSelectMenu(_ sender: UISegmentedControl) {
@@ -74,8 +74,6 @@ class ViewController: UIViewController {
     @IBAction func btnBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-  
     
     func getFoodsData(){
         Defined.ref.child("Account").child("115133369612982521880").child("Menu/Food").observe(DataEventType.value) { (DataSnapshot) in
@@ -147,7 +145,6 @@ class ViewController: UIViewController {
 
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return strFood.count
     }
@@ -160,7 +157,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
         }else{
             cell.bView.alpha = 1
         }
-        
         return cell
     }
     
@@ -176,10 +172,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
             vc.idTable = idTable
             self.present(vc, animated: true, completion: nil)
         }
-        
-       
     }
 }
+
 extension ViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         if searchController.searchBar.text! == "" {

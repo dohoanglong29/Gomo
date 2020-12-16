@@ -13,7 +13,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    let email = Defined.defaults.value(forKey: "email") as? String
+    let name = Defined.defaults.value(forKey: "name") as? String
     let avatar1 = Defined.defaults.value(forKey: "avatar") as? String
     
     var setiing = ["Thông tin cá nhân", "Hướng dẫn sử dụng", "Thêm bàn", "Đăng xuất"]
@@ -30,7 +30,7 @@ class SettingViewController: UIViewController {
         avatar.layer.borderWidth = 1
         avatar.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         avatar.sd_setImage(with: URL(string: avatar1 ?? ""), completed: nil)
-        lblName.text = email
+        lblName.text = name
         tableView.layer.cornerRadius = 20
         tableView.layer.shadowColor = UIColor.black.cgColor
         tableView.layer.shadowOpacity = 0.6
@@ -68,6 +68,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             Defined.defaults.removeObject(forKey: "avatar")
             Defined.defaults.removeObject(forKey: "birtday")
             Defined.defaults.removeObject(forKey: "address")
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            self.present(vc, animated: true, completion: nil)
         }
     }
 }

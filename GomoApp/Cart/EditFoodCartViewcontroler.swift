@@ -23,7 +23,7 @@ class EditFoodCartViewcontroler: UIViewController {
     
     var NumberCount = 1
     var countFood = 0
-    var  idCartFood = ""
+    var idCartFood = ""
     var namef = ""
     var imagef = ""
     var pricef = 0
@@ -32,10 +32,10 @@ class EditFoodCartViewcontroler: UIViewController {
     var counts = 0
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpData()
+        setUPView()
     }
     
     func setUpData() {
@@ -44,6 +44,18 @@ class EditFoodCartViewcontroler: UIViewController {
         imageFood.sd_setImage(with: URL(string: imagef), completed: nil)
         lblNameFood.text = namef
         lblPriceFood.text = String(pricef/countFood)
+        lblTotal.text = String(pricef/countFood)
+    }
+    
+    func setUPView(){
+        imageFood.layer.cornerRadius = 20
+        subView.layer.cornerRadius = 20
+        subView.layer.shadowColor = UIColor.black.cgColor
+        subView.layer.shadowOpacity = 0.6
+        subView.layer.shadowOffset = .zero
+        subView.layer.shadowRadius = 10
+        btnTru.layer.cornerRadius = btnTru.bounds.size.height/2
+        btnCong.layer.cornerRadius = btnTru.bounds.size.height/2
     }
     
     
@@ -68,7 +80,7 @@ class EditFoodCartViewcontroler: UIViewController {
     
     func setUpDetailMenu() {
         lblCountFood.text = String(NumberCount)
-        lblTotal.text = "Tổng tiền: \(Defined.formatter.string(from: NSNumber(value: NumberCount * pricef ))!)" + " VNĐ"
+        lblTotal.text = String(NumberCount * pricef/countFood)
     }
     
     @IBAction func btnBack(_ sender: Any) {
@@ -82,10 +94,10 @@ class EditFoodCartViewcontroler: UIViewController {
         }
         
         let setUpFood = [
-            "countfood": Int(lblCountFood.text ?? ""),
+            "countfood": Int(lblCountFood.text ?? "") as Any,
             "imagefood": imagef,
             "namefood": namef,
-            "pricefood":prices ,] as [String: Any]
+            "pricefood":prices,] as [String: Any]
         Defined.ref.child("Account").child(Constans.idAdmin).child("Table").child("\(self.idTable)").child("ListFood/\(idCartFood)").updateChildValues(setUpFood)
         self.dismiss(animated: true, completion: nil)
     }
