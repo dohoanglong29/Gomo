@@ -98,7 +98,7 @@ class EditFoodCartViewcontroler: UIViewController {
             "imagefood": imagef,
             "namefood": namef,
             "pricefood":prices,] as [String: Any]
-        Defined.ref.child("Account").child(Constans.idAdmin).child("Table").child("\(self.idTable)").child("ListFood/\(idCartFood)").updateChildValues(setUpFood)
+        Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").child("\(self.idTable)").child("ListFood/\(idCartFood)").updateChildValues(setUpFood)
         self.dismiss(animated: true, completion: nil)
     }
 }

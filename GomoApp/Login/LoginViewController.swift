@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
     @IBAction func btnLogin(_ sender: Any) {
         if let email = txtUserName.text, let password = txtPassword.text{
             if  isValidEmail(email: email) == false && email.count != 0{
-                self.showDialog(title: Constans.notification, message:Constans.alertEmail )
+                AlertUtil.showAlert(from: self, with:Constans.notification, message: Constans.alertEmail)
             }else{
                 print(email)
             }
@@ -72,9 +72,10 @@ class LoginViewController: UIViewController {
                     self?.present(vc, animated: true, completion: nil)
                 }else{
                     if email.isEmpty || password.isEmpty{
-                        self?.showDialog(title: Constans.notification, message: Constans.isemptyLogin)
+                        AlertUtil.showAlert(from: self!, with:Constans.notification, message: Constans.isemptyLogin)
                     }else{
-                        self?.showDialog(title: Constans.notification, message:Constans.checkEmail)
+                        AlertUtil.showAlert(from: self!, with:Constans.notification, message: Constans.checkEmail)
+
                         
                     }
                 }
@@ -82,8 +83,14 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func btnResetPassword(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ResetPasswordViewController") as! ResetPasswordViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    
     func getDataEmployees(){
-        Defined.ref.child("Account").child("115133369612982521880").child("Employees").observe(DataEventType.value) { [self] (DataSnapshot) in
+        Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Employees").observe(DataEventType.value) { [self] (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 self.employees.removeAll()
                 for snap in snapshort {
@@ -112,21 +119,9 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
     func isValidEmail(email: String) -> Bool {
         let emailRegEx = Constans.validateEmail
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
-    }
-    
-    func showDialog(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                                        switch action.style{
-                                        case .default: break
-                                        case .cancel: break
-                                        case .destructive: break
-                                        }}))
-        self.present(alert, animated: true, completion: nil)
     }
 }

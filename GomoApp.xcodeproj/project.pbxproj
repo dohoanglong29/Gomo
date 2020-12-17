@@ -49,6 +49,7 @@
 		5EF8CB2D256C12DE008A5855 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5EF8CB2C256C12DE008A5855 /* GoogleService-Info.plist */; };
 		9833171F2587100C001A06AA /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9833171E2587100C001A06AA /* TutorialViewController.swift */; };
 		98331728258711DA001A06AA /* AddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98331727258711DA001A06AA /* AddTableViewController.swift */; };
+		984F4BC6258B119B000BB7A4 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984F4BC5258B119B000BB7A4 /* ResetPasswordViewController.swift */; };
 		988A459B2570D1B300254367 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988A459A2570D1B300254367 /* TabBarController.swift */; };
 		988A45A42570D20600254367 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988A45A32570D20600254367 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
@@ -120,6 +121,7 @@
 		8462FE7402E27D43C7227318 /* Pods_GomoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GomoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9833171E2587100C001A06AA /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		98331727258711DA001A06AA /* AddTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewController.swift; sourceTree = "<group>"; };
+		984F4BC5258B119B000BB7A4 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		988A459A2570D1B300254367 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		988A45A32570D20600254367 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ADACE7FE4D1E7A0AC39C0B0F /* Pods-GomoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GomoApp.release.xcconfig"; path = "Target Support Files/Pods-GomoApp/Pods-GomoApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -368,6 +370,14 @@
 			path = AddTable;
 			sourceTree = "<group>";
 		};
+		984F4BC4258B116E000BB7A4 /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				984F4BC5258B119B000BB7A4 /* ResetPasswordViewController.swift */,
+			);
+			path = ResetPassword;
+			sourceTree = "<group>";
+		};
 		988A45992570D18800254367 /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +389,7 @@
 		988A45A22570D1EE00254367 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				984F4BC4258B116E000BB7A4 /* ResetPassword */,
 				988A45A32570D20600254367 /* LoginViewController.swift */,
 			);
 			path = Login;
@@ -601,6 +612,7 @@
 				5EF8CAE1256C0F4B008A5855 /* DetailFoodControlerViewController.swift in Sources */,
 				9833171F2587100C001A06AA /* TutorialViewController.swift in Sources */,
 				5EF8CAFD256C1093008A5855 /* TableCCell.swift in Sources */,
+				984F4BC6258B119B000BB7A4 /* ResetPasswordViewController.swift in Sources */,
 				5EF8CB18256C11C4008A5855 /* BillViewController.swift in Sources */,
 				5EF8CB0E256C112C008A5855 /* CartCell.swift in Sources */,
 				5EF8CAF2256C104A008A5855 /* SelectTableController.swift in Sources */,

@@ -51,7 +51,7 @@ class SelectTableController: UIViewController {
     }
     
     func getNumberTable(){
-        Defined.ref.child("Account").child("115133369612982521880").child("Table").observe(DataEventType.value) { (DataSnapshot) in
+        Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").observe(DataEventType.value) { (DataSnapshot) in
             self.tables.removeAll()
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
@@ -102,16 +102,11 @@ extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataS
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
             vc.idTable = String(tb.NumberTable ?? 0)
             vc.statusTable1 = "1"
-            Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(tb.NumberTable ?? 0))").updateChildValues(["statu": 0])
+            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(tb.NumberTable ?? 0))").updateChildValues(["statu": 0])
             self.navigationController?.pushViewController(vc, animated: true)
             
         default:
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailBillViewController") as! DetailBillViewController
-            vc.modalPresentationStyle = .fullScreen
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.numberTb = String(tb.NumberTable ?? 0)
-            self.present(vc, animated: true, completion: nil)
+            AlertUtil.showAlert(from: self, with: "Gomo", message: "Bàn đã lên hoá đơn")
         }
         
     }

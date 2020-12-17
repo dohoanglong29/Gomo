@@ -62,7 +62,7 @@ class DetailFoodControlerViewController: UIViewController {
     }
     
     func getFoodsData(){
-        Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { (DataSnapshot) in
+        Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
                     let id = snap.key
@@ -122,7 +122,7 @@ class DetailFoodControlerViewController: UIViewController {
                 "countfood": NumberCount + unifyCount,
                 "pricefood": NumberCount * PriceFood + unifyPrice,
                 "imagefood": ImgFood]
-            Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(idTable) ?? 0)/ListFood").child(unifyId).updateChildValues(writeData)
+            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(idTable) ?? 0)/ListFood").child(unifyId).updateChildValues(writeData)
             self.dismiss(animated: true, completion: nil)
         }else{
             let writeData: [String: Any] = [
@@ -130,7 +130,7 @@ class DetailFoodControlerViewController: UIViewController {
                 "countfood": NumberCount,
                 "pricefood": NumberCount * PriceFood,
                 "imagefood": ImgFood]
-            Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(idTable) ?? 0)/ListFood").childByAutoId().setValue(writeData)
+            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(idTable) ?? 0)/ListFood").childByAutoId().setValue(writeData)
             self.dismiss(animated: true, completion: nil)
         }
        

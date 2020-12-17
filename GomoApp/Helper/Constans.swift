@@ -15,11 +15,13 @@ class Constans {
     static let profile = "ProfileViewController"
     static let addTable = "AddTableViewController"
     
+    
  
    
     // Login
-    static let notification = "Gomo"
+    static let Ac = "Account"
     static let idAdmin = "115133369612982521880"
+    static let notification = "Gomo"
     static let creactTable = "Bạn có muốn thêm bàn không ?"
     static let isemptyLogin = "vui lòng nhập đủ thông tin"
     static let checkEmail = "Vui lòng kiểm tra email và password"

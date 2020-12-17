@@ -69,6 +69,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             Defined.defaults.removeObject(forKey: "birtday")
             Defined.defaults.removeObject(forKey: "address")
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }
     }

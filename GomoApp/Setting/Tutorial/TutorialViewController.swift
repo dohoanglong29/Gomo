@@ -13,5 +13,4 @@ class TutorialViewController: UIViewController {
         super.viewDidLoad()
 
     }
-
 }

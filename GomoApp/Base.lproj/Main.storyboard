@@ -390,7 +390,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mjd-oO-Gf1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1960.8695652173915" y="827.44565217391312"/>
+            <point key="canvasLocation" x="1835" y="818"/>
         </scene>
         <!--Select Table Controller-->
         <scene sceneID="shb-Da-Qa2">
@@ -1056,10 +1056,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="R1c-nS-row">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="3" editable="NO" text=" Trong trường hợp hợp số bàn trong nhà hàng hết, nhân viên có thể thêm bàn để phục vụ thêm khách hàng " textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="R1c-nS-row">
                                 <rect key="frame" x="10" y="10" width="394" height="716"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1077,7 +1076,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEy-If-Vy6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4593" y="19"/>
+            <point key="canvasLocation" x="4161" y="79"/>
         </scene>
         <!--Hoá đơn-->
         <scene sceneID="gqZ-sL-sLg">
@@ -1189,6 +1188,9 @@
                                         <rect key="frame" x="11" y="287" width="268" height="28"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Quên mật khẩu"/>
+                                        <connections>
+                                            <action selector="btnResetPassword:" destination="CLb-Nf-mk6" eventType="touchUpInside" id="A0B-Uc-aT1"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIM-uT-VK9">
                                         <rect key="frame" x="255" y="175.99999999999997" width="20" height="20"/>
@@ -1260,6 +1262,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="krT-ax-g4S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1446" y="658"/>
+        </scene>
+        <!--Reset Password View Controller-->
+        <scene sceneID="M7G-bg-Foo">
+            <objects>
+                <viewController storyboardIdentifier="ResetPasswordViewController" id="6eE-1i-x5Y" customClass="ResetPasswordViewController" customModule="GomoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ftr-MK-toU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background 2" translatesAutoresizingMaskIntoConstraints="NO" id="Oi4-k9-2la">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="rlx-oz-PXl"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email của bạn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Nf-Ge-9UE">
+                                <rect key="frame" x="20" y="130" width="374" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Dgk-k4-qZ0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D11-hE-hom">
+                                <rect key="frame" x="103.66666666666669" y="195" width="207" height="40"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="2pF-ye-zvO"/>
+                                </constraints>
+                                <state key="normal" title="Gửi ">
+                                    <color key="titleColor" red="0.97921536870000003" green="0.98679631329999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnSent:" destination="6eE-1i-x5Y" eventType="touchUpInside" id="wVY-Oa-yGp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Yw3-aR-XH6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9Nf-Ge-9UE" firstAttribute="leading" secondItem="Yw3-aR-XH6" secondAttribute="leading" constant="20" id="3AD-nq-QdR"/>
+                            <constraint firstItem="9Nf-Ge-9UE" firstAttribute="top" secondItem="Oi4-k9-2la" secondAttribute="bottom" constant="30" id="8A4-qa-tRL"/>
+                            <constraint firstItem="D11-hE-hom" firstAttribute="width" secondItem="ftr-MK-toU" secondAttribute="width" multiplier="0.5" id="9K1-SZ-39Q"/>
+                            <constraint firstItem="D11-hE-hom" firstAttribute="centerX" secondItem="ftr-MK-toU" secondAttribute="centerX" id="HWu-We-Jx1"/>
+                            <constraint firstItem="Yw3-aR-XH6" firstAttribute="trailing" secondItem="Oi4-k9-2la" secondAttribute="trailing" id="SDf-jZ-HdC"/>
+                            <constraint firstItem="Oi4-k9-2la" firstAttribute="leading" secondItem="Yw3-aR-XH6" secondAttribute="leading" id="XE9-RQ-Za1"/>
+                            <constraint firstItem="Yw3-aR-XH6" firstAttribute="trailing" secondItem="9Nf-Ge-9UE" secondAttribute="trailing" constant="20" id="ZCe-Lq-4xq"/>
+                            <constraint firstItem="Oi4-k9-2la" firstAttribute="top" secondItem="Yw3-aR-XH6" secondAttribute="top" id="lsf-WJ-vMO"/>
+                            <constraint firstItem="D11-hE-hom" firstAttribute="top" secondItem="9Nf-Ge-9UE" secondAttribute="bottom" constant="20" id="pmD-UR-Khw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnSent" destination="D11-hE-hom" id="BKH-Le-B5Y"/>
+                        <outlet property="txtEmail" destination="9Nf-Ge-9UE" id="GoH-TU-nOW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w7e-YC-vXG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1446" y="1323"/>
         </scene>
         <!--Settings-->
         <scene sceneID="wOA-4V-Tj1">

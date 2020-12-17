@@ -49,7 +49,7 @@ class ActionTableViewController: UIViewController {
         
         
         if idTable == txtSelectTable.text{
-            self.showDialog(title: Constans.notification, message: Constans.selectTable)
+            AlertUtil.showAlert(from: self, with: Constans.notification, message: Constans.selectTable)
         }else{
             getDataBill()
             let merge = [
@@ -59,9 +59,9 @@ class ActionTableViewController: UIViewController {
                 "date":dateThis,
                 "time": timeThis,
                 "numbertable":idTableThis,] as [String: Any]
-            Defined.ref.child("Account").child(Constans.idAdmin).child("Bill/Present").child("/\(idTableThis)").updateChildValues(merge)
-            Defined.ref.child("Account").child(Constans.idAdmin).child("Table").child(self.idTable).child("ListFood").removeValue()
-            Defined.ref.child("Account").child(Constans.idAdmin).child("Bill/Present/\(Int(idTable) ?? 0)").removeValue { (error, reference) in
+            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present").child("/\(idTableThis)").updateChildValues(merge)
+            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").child(self.idTable).child("ListFood").removeValue()
+            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present/\(Int(idTable) ?? 0)").removeValue { (error, reference) in
                 if error != nil {
                     print(error as Any)
                 } else {
@@ -76,7 +76,7 @@ class ActionTableViewController: UIViewController {
     
     // lấy hoá đơn của bàn gộp
     func getDataBill(){
-        Defined.ref.child("Account").child(Constans.idAdmin).child("Bill/Present").observe(DataEventType.value) { [self] (DataSnapshot) in
+        Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present").observe(DataEventType.value) { [self] (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
                     let id = snap.key
@@ -106,7 +106,7 @@ class ActionTableViewController: UIViewController {
     
     // lấy hoá đơn của bàn gộp bị gộp
     func getDataCart(){
-        Defined.ref.child("Account").child(Constans.idAdmin).child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { (DataSnapshot) in
+        Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
                     _ = snap.key
@@ -116,7 +116,6 @@ class ActionTableViewController: UIViewController {
                         let pricefood = value["pricefood"] as! Int
                         // lấy tiền và danh sách món ăn
                         self.listpricefood1 += String(pricefood) + "/"
-                        print("backol2\(self.listpricefood1)")
                         self.amount1 += pricefood
                         self.listFood1 += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  + "/"
                     }
@@ -127,7 +126,7 @@ class ActionTableViewController: UIViewController {
     
     // lấy tất cả bản đã có hoá đơn
     func getNumberTable(){
-        Defined.ref.child("Account").child(Constans.idAdmin).child("Table").observe(DataEventType.value) { (DataSnapshot) in
+        Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").observe(DataEventType.value) { (DataSnapshot) in
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
                     _ = snap.key
@@ -173,17 +172,6 @@ class ActionTableViewController: UIViewController {
     
     @IBAction func btnBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    func showDialog(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                                        switch action.style{
-                                        case .default: break
-                                        case .cancel: break
-                                        case .destructive: break
-                                        }}))
-        self.present(alert, animated: true, completion: nil)
     }
 }
 

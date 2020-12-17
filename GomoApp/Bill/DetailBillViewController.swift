@@ -103,17 +103,17 @@ class DetailBillViewController: UIViewController {
             "note":lblNote.text ?? "",
             "totalpay": lblTotalPay.text ?? "",
             "numbertable":numberTb,] as [String: Any]
-        Defined.ref.child("Account").child("115133369612982521880").child("Bill/Done").childByAutoId().setValue(billDone)
+        Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Done").childByAutoId().setValue(billDone)
     }
     
     
     func billPay()  {
-        Defined.ref.child("Account").child("115133369612982521880").child("Bill/Present/\(Int(self.numberTb) ?? 0)").removeValue { (error, reference) in
+        Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present/\(Int(self.numberTb) ?? 0)").removeValue { (error, reference) in
             if error != nil {
                 print("Error: \(error!)")
             } else {
-                Defined.ref.child("Account").child("115133369612982521880").child("Table").child(self.numberTb).child("ListFood").removeValue()
-                Defined.ref.child("Account").child("115133369612982521880").child("Table/\(Int(self.numberTb) ?? 0)").updateChildValues(["statu": 1])
+                Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").child(self.numberTb).child("ListFood").removeValue()
+                Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(self.numberTb) ?? 0)").updateChildValues(["statu": 1])
                 self.dismiss(animated: true, completion: nil)
             }
         }
@@ -135,7 +135,7 @@ class DetailBillViewController: UIViewController {
             moneyMinus = intAmount
         }
             if moneyMinus > total{
-                self.showDialog(title: Constans.notification, message: Constans.pay)
+                AlertUtil.showAlert(from: self, with:Constans.notification, message:Constans.pay)
             }else{
                 totalPayInDiscount = total - moneyMinus
                 lblTotalPay.text = "\(Defined.formatter.string(from: NSNumber(value: totalPayInDiscount))!)" + " VNĐ"
@@ -152,17 +152,6 @@ class DetailBillViewController: UIViewController {
         printController.printInfo = printInfo
         printController.printingItem = subView.toImage()
         printController.present(animated: true, completionHandler: nil)
-    }
-    
-    func showDialog(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                                        switch action.style{
-                                        case .default: break
-                                        case .cancel: break
-                                        case .destructive: break
-                                        }}))
-        self.present(alert, animated: true, completion: nil)
     }
     
     // tạo Pickerview
