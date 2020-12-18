@@ -120,15 +120,17 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let c = self.carts[indexPath.row]
         let delete = UITableViewRowAction(style: .destructive, title: "Xoá ") { [self] (action, indexPath) in
-            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").child("\(self.idTable)").child("ListFood/\(idCart)").removeValue { (error, reference) in}
+            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").child("\(self.idTable)").child("ListFood/\(c.id ?? "")").removeValue { (error, reference) in}
+            print("delete\(c.id ?? "")")
         }
         let share = UITableViewRowAction(style: .normal, title: "Sửa") { (action, indexPath) in
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditFoodCartViewcontroler") as! EditFoodCartViewcontroler
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
-            let c = self.carts[indexPath.row]
+            //et c = self.carts[indexPath.row]
             vc.namef = c.name ?? ""
             vc.imagef = c.image ?? ""
             vc.pricef = c.price ?? 0
