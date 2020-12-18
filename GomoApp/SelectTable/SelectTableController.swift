@@ -21,7 +21,6 @@ class SelectTableController: UIViewController {
         collectionView.reloadData()
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         collectionView.addGestureRecognizer(longPress)
-        let dateThis = dateFormatTime(date: Date())
     }
     
     @objc func handleLongPress(sender: UILongPressGestureRecognizer) {

@@ -35,26 +35,13 @@ class AddTableViewController: UIViewController {
     }
     
     @IBAction func btnAddTable(_ sender: Any) {
-        AlertUtil.showAlert(from: self, with: Constans.notification, message: Constans.creactTable)
-    }
-    
-    func showAlert(withTitle title: String, withMessage message:String) {
-           let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-           let ok = UIAlertAction(title: "Tạo", style: .default, handler: { action in
+        AlertUtil.actionAlert(from: self, with: Constans.notification, message: Constans.creactTable) { (ac) in
             let addTable = [
                 "NumberTable": self.tables.count + 1,
                 "statu": 1,
                 "nameCreactor": self.name ?? "",] as [String: Any]
             Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").child(String("\(self.tables.count + 1)")).setValue(addTable)
-            
-           })
-           let cancel = UIAlertAction(title: "Đóng", style: .default, handler: { action in
-           })
-           alert.addAction(ok)
-           alert.addAction(cancel)
-           DispatchQueue.main.async(execute: {
-               self.present(alert, animated: true)
-           })
-       }
-    
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
 }

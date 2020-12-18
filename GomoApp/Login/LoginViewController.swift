@@ -54,29 +54,24 @@ class LoginViewController: UIViewController {
             if  isValidEmail(email: email) == false && email.count != 0{
                 AlertUtil.showAlert(from: self, with:Constans.notification, message: Constans.alertEmail)
             }else{
-                print(email)
-            }
-            
-           
-            Auth.auth().signIn(withEmail: email, password: password) {
-                [weak self] authResult, error in
-                if authResult != nil{
-                    let user = Auth.auth().currentUser
-                    if let u = user{
-                        let email = u.email
-                        self?.emailthis = email
-                    }
-                    self?.getDataEmployees()
-                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.tabbar) as! TabBarController
-                    vc.modalPresentationStyle = .fullScreen
-                    self?.present(vc, animated: true, completion: nil)
-                }else{
-                    if email.isEmpty || password.isEmpty{
-                        AlertUtil.showAlert(from: self!, with:Constans.notification, message: Constans.isemptyLogin)
+                Auth.auth().signIn(withEmail: email, password: password) {
+                    [weak self] authResult, error in
+                    if authResult != nil{
+                        let user = Auth.auth().currentUser
+                        if let u = user{
+                            let email = u.email
+                            self?.emailthis = email
+                        }
+                        self?.getDataEmployees()
+                        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.tabbar) as! TabBarController
+                        vc.modalPresentationStyle = .fullScreen
+                        self?.present(vc, animated: true, completion: nil)
                     }else{
-                        AlertUtil.showAlert(from: self!, with:Constans.notification, message: Constans.checkEmail)
-
-                        
+                        if email.isEmpty || password.isEmpty{
+                            AlertUtil.showAlert(from: self!, with:Constans.notification, message: Constans.isemptyLogin)
+                        }else{
+                            AlertUtil.showAlert(from: self!, with:Constans.notification, message: Constans.checkEmail)
+                        }
                     }
                 }
             }
@@ -84,7 +79,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func btnResetPassword(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ResetPasswordViewController") as! ResetPasswordViewController
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.resetPass) as! ResetPasswordViewController
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -94,7 +89,7 @@ class LoginViewController: UIViewController {
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 self.employees.removeAll()
                 for snap in snapshort {
-                    let id = snap.key
+                    _ = snap.key
                     if let value = snap.value as? [String: Any] {
                         let address = value["address"] as? String
                         let avatar = value["avatar"] as? String

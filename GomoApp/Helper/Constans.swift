@@ -14,6 +14,7 @@ class Constans {
     static let tabbar = "TabBarController"
     static let profile = "ProfileViewController"
     static let addTable = "AddTableViewController"
+    static let resetPass = "ResetPasswordViewController"
     
     
  
@@ -30,8 +31,13 @@ class Constans {
     static let note = "note"
     static let pay = "Số tiền giảm không được lớn hơn số tiền thanh toán"
     
+    // reset pass
+    static let letterBox = "Vui lòng kiểm tra email của bạn!"
+    
     // actionTable
     static let selectTable = "Đang ở bàn hiện tại"
+    
+    static let deleteCart = "Bạn có muốn xoá giổ hàng không "
 
 
 

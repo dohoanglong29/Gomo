@@ -9,9 +9,10 @@ import UIKit
 import Firebase
 
 class ResetPasswordViewController: UIViewController {
-
+    
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var btnSent: UIButton!
+    let auth = Auth.auth()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,19 +23,15 @@ class ResetPasswordViewController: UIViewController {
             if  isValidEmail(email: email) == false && email.count != 0{
                 AlertUtil.showAlert(from: self, with:Constans.notification, message: Constans.alertEmail)
             }else{
-                print(email)
-            }
-            
-            let auth = Auth.auth()
-            
-            auth.sendPasswordReset(withEmail: txtEmail.text!) { (error) in
-                if let error = error {
-                    return
+                auth.sendPasswordReset(withEmail: txtEmail.text!) { (error) in
+                    if error != nil {
+                        return
+                    }
+                    AlertUtil.showAlert(from: self, with: Constans.notification, message: Constans.letterBox)
+                    self.dismiss(animated: true, completion: nil)
                 }
-                AlertUtil.showAlert(from: self, with: Constans.note, message: "Vui lòng kiểm tra email của bạn!")
             }
         }
-        
     }
     
     func isValidEmail(email: String) -> Bool {

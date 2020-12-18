@@ -1462,7 +1462,27 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hxf-ay-oaB">
                                 <rect key="frame" x="0.0" y="257.66666666666674" width="414" height="478.33333333333326"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3H2-wx-DHI">
+                                        <rect key="frame" x="103.66666666666669" y="368.33333333333331" width="207" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ZUC-V4-aLp"/>
+                                        </constraints>
+                                        <state key="normal" title="Đặt lại mật khẩu">
+                                            <color key="titleColor" red="0.97921536870000003" green="0.98679631329999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnResetPass:" destination="Xge-KS-zI9" eventType="touchUpInside" id="nq2-u8-ogC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="3H2-wx-DHI" secondAttribute="bottom" constant="60" id="QB8-si-HjB"/>
+                                    <constraint firstItem="3H2-wx-DHI" firstAttribute="width" secondItem="hxf-ay-oaB" secondAttribute="width" multiplier="0.5" id="YVe-C4-WP6"/>
+                                    <constraint firstItem="3H2-wx-DHI" firstAttribute="centerX" secondItem="hxf-ay-oaB" secondAttribute="centerX" id="afd-ap-wKc"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IJD-op-4oh">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="257.66666666666669"/>
@@ -1619,6 +1639,7 @@
                     </view>
                     <connections>
                         <outlet property="avatar" destination="0TP-bk-GCa" id="fge-zV-Z2f"/>
+                        <outlet property="btnResetPass" destination="3H2-wx-DHI" id="cmu-3v-nrB"/>
                         <outlet property="lblAdd" destination="dAK-N4-fNW" id="L5r-av-XjY"/>
                         <outlet property="lblAge" destination="4FC-IN-9WA" id="Ha1-cf-tLc"/>
                         <outlet property="lblEmaill" destination="YxN-n3-xfZ" id="sBC-da-whd"/>

@@ -88,20 +88,16 @@ class CartViewController: UIViewController {
     }
     
     @IBAction func btnDeleteCart(_ sender: Any) {
-        let alert = UIAlertController(title: "Gomo", message: "Bạn có muốn xoá giỏ hàng?", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Đóng ", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Xoá ", style: .default, handler: { action in
+        AlertUtil.actionAlert(from: self, with: Constans.notification, message: Constans.deleteCart) { (ac) in
             Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)/ListFood").removeValue { (error, reference) in
                 if error != nil {
                     print("Error: \(error!)")
                 } else {
                     Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 1])
-                    
                     self.navigationController?.popViewController(animated: true)
                 }
             }
-        }))
-        self.present(alert, animated: true)
+        }
     }
     
     @IBAction func btnAddFood(_ sender: Any) {
