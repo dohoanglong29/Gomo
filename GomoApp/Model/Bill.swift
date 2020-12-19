@@ -14,8 +14,9 @@ struct Bill: Codable {
     var detailPrice: String? = nil
     var Total:Int? = nil
     var date: String? = nil
+    var discouunt:String? = nil
     var time:String? = nil
     var listpricefood:String? = nil
-
-
+    var note:String? = nil
+    var totalPay:String? = nil
 }

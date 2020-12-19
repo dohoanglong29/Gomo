@@ -39,6 +39,12 @@ class DetailBillViewController: UIViewController {
     var time = ""
     var listpricefood = ""
     var moneyMinus = 0
+    var note = ""
+    var discount1 = ""
+    var othermoney = ""
+    var totalPay1 = ""
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +83,10 @@ class DetailBillViewController: UIViewController {
         lblDate.text = time
         numberTable.text = "Bàn số: \(numberTb)"
         totalPayInDiscount = total - moneyMinus
+        txtTruTien.text = othermoney
+        txtChiecKhau.text = discount1
+        lblNote.text = note
+        lblTotalPay.text = totalPay1
     }
     
     func setDataBill() {
