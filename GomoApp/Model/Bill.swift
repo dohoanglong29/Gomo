@@ -1,9 +1,4 @@
-//
-//  Bill.swift
-//  GomoApp
-//
-//  Created by Vương Toàn Bắc on 11/23/20.
-//
+
 
 import Foundation
 struct Bill: Codable {
@@ -18,5 +13,5 @@ struct Bill: Codable {
     var time:String? = nil
     var listpricefood:String? = nil
     var note:String? = nil
-    var totalPay:String? = nil
+    var totalPay:Int? = nil
 }

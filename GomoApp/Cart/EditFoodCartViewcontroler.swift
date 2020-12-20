@@ -1,9 +1,4 @@
-//
-//  EditFoodCartViewcontroler.swift
-//  GomoApp
-//
-//  Created by Vương Toàn Bắc on 12/16/20.
-//
+
 
 import UIKit
 import SDWebImage

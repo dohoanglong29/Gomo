@@ -1,9 +1,4 @@
-//
-//  LoginViewController.swift
-//  GomoApp
-//
-//  Created by BAC Vuong Toan (VTI.Intern) on 11/27/20.
-//
+
 
 import UIKit
 import Firebase

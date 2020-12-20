@@ -1,9 +1,4 @@
-//
-//  Employees.swift
-//  GomoApp
-//
-//  Created by Vương Toàn Bắc on 12/9/20.
-//
+
 
 import Foundation
 

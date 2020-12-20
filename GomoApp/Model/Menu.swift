@@ -1,9 +1,4 @@
-//
-//  Menu.swift
-//  GomoApp
-//
-//  Created by Vương Toàn Bắc on 11/23/20.
-//
+
 
 import Foundation
 struct Menu: Codable {

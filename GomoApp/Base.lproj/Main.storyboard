@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CLb-Nf-mk6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5cR-uG-OiG">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -242,13 +242,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0%" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4KY-Fb-L7L">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0%" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4KY-Fb-L7L">
                                         <rect key="frame" x="144.33333333333337" y="490.33333333333331" width="249.66666666666663" height="24.999999999999943"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="OPX-Gz-eeQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="TimesNewRomanPS-ItalicMT" family="Times New Roman" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lý do" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hr1-S5-QtY">
                                         <rect key="frame" x="20" y="522.33333333333337" width="374" height="40"/>
@@ -288,13 +288,13 @@
                                             <action selector="btnScanBill:" destination="QwZ-P3-5Vz" eventType="touchUpInside" id="8ZP-QF-in6"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rkz-pm-xMa">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="VNĐ" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rkz-pm-xMa">
                                         <rect key="frame" x="144.33333333333337" y="461.33333333333331" width="249.66666666666663" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="NA4-oc-Jjo"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="TimesNewRomanPS-ItalicMT" family="Times New Roman" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <action selector="changePrice:" destination="QwZ-P3-5Vz" eventType="editingChanged" id="OBp-uU-l5j"/>
                                         </connections>
@@ -1322,11 +1322,11 @@
             </objects>
             <point key="canvasLocation" x="-1446" y="1323"/>
         </scene>
-        <!--Settings-->
+        <!--Cài đặt-->
         <scene sceneID="wOA-4V-Tj1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x1Z-IW-I1g" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="obJ-Et-dSy"/>
+                    <tabBarItem key="tabBarItem" title="Cài đặt" image="gearshape" catalog="system" id="obJ-Et-dSy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8YV-Rj-due">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>

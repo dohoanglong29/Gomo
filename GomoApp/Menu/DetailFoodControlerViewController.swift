@@ -1,9 +1,4 @@
-//
-//  DetailFoodControlerViewController.swift
-//  Gomo
-//
-//  Created by Vương Toàn Bắc on 10/23/20.
-//
+
 
 import UIKit
 import Firebase

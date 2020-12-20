@@ -1,9 +1,4 @@
-//
-//  CartViewController.swift
-//  Gomo
-//
-//  Created by Vương Toàn Bắc on 10/24/20.
-//
+
 
 import UIKit
 import Firebase

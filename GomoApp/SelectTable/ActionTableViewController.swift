@@ -1,9 +1,4 @@
-//
-//  ActionTableViewController.swift
-//  GomoApp
-//
-//  Created by BAC Vuong Toan (VTI.Intern) on 12/10/20.
-//
+
 
 import UIKit
 import Firebase
@@ -48,7 +43,7 @@ class ActionTableViewController: UIViewController {
     @IBAction func btnConfirm(_ sender: Any) {
         
         
-        if idTable == txtSelectTable.text{
+        if idTable == txtSelectTable.text || txtSelectTable.text == ""{
             AlertUtil.showAlert(from: self, with: Constans.notification, message: Constans.selectTable)
         }else{
             getDataBill()

@@ -1,9 +1,4 @@
-//
-//  ResetPasswordViewController.swift
-//  GomoApp
-//
-//  Created by BAC Vuong Toan (VTI.Intern) on 12/17/20.
-//
+
 
 import UIKit
 import Firebase

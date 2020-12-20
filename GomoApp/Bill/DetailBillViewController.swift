@@ -1,10 +1,3 @@
-//
-//  DetailBillViewController.swift
-//  Gomo
-//
-//  Created by Vương Toàn Bắc on 11/12/20.
-//
-
 import UIKit
 import  Firebase
 
@@ -42,7 +35,8 @@ class DetailBillViewController: UIViewController {
     var note = ""
     var discount1 = ""
     var othermoney = ""
-    var totalPay1 = ""
+    var totalPay1 = 0
+    var money = 0
 
     
     
@@ -78,7 +72,6 @@ class DetailBillViewController: UIViewController {
             self.listPrice.append(Int(tempPrice[i]) ?? 0)
         }
         let total = listPrice.reduce(0, +)
-        lblTotalPay.text = "\(Defined.formatter.string(from: NSNumber(value: total ))!)" + " VNĐ"
         lblAmount.text = "\(Defined.formatter.string(from: NSNumber(value: total ))!)" + " VNĐ"
         lblDate.text = time
         numberTable.text = "Bàn số: \(numberTb)"
@@ -86,7 +79,11 @@ class DetailBillViewController: UIViewController {
         txtTruTien.text = othermoney
         txtChiecKhau.text = discount1
         lblNote.text = note
-        lblTotalPay.text = totalPay1
+        if status == "1"{
+            lblTotalPay.text = String(totalPay1)
+        }else{
+            lblTotalPay.text = String(total)
+        }
     }
     
     func setDataBill() {
@@ -101,6 +98,10 @@ class DetailBillViewController: UIViewController {
         
     }
     func billDone(){
+        if let strAmount = lblTotalPay.text,
+           let intAmount = Int(strAmount){
+            money = intAmount
+        }
         let total = listPrice.reduce(0, +)
         let billDone = [
             "detilbill": detailFood ,
@@ -111,11 +112,10 @@ class DetailBillViewController: UIViewController {
             "time":time,
             "date":date,
             "note":lblNote.text ?? "",
-            "totalpay": lblTotalPay.text ?? "",
+            "totalpay": money,
             "numbertable":numberTb,] as [String: Any]
         Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Done").childByAutoId().setValue(billDone)
     }
-    
     
     func billPay()  {
         Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present/\(Int(self.numberTb) ?? 0)").removeValue { (error, reference) in
@@ -148,9 +148,8 @@ class DetailBillViewController: UIViewController {
                 AlertUtil.showAlert(from: self, with:Constans.notification, message:Constans.pay)
             }else{
                 totalPayInDiscount = total - moneyMinus
-                lblTotalPay.text = "\(Defined.formatter.string(from: NSNumber(value: totalPayInDiscount))!)" + " VNĐ"
+                lblTotalPay.text = String(totalPayInDiscount)
             }
-        
     }
     
     
@@ -217,7 +216,6 @@ extension DetailBillViewController: UITableViewDataSource, UITableViewDelegate{
     
 }
 
-
 extension DetailBillViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -241,7 +239,7 @@ extension DetailBillViewController: UIPickerViewDelegate, UIPickerViewDataSource
         }
         let abc = totalPayInDiscount * discount/100
         
-        lblTotalPay.text = String(totalPayInDiscount  - abc) + "VND"
+        lblTotalPay.text = String(totalPayInDiscount  - abc)
     }
 }
 

@@ -1,9 +1,3 @@
-//
-//  TableCCell.swift
-//  Gomo
-//
-//  Created by Vương Toàn Bắc on 11/3/20.
-//
 
 import UIKit
 import Firebase

@@ -1,9 +1,4 @@
-//
-//  FoodCell.swift
-//  Gomo
-//
-//  Created by Vương Toàn Bắc on 11/12/20.
-//
+
 
 import UIKit
 

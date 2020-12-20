@@ -61,7 +61,7 @@ class BillViewController: UIViewController {
                         let discount = value["discount"] as? String
                         let note = value["note"] as? String
                         let othermoney = value["othermoney"] as? String
-                        let totalPay = value["totalpay"] as? String
+                        let totalPay = value["totalpay"] as? Int
                         let bill = Bill(id: id, othermoney: othermoney, numberTable: numbertable, detailFood:detilbill, Total: total, date: date, discouunt: discount, time: time, listpricefood: listpricefood, note: note, totalPay: totalPay)
                         self.bills.append(bill)
                     }
@@ -93,7 +93,7 @@ extension BillViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = BillCell.loadCell(tableView) as! BillCell
-        cell.setUpData(data: bills[indexPath.row])
+        cell.setUpData(data: bills[indexPath.row], s:status)
         return cell
     }
     
@@ -104,13 +104,13 @@ extension BillViewController: UITableViewDelegate, UITableViewDataSource{
         vc.detailFood = detailBill.detailFood ?? ""
         vc.date = detailBill.date ?? ""
         vc.time = detailBill.time ?? ""
-        vc.numberTb = detailBill.id ?? ""
+        vc.numberTb = detailBill.numberTable ?? ""
         vc.status = status
         vc.note = detailBill.note ?? ""
         vc.discount1 = detailBill.discouunt ?? ""
         vc.othermoney = detailBill.othermoney ?? ""
         vc.listpricefood = detailBill.listpricefood ?? ""
-        vc.totalPay1 = detailBill.totalPay ?? ""
+        vc.totalPay1 = detailBill.totalPay ?? 0
         self.present(vc, animated: true, completion: nil)
     }
 }
