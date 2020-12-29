@@ -15,7 +15,5 @@ target 'GomoApp' do
     pod 'Firebase/Storage'
     pod 'SDWebImage'
     pod 'IQKeyboardManagerSwift'
-    pod 'RxSwift'
-    pod 'RxCocoa'
 
 end

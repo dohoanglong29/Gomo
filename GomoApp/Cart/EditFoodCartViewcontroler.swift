@@ -66,7 +66,6 @@ class EditFoodCartViewcontroler: UIViewController {
     
     @IBAction func btnCong(_ sender: Any) {
         if NumberCount > 9{
-            print("aa")
         }else{
             NumberCount += 1
             setUpDetailMenu()
@@ -87,7 +86,6 @@ class EditFoodCartViewcontroler: UIViewController {
            let intPrice = Int(strPrice){
             prices = intPrice
         }
-        
         let setUpFood = [
             "countfood": Int(lblCountFood.text ?? "") as Any,
             "imagefood": imagef,

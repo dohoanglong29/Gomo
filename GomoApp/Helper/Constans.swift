@@ -33,6 +33,7 @@ class Constans {
     static let selectTable = "Đang ở bàn hiện tại"
     
     static let deleteCart = "Bạn có muốn xoá giổ hàng không "
+    static let cartnull = "Giỏ hàng của bạn vẫn còn trống"
 
 
 

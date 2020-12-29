@@ -2,13 +2,14 @@
 
 import UIKit
 import Firebase
-import RxSwift
 
 class CartViewController: UIViewController {
     
     @IBOutlet weak var btnAddFood: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblTotal: UILabel!
+    
+
     
     let curentDateTime = Date()
     var carts = [Cart]()
@@ -24,17 +25,11 @@ class CartViewController: UIViewController {
         CartCell.registerCellByNib(tableView)
         getDataCart()
     }
-    
-    func dateFormatTime(date : Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        return dateFormatter.string(from: date)
-    }
+
     
     func getDataCart(){
         Defined.formatter.groupingSeparator = "."
         Defined.formatter.numberStyle = .decimal
-
         Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { [self] (DataSnapshot) in
             self.carts.removeAll()
             self.amount = 0
@@ -62,12 +57,10 @@ class CartViewController: UIViewController {
     
     @IBAction func btnOder(_ sender: Any) {
         if (amount == 0){
-            AlertUtil.showAlert(from: self, with:Constans.notification, message:"Giỏ hàng của bạn vẫn còn trống")
+            AlertUtil.showAlert(from: self, with:Constans.notification, message:Constans.cartnull)
         }else{
-            let dateThis = dateFormatTime(date: Date())
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm dd/MM/yyyy"
-            let someDateTime = formatter.string(from: curentDateTime)
+            let dateThis = FormatDay(date: Date())
+            let someDateTime = FormatTime(time: curentDateTime)
             let cartDict = [
                 "detilbill": listFood,
                 "listpricefood": listPriceFood,
@@ -76,7 +69,7 @@ class CartViewController: UIViewController {
                 "date":dateThis,
                 "time":someDateTime,
                 "numbertable":self.idTable,] as [String: Any]
-            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present/\(Int(self.idTable) ?? 0)").setValue(cartDict)
+            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present/\(Int(self.idTable) ?? 0)").updateChildValues(cartDict)
             Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 3])
             self.navigationController?.popViewController(animated: true)
         }

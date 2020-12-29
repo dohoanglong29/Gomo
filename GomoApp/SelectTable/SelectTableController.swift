@@ -31,19 +31,12 @@ class SelectTableController: UIViewController {
                     vc.idTable = String(tb.NumberTable ?? 1)
                     self.present(vc, animated: true, completion: nil)
                 }else{
-                    print("null")
+                    
                 }
             }
         }
     }
 
-    
-    func dateFormatTime(date : Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        return dateFormatter.string(from: date)
-    }
-    
     func getNumberTable(){
         Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").observe(DataEventType.value) { (DataSnapshot) in
             self.tables.removeAll()
@@ -66,7 +59,6 @@ class SelectTableController: UIViewController {
 
 extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(tables.count)
         return tables.count
     }
     
@@ -85,7 +77,6 @@ extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let tb = tables[indexPath.row]
         switch tables[indexPath.row].statu {
         case 0:
@@ -98,10 +89,10 @@ extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataS
             vc.statusTable1 = "1"
             Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(tb.NumberTable ?? 0))").updateChildValues(["statu": 0])
             self.navigationController?.pushViewController(vc, animated: true)
-            
         default:
-            AlertUtil.showAlert(from: self, with: "Gomo", message: "Bàn đã lên hoá đơn")
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.cart) as! CartViewController
+            vc.idTable = String(tb.NumberTable ?? 0)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
 }
