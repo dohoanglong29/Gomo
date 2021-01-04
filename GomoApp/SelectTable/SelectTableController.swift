@@ -92,6 +92,7 @@ extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataS
         default:
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.cart) as! CartViewController
             vc.idTable = String(tb.NumberTable ?? 0)
+            vc.status = tb.statu ?? 0
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

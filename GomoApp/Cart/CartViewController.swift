@@ -8,12 +8,11 @@ class CartViewController: UIViewController {
     @IBOutlet weak var btnAddFood: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblTotal: UILabel!
-    
-
-    
+        
     let curentDateTime = Date()
     var carts = [Cart]()
     var idTable = ""
+    var status = 0
     var amount = 0
     var statustable = ""
     var listFood = ""
@@ -24,14 +23,16 @@ class CartViewController: UIViewController {
         super.viewDidLoad()
         CartCell.registerCellByNib(tableView)
         getDataCart()
+        tableView.reloadData()
     }
 
-    
     func getDataCart(){
         Defined.formatter.groupingSeparator = "."
         Defined.formatter.numberStyle = .decimal
         Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { [self] (DataSnapshot) in
             self.carts.removeAll()
+            listFood =  ""
+            listPriceFood = ""
             self.amount = 0
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
                 for snap in snapshort {
@@ -56,23 +57,20 @@ class CartViewController: UIViewController {
     }
     
     @IBAction func btnOder(_ sender: Any) {
-        if (amount == 0){
-            AlertUtil.showAlert(from: self, with:Constans.notification, message:Constans.cartnull)
-        }else{
-            let dateThis = FormatDay(date: Date())
-            let someDateTime = FormatTime(time: curentDateTime)
-            let cartDict = [
-                "detilbill": listFood,
-                "listpricefood": listPriceFood,
-                "total": amount,
-                "status": 0,
-                "date":dateThis,
-                "time":someDateTime,
-                "numbertable":self.idTable,] as [String: Any]
-            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present/\(Int(self.idTable) ?? 0)").updateChildValues(cartDict)
+        let dateThis = FormatDay(date: Date())
+        let someDateTime = FormatTime(time: curentDateTime)
+        let cartDict = [
+            "detilbill": listFood,
+            "listpricefood": listPriceFood,
+            "total": amount,
+            "status": 0,
+            "date":dateThis,
+            "time":someDateTime,
+            "numbertable":self.idTable,] as [String: Any]
             Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 3])
-            self.navigationController?.popViewController(animated: true)
-        }
+            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present/\(Int(self.idTable) ?? 0)").updateChildValues(cartDict)
+        self.navigationController?.popViewController(animated: true)
+
     }
     
     @IBAction func btnDeleteCart(_ sender: Any) {
@@ -93,7 +91,6 @@ class CartViewController: UIViewController {
         vc.idTable = idTable
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
 }
 
 extension CartViewController: UITableViewDelegate, UITableViewDataSource{
@@ -118,7 +115,6 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
-            //et c = self.carts[indexPath.row]
             vc.namef = c.name ?? ""
             vc.imagef = c.image ?? ""
             vc.pricef = c.price ?? 0
@@ -128,7 +124,6 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
             self.present(vc, animated: true, completion: nil)
         }
         share.backgroundColor = UIColor.blue
-
         return [delete, share]
     }
 }
