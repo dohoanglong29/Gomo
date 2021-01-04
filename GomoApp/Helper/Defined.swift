@@ -1,10 +1,8 @@
 
-
 import Foundation
 import Firebase
 import FirebaseDatabase
 import FirebaseStorage
-
 
 class Defined {
     static let defaults = UserDefaults.standard

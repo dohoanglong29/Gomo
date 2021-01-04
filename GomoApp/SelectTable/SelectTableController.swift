@@ -4,11 +4,10 @@ import UIKit
 import Firebase
 
 class SelectTableController: UIViewController {
-    
+    @IBOutlet weak var collectionView: UICollectionView!
     var tables = [Table]()
     var status = 1
     
-    @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         TableCCell.registerCellByNib(collectionView)
@@ -80,8 +79,9 @@ extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataS
         let tb = tables[indexPath.row]
         switch tables[indexPath.row].statu {
         case 0:
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.cart) as! CartViewController
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
             vc.idTable = String(tb.NumberTable ?? 0)
+            vc.statusTable1 = "1"
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
@@ -95,5 +95,20 @@ extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataS
             vc.status = tb.statu ?? 0
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    
+    func addMenuItems() -> UIMenu {
+        let menuItems = UIMenu(title: "", options: .displayInline, children: [
+           
+            UIAction(title: "Edit Timesheet", image: UIImage(systemName: "square.and.arrow.down.on.square.fill"), handler: { (_) in
+                print("Edit Timesheet")
+            }),
+            UIAction(title: "View Details", image: UIImage(systemName:"magnifyingglass" ) , handler: { (_) in
+                print("Details")
+            })
+            
+        ])
+        return menuItems
     }
 }

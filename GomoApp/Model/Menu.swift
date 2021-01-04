@@ -1,5 +1,4 @@
 
-
 import Foundation
 struct Menu: Codable {
     var id: String? = nil

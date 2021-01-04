@@ -11,9 +11,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtUserName: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var btnHidePassword: UIButton!
-    var checkEmail = ""
     var employees = [Employees]()
     var emailthis:String?
+    var checkEmail = ""
     var birtday1 = ""
     var address1 = ""
     var avatar1 = ""
@@ -109,6 +109,7 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
     func isValidEmail(email: String) -> Bool {
         let emailRegEx = Constans.validateEmail
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)

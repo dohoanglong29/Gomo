@@ -26,7 +26,6 @@ class EditFoodCartViewcontroler: UIViewController {
     var idTable = ""
     var counts = 0
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpData()
@@ -52,7 +51,6 @@ class EditFoodCartViewcontroler: UIViewController {
         btnTru.layer.cornerRadius = btnTru.bounds.size.height/2
         btnCong.layer.cornerRadius = btnTru.bounds.size.height/2
     }
-    
     
     @IBAction func btnTru(_ sender: Any) {
         if NumberCount < 2{

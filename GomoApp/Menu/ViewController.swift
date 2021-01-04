@@ -29,9 +29,9 @@ class ViewController: UIViewController {
         self.navigationItem.searchController = searchController
         
         FoodCell.registerCellByNib(collectionView)
-        btnCart.layer.borderWidth = 0.1
-        btnCart.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        btnCart.layer.cornerRadius = 35
+        btnCart.layer.borderWidth = 1
+        btnCart.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        btnCart.layer.cornerRadius = 7
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         collectionView.addGestureRecognizer(longPress)
     }
@@ -46,7 +46,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btnSelectMenu(_ sender: UISegmentedControl) {
-        
         switch sender.selectedSegmentIndex {
         case 0:
             getFoodsData()
@@ -63,7 +62,6 @@ class ViewController: UIViewController {
         vc.idTable = idTable
         vc.statustable = statusTable1
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     @IBAction func btnBack(_ sender: Any) {

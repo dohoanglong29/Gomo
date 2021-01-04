@@ -1,5 +1,4 @@
 
-
 import Foundation
 struct Table: Codable {
     var statu: Int? = nil

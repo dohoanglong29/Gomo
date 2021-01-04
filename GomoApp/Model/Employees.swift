@@ -1,7 +1,5 @@
 
-
 import Foundation
-
 struct Employees: Codable {
     var address: String? = nil
     var avatar: String? = nil

@@ -20,7 +20,6 @@ class BillViewController: UIViewController {
         BillCell.registerCellByNib(tableView)
         getBillPresent()
         status = "0"
-        
     }
     
     func getBillPresent(){

@@ -41,8 +41,6 @@ class ActionTableViewController: UIViewController {
 
     
     @IBAction func btnConfirm(_ sender: Any) {
-        
-        
         if idTable == txtSelectTable.text || txtSelectTable.text == ""{
             AlertUtil.showAlert(from: self, with: Constans.notification, message: Constans.selectTable)
         }else{
@@ -62,10 +60,8 @@ class ActionTableViewController: UIViewController {
                 } else {
                     Defined.ref.child("Account").child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 1])
                     self.dismiss(animated: true, completion: nil)
-
                 }
             }
-            
         }
     }
     
@@ -138,7 +134,6 @@ class ActionTableViewController: UIViewController {
             }
         }
     }
-    
     
     // tạo Pickerview
     func createPickerView() {

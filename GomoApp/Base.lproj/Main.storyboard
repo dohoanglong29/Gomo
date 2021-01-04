@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5cR-uG-OiG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5cR-uG-OiG">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -33,14 +33,16 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Qlg-z3-wiM"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4e-hq-UO8">
-                                <rect key="frame" x="314" y="636" width="70" height="70"/>
-                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4e-hq-UO8">
+                                <rect key="frame" x="324" y="646" width="60" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="Pb7-CX-lkU"/>
-                                    <constraint firstAttribute="width" constant="70" id="htO-k0-78W"/>
+                                    <constraint firstAttribute="height" constant="60" id="Pb7-CX-lkU"/>
+                                    <constraint firstAttribute="width" constant="60" id="htO-k0-78W"/>
                                 </constraints>
-                                <state key="normal" image="cart2"/>
+                                <state key="normal" image="cart1">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                </state>
                                 <connections>
                                     <action selector="btnCart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zUc-h9-pNS"/>
                                 </connections>
@@ -1624,7 +1626,7 @@
         <image name="age" width="50" height="50"/>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="bill" width="30" height="30"/>
-        <image name="cart2" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="cart1" width="341.33334350585938" height="341.33334350585938"/>
         <image name="cartNill" width="426" height="289"/>
         <image name="doc.append.fill.rtl" catalog="system" width="115" height="128"/>
         <image name="eye_off" width="50" height="50"/>

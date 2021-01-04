@@ -1,6 +1,6 @@
 
-
 import UIKit
+
 class Constans {
     static let cart = "CartViewController"
     static let tutorial = "TutorialViewController"
@@ -10,9 +10,7 @@ class Constans {
     static let profile = "ProfileViewController"
     static let addTable = "AddTableViewController"
     static let resetPass = "ResetPasswordViewController"
-    
-    
- 
+    static let editFoodCart = "EditFoodCartViewcontroler" 
    
     // Login
     static let Ac = "Account"
@@ -28,13 +26,11 @@ class Constans {
     
     // reset pass
     static let letterBox = "Vui lòng kiểm tra email của bạn!"
+    static let edit = "Sửa"
+    static let delete  = "Xoá"
     
     // actionTable
     static let selectTable = "Đang ở bàn hiện tại"
-    
     static let deleteCart = "Bạn có muốn xoá giổ hàng không "
     static let cartnull = "Giỏ hàng của bạn vẫn còn trống"
-
-
-
 }

@@ -8,7 +8,7 @@ class CartViewController: UIViewController {
     @IBOutlet weak var btnAddFood: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblTotal: UILabel!
-        
+    
     let curentDateTime = Date()
     var carts = [Cart]()
     var idTable = ""
@@ -25,7 +25,7 @@ class CartViewController: UIViewController {
         getDataCart()
         tableView.reloadData()
     }
-
+    
     func getDataCart(){
         Defined.formatter.groupingSeparator = "."
         Defined.formatter.numberStyle = .decimal
@@ -67,10 +67,16 @@ class CartViewController: UIViewController {
             "date":dateThis,
             "time":someDateTime,
             "numbertable":self.idTable,] as [String: Any]
+        if amount == 0 {
+            AlertUtil.showAlert(from: self, with: Constans.notification, message: Constans.cartnull)
+        }else{
             Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 3])
             Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present/\(Int(self.idTable) ?? 0)").updateChildValues(cartDict)
-        self.navigationController?.popViewController(animated: true)
-
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+        }
+        
+        
     }
     
     @IBAction func btnDeleteCart(_ sender: Any) {
@@ -97,7 +103,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return carts.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CartCell.loadCell(tableView) as! CartCell
         cell.setUpData(data: carts[indexPath.row])
@@ -106,12 +112,12 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let c = self.carts[indexPath.row]
-        let delete = UITableViewRowAction(style: .destructive, title: "Xoá ") { [self] (action, indexPath) in
+        let delete = UITableViewRowAction(style: .destructive, title: Constans.delete) {  (action, indexPath) in
             Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").child("\(self.idTable)").child("ListFood/\(c.id ?? "")").removeValue { (error, reference) in}
-            print("delete\(c.id ?? "")")
         }
-        let share = UITableViewRowAction(style: .normal, title: "Sửa") { (action, indexPath) in
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditFoodCartViewcontroler") as! EditFoodCartViewcontroler
+        
+        let share = UITableViewRowAction(style: .normal, title: Constans.edit) { (action, indexPath) in
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.editFoodCart) as! EditFoodCartViewcontroler
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
@@ -130,5 +136,5 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
 
 
 
-    
+
 

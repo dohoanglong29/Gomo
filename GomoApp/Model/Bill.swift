@@ -1,5 +1,4 @@
 
-
 import Foundation
 struct Bill: Codable {
     var id: String? = nil
