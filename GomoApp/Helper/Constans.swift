@@ -10,7 +10,8 @@ class Constans {
     static let profile = "ProfileViewController"
     static let addTable = "AddTableViewController"
     static let resetPass = "ResetPasswordViewController"
-    static let editFoodCart = "EditFoodCartViewcontroler" 
+    static let editFoodCart = "EditFoodCartViewcontroler"
+    static let detailBill = "DetailBillViewController" 
    
     // Login
     static let Ac = "Account"
@@ -33,4 +34,10 @@ class Constans {
     static let selectTable = "Đang ở bàn hiện tại"
     static let deleteCart = "Bạn có muốn xoá giổ hàng không "
     static let cartnull = "Giỏ hàng của bạn vẫn còn trống"
+    
+    //bill
+    static let billThis = "Hoá đơn hiện tại "
+    static let billThat = "Hoá đơn đã thanh toán"
+
+    
 }

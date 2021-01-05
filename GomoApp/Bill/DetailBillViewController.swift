@@ -43,11 +43,8 @@ class DetailBillViewController: UIViewController {
     }
     
     func customView(){
-        subView.layer.borderWidth = 1
-        subView.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        subView.layer.cornerRadius = 5
-        subView.layer.shadowRadius = 5
-        subView.layer.shadowColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        subView.addShadow(radius: 5)
+        subView.addBoder(radius: 10, color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
     }
     
     func setUp(){
@@ -65,7 +62,7 @@ class DetailBillViewController: UIViewController {
             self.listPrice.append(Int(tempPrice[i]) ?? 0)
         }
         let total = listPrice.reduce(0, +)
-        lblAmount.text = "\(Defined.formatter.string(from: NSNumber(value: total ))!)" + " VNĐ"
+        lblAmount.text = "\(Defined.formatter.string(from: NSNumber(value: total ))!)" + " đ"
         lblDate.text = time
         numberTable.text = "Bàn số: \(numberTb)"
         totalPayInDiscount = total - moneyMinus

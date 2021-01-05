@@ -14,14 +14,14 @@ class TableCCell: BaseCLCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       setUp()
+        initComponent()
     }
     
-    func setUp(){
-        statusTable.layer.cornerRadius = 20
-        statusTable.layer.borderWidth = 2
-        subView.layer.cornerRadius = 20
-        subView.layer.borderWidth = 2
+     func initComponent() {
+        statusTable.addShadow(radius: 1)
+        statusTable.addBoder(radius: 20, color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
+        subView.addShadow(radius: 1)
+        subView.addBoder(radius: 20, color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
     }
     
     func setUp(data: Table){

@@ -50,9 +50,9 @@ class DetailFoodControlerViewController: UIViewController {
         imageFood.sd_setImage(with: URL(string: ImgFood ), completed: nil)
         lblFood.text = NameFood
         lblNote.text = NoteFood
-        lblPrice.text = "\(Defined.formatter.string(from: NSNumber(value: PriceFood ))!)" + " VNĐ"
+        lblPrice.text = "\(Defined.formatter.string(from: NSNumber(value: PriceFood ))!)" + " đ"
         lblCount.text = String(NumberCount)
-        lblTotal.text = "\(Defined.formatter.string(from: NSNumber(value: PriceFood ))!)" + " VNĐ"
+        lblTotal.text = "\(Defined.formatter.string(from: NSNumber(value: PriceFood ))!)" + " đ"
       
     }
     
@@ -105,7 +105,7 @@ class DetailFoodControlerViewController: UIViewController {
     func setUpDetailMenu() {
         lblCount.text = String(NumberCount)
         lblSoLuong.text = "Số Lượng: \(NumberCount)"
-        lblTotal.text = "\(Defined.formatter.string(from: NSNumber(value: NumberCount * PriceFood ))!)" + " VNĐ"
+        lblTotal.text = "\(Defined.formatter.string(from: NSNumber(value: NumberCount * PriceFood ))!)" + " đ"
     }
     
     

@@ -16,10 +16,9 @@ class FoodCell: BaseCLCell {
     }
     
     func customView(){
-        imageFood.layer.cornerRadius = 20
-        bView.layer.cornerRadius = 20
-        bView.layer.borderWidth = 0.2
-        bView.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        imageFood.addBoder(radius: 20, color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
+        bView.addShadow(radius: 5)
+        bView.addBoder(radius: 20, color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
     }
     
     func setUpData(data:Menu){
@@ -27,7 +26,7 @@ class FoodCell: BaseCLCell {
         Defined.formatter.numberStyle = .decimal
         imageFood.sd_setImage(with: URL(string: data.image ?? ""), completed: nil)
         nameFood.text = data.name
-        amountFood.text = "\(Defined.formatter.string(from: NSNumber(value: data.price ?? 0 ))!)" + " VNĐ"
+        amountFood.text = "\(Defined.formatter.string(from: NSNumber(value: data.price ?? 0 ))!)" + " đ"
         
         if data.statusFood == "0" {
             statusFood.text = "Hết hàng"

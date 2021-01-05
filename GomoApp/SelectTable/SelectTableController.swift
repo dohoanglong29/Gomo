@@ -3,6 +3,8 @@
 import UIKit
 import Firebase
 
+
+
 class SelectTableController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     var tables = [Table]()
@@ -13,9 +15,9 @@ class SelectTableController: UIViewController {
         TableCCell.registerCellByNib(collectionView)
         getNumberTable()
         collectionView.reloadData()
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        collectionView.addGestureRecognizer(longPress)
+        
     }
+    
     
     @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizer.State.began {
@@ -35,7 +37,7 @@ class SelectTableController: UIViewController {
             }
         }
     }
-
+    
     func getNumberTable(){
         Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").observe(DataEventType.value) { (DataSnapshot) in
             self.tables.removeAll()
@@ -75,40 +77,85 @@ extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let tb = tables[indexPath.row]
-        switch tables[indexPath.row].statu {
-        case 0:
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            vc.idTable = String(tb.NumberTable ?? 0)
-            vc.statusTable1 = "1"
-            self.navigationController?.pushViewController(vc, animated: true)
-        case 1:
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            vc.idTable = String(tb.NumberTable ?? 0)
-            vc.statusTable1 = "1"
-            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(tb.NumberTable ?? 0))").updateChildValues(["statu": 0])
-            self.navigationController?.pushViewController(vc, animated: true)
-        default:
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.cart) as! CartViewController
-            vc.idTable = String(tb.NumberTable ?? 0)
-            vc.status = tb.statu ?? 0
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+    func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
+            return self.addMenuItems(for: indexPath.row)
+        })
+    }
     
-    func addMenuItems() -> UIMenu {
-        let menuItems = UIMenu(title: "", options: .displayInline, children: [
-           
-            UIAction(title: "Edit Timesheet", image: UIImage(systemName: "square.and.arrow.down.on.square.fill"), handler: { (_) in
-                print("Edit Timesheet")
-            }),
-            UIAction(title: "View Details", image: UIImage(systemName:"magnifyingglass" ) , handler: { (_) in
-                print("Details")
-            })
-            
-        ])
-        return menuItems
+    func addMenuItems(for index:Int) -> UIMenu {
+        let tb = tables[index]
+        switch tables[index].statu {
+        case 0:
+            let menuItems = UIMenu(title: "", options: .displayInline, children: [
+                UIAction(title: "Đặt món", image: UIImage(named: "ic_food"), handler: { (_) in
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                    vc.idTable = String(tb.NumberTable ?? 0)
+                    vc.statusTable1 = "1"
+                    Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(tb.NumberTable ?? 0))").updateChildValues(["statu": 0])
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }),
+                
+                UIAction(title: "Giỏ Hàng", image: UIImage(named: "ic_cart"), handler: { (_) in
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.cart) as! CartViewController
+                    vc.idTable = String(tb.NumberTable ?? 0)
+                    vc.status = tb.statu ?? 0
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }),
+                
+                UIAction(title: "Trạng thái trống", image: UIImage(named: "ic_table"), handler: { (_) in
+                    Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(tb.NumberTable ?? 0))").updateChildValues(["statu": 1])
+                }),
+            ])
+            return menuItems
+        case 1:
+            let menuItems = UIMenu(title: "", options: .displayInline, children: [
+                UIAction(title: "Giữ bàn", image: UIImage(named: "ic_hold") , handler: { (_) in
+                    Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(tb.NumberTable ?? 0))").updateChildValues(["statu": 0])
+                }),
+                
+                UIAction(title: "Đặt món", image: UIImage(named: "ic_food"), handler: { (_) in
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                    vc.idTable = String(tb.NumberTable ?? 0)
+                    vc.statusTable1 = "1"
+                    Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(tb.NumberTable ?? 0))").updateChildValues(["statu": 0])
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }),
+                
+            ])
+            return menuItems
+        default:
+            let menuItems = UIMenu(title: "", options: .displayInline, children: [
+                UIAction(title: "Gọi thêm món", image: UIImage(named: "ic_food"), handler: { (_) in
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                    vc.idTable = String(tb.NumberTable ?? 0)
+                    vc.statusTable1 = "1"
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }),
+                
+                UIAction(title: "Giỏ Hàng", image: UIImage(named: "ic_cart"), handler: { (_) in
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.cart) as! CartViewController
+                    vc.idTable = String(tb.NumberTable ?? 0)
+                    vc.status = tb.statu ?? 0
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }),
+                
+                UIAction(title: "Gộp bàn", image: UIImage(named: "ic_merge" ) , handler: { (_) in
+                    if self.tables[index].statu == 3{
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ActionTableViewController") as! ActionTableViewController
+                        vc.modalPresentationStyle = .fullScreen
+                        vc.modalTransitionStyle = .crossDissolve
+                        vc.modalPresentationStyle = .overCurrentContext
+                        vc.idTable = String(tb.NumberTable ?? 1)
+                        self.present(vc, animated: true, completion: nil)
+                    }
+                })
+            ])
+            return menuItems
+        }
     }
 }

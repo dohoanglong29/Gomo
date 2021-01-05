@@ -28,28 +28,27 @@ class EditFoodCartViewcontroler: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpData()
+        initComponent()
         setUPView()
     }
     
-    func setUpData() {
+    func initComponent() {
         Defined.formatter.groupingSeparator = "."
         Defined.formatter.numberStyle = .decimal
         imageFood.sd_setImage(with: URL(string: imagef), completed: nil)
         lblNameFood.text = namef
-        lblPriceFood.text = String(pricef/countFood)
-        lblTotal.text = String(pricef/countFood)
+        lblPriceFood.text = String(pricef/countFood) + " đ"
+        lblTotal.text = String(pricef/countFood) + " đ"
     }
     
     func setUPView(){
-        imageFood.layer.cornerRadius = 20
-        subView.layer.cornerRadius = 20
-        subView.layer.shadowColor = UIColor.black.cgColor
-        subView.layer.shadowOpacity = 0.6
-        subView.layer.shadowOffset = .zero
-        subView.layer.shadowRadius = 10
-        btnTru.layer.cornerRadius = btnTru.bounds.size.height/2
-        btnCong.layer.cornerRadius = btnTru.bounds.size.height/2
+        subView.addShadow(radius: 5)
+        imageFood.addBoder(radius: 15, color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
+        subView.addBoder(radius: 20, color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
+        btnTru.addBoder(radius: btnTru.bounds.size.height/2, color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
+        btnCong.addBoder(radius: btnTru.bounds.size.height/2, color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
+        btnBack.addBoder(radius: 20, color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
+        btnSetUp.addBoder(radius: 20, color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
     }
     
     @IBAction func btnTru(_ sender: Any) {
@@ -72,7 +71,7 @@ class EditFoodCartViewcontroler: UIViewController {
     
     func setUpDetailMenu() {
         lblCountFood.text = String(NumberCount)
-        lblTotal.text = String(NumberCount * pricef/countFood)
+        lblTotal.text = String(NumberCount * pricef/countFood) + " đ"
     }
     
     @IBAction func btnBack(_ sender: Any) {

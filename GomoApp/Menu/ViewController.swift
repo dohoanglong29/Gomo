@@ -2,51 +2,35 @@
 
 import UIKit
 import Firebase
+import BetterSegmentedControl
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var search1Bar: UISearchBar!
-    @IBOutlet weak var segmented: UISegmentedControl!
+    @IBOutlet weak var segmentedCustoms: BetterSegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var btnCart: UIButton!
     var menus = [Menu]()
     var strFood = [Menu]()
     let searchController = UISearchController(searchResultsController: nil)
-    
     var statusTable1 = ""
     var idTable = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initComponent()
+    }
+    fileprivate func initComponent() {
         getFoodsData()
-        if statusTable1 == "1"{
-            btnCart.isHidden = false
-        }else{
-            btnCart.isHidden = true
-        }
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        self.navigationItem.searchController = searchController
-        
+        btnCart.addShadow(radius: 5)
+        btnCart.addBoder(radius: 7,color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
         FoodCell.registerCellByNib(collectionView)
-        btnCart.layer.borderWidth = 1
-        btnCart.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        btnCart.layer.cornerRadius = 7
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        collectionView.addGestureRecognizer(longPress)
+        searchController.searchResultsUpdater = self
+        self.navigationItem.searchController = searchController
+        segmentedCustoms.segments = LabelSegment.segments(withTitles: ["Đồ ăn", "Đồ uống ", "Đồ khác"],normalTextColor: #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1),selectedTextColor: #colorLiteral(red: 0.9254901961, green: 0.9568627451, blue: 0.9921568627, alpha: 1))
     }
-    
-    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
-        if sender.state == UIGestureRecognizer.State.began {
-            let touchPoint = sender.location(in: collectionView)
-            if let indexPath = collectionView.indexPathForItem(at: touchPoint) {
-                print(indexPath)
-            }
-        }
-    }
-    
-    @IBAction func btnSelectMenu(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
+
+    @IBAction func segmentedSelectMenu(_ sender: BetterSegmentedControl) {
+        switch sender.index {
         case 0:
             getFoodsData()
         case 1:
@@ -135,8 +119,6 @@ class ViewController: UIViewController {
     }
 }
 
-
-
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return strFood.count
@@ -145,11 +127,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = FoodCell.loadCell(collectionView, path: indexPath) as! FoodCell
         cell.setUpData(data: strFood[indexPath.row])
-        if strFood[indexPath.row].statusFood == "0" {
-            cell.bView.alpha = 0.5
-        }else{
-            cell.bView.alpha = 1
-        }
         return cell
     }
     

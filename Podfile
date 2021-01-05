@@ -15,5 +15,5 @@ target 'GomoApp' do
     pod 'Firebase/Storage'
     pod 'SDWebImage'
     pod 'IQKeyboardManagerSwift'
-
+    pod 'BetterSegmentedControl'
 end

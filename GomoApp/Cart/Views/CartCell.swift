@@ -24,7 +24,7 @@ class CartCell: BaseTBCell {
         iconFood.sd_setImage(with: URL(string: data.image ?? ""), completed: nil)
         nameFood.text = data.name
         cateid = data.id ?? ""
-        priceFood.text = "Gia Tiền: " + "\(Defined.formatter.string(from: NSNumber(value: data.price ?? 0 ))!)"  + " VNĐ"
+        priceFood.text = "Gia Tiền: " + "\(Defined.formatter.string(from: NSNumber(value: data.price ?? 0 ))!)"  + " đ"
         countFood.text = "Số Lượng: " + String(data.count!)
     }
 }

@@ -7,18 +7,25 @@
 
 import UIKit
 import Firebase
+import BetterSegmentedControl
 
 class BillViewController: UIViewController {
-    
+    @IBOutlet weak var segmentedCustom: BetterSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var segmented: UISegmentedControl!
     var bills = [Bill]()
     var status = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        BillCell.registerCellByNib(tableView)
         getBillPresent()
+        initComponent()
+    }
+    
+    func initComponent(){
+        BillCell.registerCellByNib(tableView)
+        segmentedCustom.segments = LabelSegment.segments(
+            withTitles:[Constans.billThis,Constans.billThat],
+            normalTextColor: #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1),selectedTextColor: #colorLiteral(red: 0.9254901961, green: 0.9568627451, blue: 0.9921568627, alpha: 1))
         status = "0"
     }
     
@@ -68,8 +75,8 @@ class BillViewController: UIViewController {
         }
     }
     
-    @IBAction func btnSelectBill(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
+    @IBAction func btnSegmentBill(_ sender: BetterSegmentedControl) {
+        if sender.index == 0{
             getBillPresent()
             status = "0"
         }else{
@@ -86,12 +93,13 @@ extension BillViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = BillCell.loadCell(tableView) as! BillCell
+        cell.selectionStyle = .none
         cell.setUpData(data: bills[indexPath.row], s:status)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailBillViewController") as! DetailBillViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Constans.detailBill) as! DetailBillViewController
         let detailBill = bills[indexPath.row]
         vc.amount = detailBill.Total ?? 0
         vc.detailFood = detailBill.detailFood ?? ""

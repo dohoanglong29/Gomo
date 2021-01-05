@@ -7,5 +7,4 @@ struct Menu: Codable {
     var note: String? = nil
     var price: Int? = nil
     var statusFood: String? = nil
-
 }

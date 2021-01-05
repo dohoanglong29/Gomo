@@ -21,7 +21,6 @@ class SettingViewController: UIViewController {
     }
      
     func setUp(){
-        print(avatar1 ?? "")
         avatar.layer.cornerRadius = avatar.bounds.width/2
         avatar.layer.borderWidth = 1
         avatar.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)

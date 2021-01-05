@@ -50,6 +50,7 @@
 		9833171F2587100C001A06AA /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9833171E2587100C001A06AA /* TutorialViewController.swift */; };
 		98331728258711DA001A06AA /* AddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98331727258711DA001A06AA /* AddTableViewController.swift */; };
 		984F4BC6258B119B000BB7A4 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984F4BC5258B119B000BB7A4 /* ResetPasswordViewController.swift */; };
+		9889AC8425A44E200063F34B /* UIViewExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9889AC8325A44E200063F34B /* UIViewExtentions.swift */; };
 		988A459B2570D1B300254367 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988A459A2570D1B300254367 /* TabBarController.swift */; };
 		988A45A42570D20600254367 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988A45A32570D20600254367 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
@@ -122,6 +123,7 @@
 		9833171E2587100C001A06AA /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		98331727258711DA001A06AA /* AddTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewController.swift; sourceTree = "<group>"; };
 		984F4BC5258B119B000BB7A4 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		9889AC8325A44E200063F34B /* UIViewExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtentions.swift; sourceTree = "<group>"; };
 		988A459A2570D1B300254367 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		988A45A32570D20600254367 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ADACE7FE4D1E7A0AC39C0B0F /* Pods-GomoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GomoApp.release.xcconfig"; path = "Target Support Files/Pods-GomoApp/Pods-GomoApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				988A459A2570D1B300254367 /* TabBarController.swift */,
+				9889AC8325A44E200063F34B /* UIViewExtentions.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				5EF8CB27256C1219008A5855 /* BillCell.swift in Sources */,
 				5EDF77612579356000047588 /* SettingViewController.swift in Sources */,
 				5E34B791256C06F200980DE7 /* SceneDelegate.swift in Sources */,
+				9889AC8425A44E200063F34B /* UIViewExtentions.swift in Sources */,
 				988A459B2570D1B300254367 /* TabBarController.swift in Sources */,
 				5EDF7772257939E400047588 /* ProfileViewController.swift in Sources */,
 				5EE8E895256C0E810038E299 /* BaseTBCell.swift in Sources */,

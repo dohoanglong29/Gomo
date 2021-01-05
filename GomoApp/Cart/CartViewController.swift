@@ -8,6 +8,9 @@ class CartViewController: UIViewController {
     @IBOutlet weak var btnAddFood: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblTotal: UILabel!
+    @IBOutlet weak var btnOder: UIButton!
+    @IBOutlet weak var subView: UIView!
+    @IBOutlet weak var imageCartNil: UIImageView!
     
     let curentDateTime = Date()
     var carts = [Cart]()
@@ -21,9 +24,18 @@ class CartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CartCell.registerCellByNib(tableView)
         getDataCart()
-        tableView.reloadData()
+        initComponent()
+
+    }
+    
+    fileprivate func initComponent() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        CartCell.registerCellByNib(tableView)
+        subView.addShadow(radius: 5)
+        btnOder.addBoder(radius: 10, color: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1))
+        btnOder.addShadow(radius: 5)
     }
     
     func getDataCart(){
@@ -44,11 +56,16 @@ class CartViewController: UIViewController {
                         let pricefood = value["pricefood"] as! Int
                         let cart = Cart(id: id, count: countfood, image: imagefood, name: namefood, price: pricefood)
                         self.carts.append(cart)
+                        if carts.count == 0  {
+                            imageCartNil.isHidden = false
+                        }else{
+                            imageCartNil.isHidden = true
+                        }
                         self.amount += pricefood
                         self.idCart = id
                         self.listPriceFood += String(pricefood) + "/"
                         self.listFood += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  +  "/"
-                        self.lblTotal.text = "Giá Tiền: " + "\(Defined.formatter.string(from: NSNumber(value: self.amount ))!)" + " VNĐ"
+                        self.lblTotal.text = "\(Defined.formatter.string(from: NSNumber(value: self.amount ))!)" + " đ"
                     }
                 }
                 self.tableView.reloadData()
@@ -74,21 +91,6 @@ class CartViewController: UIViewController {
             Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present/\(Int(self.idTable) ?? 0)").updateChildValues(cartDict)
             let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
             self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
-        }
-        
-        
-    }
-    
-    @IBAction func btnDeleteCart(_ sender: Any) {
-        AlertUtil.actionAlert(from: self, with: Constans.notification, message: Constans.deleteCart) { (ac) in
-            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)/ListFood").removeValue { (error, reference) in
-                if error != nil {
-                    print("Error: \(error!)")
-                } else {
-                    Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 1])
-                    self.navigationController?.popViewController(animated: true)
-                }
-            }
         }
     }
     
