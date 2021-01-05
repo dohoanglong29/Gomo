@@ -2,12 +2,14 @@ import UIKit
 import Firebase
 
 class DetailBillViewController: UIViewController {
+    @IBOutlet weak var cView1: UIView!
     @IBOutlet weak var txtChiecKhau: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblCollector: UILabel!
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var btnPay1: UIButton!
+    @IBOutlet weak var btnPrint: UIButton!
     @IBOutlet weak var lblAmount: UILabel!
     @IBOutlet weak var numberTable: UILabel!
     @IBOutlet weak var lblTotalPay: UILabel!
@@ -45,6 +47,10 @@ class DetailBillViewController: UIViewController {
     func customView(){
         subView.addShadow(radius: 5)
         subView.addBoder(radius: 10, color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
+        cView1.addShadow(radius: 5)
+        cView1.addBoder(radius: 1, color: #colorLiteral(red: 0.1170637682, green: 0.6766145825, blue: 0.9572572112, alpha: 1))
+        btnPay1.addBoder(radius: 20, color: #colorLiteral(red: 0.1170637682, green: 0.6766145825, blue: 0.9572572112, alpha: 1))
+        btnPrint.addBoder(radius: 20, color: #colorLiteral(red: 0.1170637682, green: 0.6766145825, blue: 0.9572572112, alpha: 1))
     }
     
     func setUp(){
