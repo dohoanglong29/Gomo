@@ -11,19 +11,19 @@ class Defined {
     static let formatter = NumberFormatter()
     
 }
-
+// định dạng lại ngày
 func FormatDay(date : Date) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "dd/MM/yyyy"
     return dateFormatter.string(from: date)
 }
-
+//Định dang giờ phút,ngày tháng năm
 func FormatTime(time: Date) -> String  {
     let formatter = DateFormatter()
     formatter.dateFormat = "HH:mm dd/MM/yyyy"
     return formatter.string(from: time)
 }
-
+// Alert
 class AlertUtil {
     class func showAlert(from viewController: UIViewController, with title: String, message: String) {
         DispatchQueue.main.async {

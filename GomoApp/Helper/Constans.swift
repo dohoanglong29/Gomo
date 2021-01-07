@@ -11,7 +11,9 @@ class Constans {
     static let addTable = "AddTableViewController"
     static let resetPass = "ResetPasswordViewController"
     static let editFoodCart = "EditFoodCartViewcontroler"
-    static let detailBill = "DetailBillViewController" 
+    static let detailBill = "DetailBillViewController"
+    static let megerTable = "ActionTableViewController"
+    static let vc = "ViewController"
    
     // Login
     static let Ac = "Account"
@@ -29,6 +31,14 @@ class Constans {
     static let letterBox = "Vui lòng kiểm tra email của bạn!"
     static let edit = "Sửa"
     static let delete  = "Xoá"
+    
+    // MenuItems
+    static let menu_oder = "Đặt món"
+    static let menu_cart = "Giỏ hàng"
+    static let menu_status = "Trạng thái trống"
+    static let menu_meger = "Gộp bàn"
+    static let menu_callfood = "Gọi thêm món"
+    static let menu_keeptable = "Giữ bàn"
     
     // actionTable
     static let selectTable = "Đang ở bàn hiện tại"

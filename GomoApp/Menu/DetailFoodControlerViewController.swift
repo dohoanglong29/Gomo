@@ -11,11 +11,11 @@ class DetailFoodControlerViewController: UIViewController {
     @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var lblNote: UILabel!
     @IBOutlet weak var lblCount: UILabel!
-    @IBOutlet weak var lblSoLuong: UILabel!
     @IBOutlet weak var subView: UIView!
-    @IBOutlet weak var lblTotal: UILabel!
     @IBOutlet weak var btnCong: UIButton!
     @IBOutlet weak var btnTru: UIButton!
+    @IBOutlet weak var btnAddFood: UIButton!
+    @IBOutlet weak var txtNoteFood: UITextField!
     
     var resetfood = ""
     var ImgFood = ""
@@ -37,11 +37,10 @@ class DetailFoodControlerViewController: UIViewController {
     }
     
     func customsButton(){
-        subView.layer.cornerRadius = 5
-        btnTru.layer.cornerRadius = 17
-        btnCong.layer.cornerRadius = 17
-        btnTru.layer.borderWidth = 0.7
-        btnCong.layer.borderWidth = 0.7
+        subView.addShadow(radius: 5)
+        btnTru.addBoder(radius: 17, color: #colorLiteral(red: 0.4039215686, green: 0.8039215686, blue: 1, alpha: 1))
+        btnCong.addBoder(radius: 17, color: #colorLiteral(red: 0.4039215686, green: 0.8039215686, blue: 1, alpha: 1))
+        btnAddFood.addBoder(radius: 10, color: #colorLiteral(red: 0.4039215686, green: 0.8039215686, blue: 1, alpha: 1))
     }
     
     func setUp(){
@@ -52,7 +51,7 @@ class DetailFoodControlerViewController: UIViewController {
         lblNote.text = NoteFood
         lblPrice.text = "\(Defined.formatter.string(from: NSNumber(value: PriceFood ))!)" + " đ"
         lblCount.text = String(NumberCount)
-        lblTotal.text = "\(Defined.formatter.string(from: NSNumber(value: PriceFood ))!)" + " đ"
+        btnAddFood.setTitle(" Thêm vào giỏ hàng - \(Defined.formatter.string(from: NSNumber(value: NumberCount * PriceFood ))!)" + " đ", for: .normal)
       
     }
     
@@ -104,8 +103,7 @@ class DetailFoodControlerViewController: UIViewController {
     
     func setUpDetailMenu() {
         lblCount.text = String(NumberCount)
-        lblSoLuong.text = "Số Lượng: \(NumberCount)"
-        lblTotal.text = "\(Defined.formatter.string(from: NSNumber(value: NumberCount * PriceFood ))!)" + " đ"
+        btnAddFood.setTitle(" Thêm vào giỏ hàng - \(Defined.formatter.string(from: NSNumber(value: NumberCount * PriceFood ))!)" + " đ", for: .normal)
     }
     
     
@@ -113,6 +111,7 @@ class DetailFoodControlerViewController: UIViewController {
         
         if unifyFood == NameFood{
             let writeData: [String: Any] = [
+                "notefood": txtNoteFood.text ?? "",
                 "namefood": NameFood,
                 "countfood": NumberCount + unifyCount,
                 "pricefood": NumberCount * PriceFood + unifyPrice,
@@ -121,6 +120,7 @@ class DetailFoodControlerViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }else{
             let writeData: [String: Any] = [
+                "notefood": txtNoteFood.text ?? "",
                 "namefood": NameFood,
                 "countfood": NumberCount,
                 "pricefood": NumberCount * PriceFood,
@@ -128,8 +128,5 @@ class DetailFoodControlerViewController: UIViewController {
             Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(idTable) ?? 0)/ListFood").childByAutoId().setValue(writeData)
             self.dismiss(animated: true, completion: nil)
         }
-       
-        
-        
     }
 }

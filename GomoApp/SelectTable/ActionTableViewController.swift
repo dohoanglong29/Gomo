@@ -34,10 +34,9 @@ class ActionTableViewController: UIViewController {
     }
     
     func setUpView(){
-        subView.layer.cornerRadius = 10
-        subView.layer.borderWidth = 1
-       // btnConfirm.layer.cornerRadius = 7
-        btnConfirm.layer.cornerRadius = btnConfirm.bounds.size.height/2
+        subView.addShadow(radius: 5)
+        subView.addBoder(radius: 10, color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
+        btnConfirm.addBoder(radius:btnConfirm.bounds.size.height/2 , color: #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235))
     }
 
     

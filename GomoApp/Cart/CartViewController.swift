@@ -50,11 +50,12 @@ class CartViewController: UIViewController {
                 for snap in snapshort {
                     let id = snap.key
                     if let value = snap.value as? [String: Any] {
+                        let notefood = value["znotefood"] as? String
                         let namefood = value["namefood"] as! String
                         let imagefood = value["imagefood"] as! String
                         let countfood = value["countfood"] as! Int
                         let pricefood = value["pricefood"] as! Int
-                        let cart = Cart(id: id, count: countfood, image: imagefood, name: namefood, price: pricefood)
+                        let cart = Cart(id: id, count: countfood, image: imagefood, name: namefood, price: pricefood, note: notefood)
                         self.carts.append(cart)
                         if carts.count == 0  {
                             imageCartNil.isHidden = false

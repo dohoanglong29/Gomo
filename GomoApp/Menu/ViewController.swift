@@ -26,6 +26,8 @@ class ViewController: UIViewController {
         FoodCell.registerCellByNib(collectionView)
         searchController.searchResultsUpdater = self
         self.navigationItem.searchController = searchController
+        segmentedCustoms.cornerRadius = 20
+        segmentedCustoms.indicatorViewBackgroundColor = #colorLiteral(red: 0.2274329066, green: 0.5870787501, blue: 0.9447389245, alpha: 0.8470588235)
         segmentedCustoms.segments = LabelSegment.segments(withTitles: ["Đồ ăn", "Đồ uống ", "Đồ khác"],normalTextColor: #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1),selectedTextColor: #colorLiteral(red: 0.9254901961, green: 0.9568627451, blue: 0.9921568627, alpha: 1))
     }
 

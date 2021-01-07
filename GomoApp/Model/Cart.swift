@@ -6,6 +6,8 @@ struct Cart: Codable {
     var image: String? = nil
     var name: String? = nil
     var price: Int? = nil
+    var note: String? = nil
+    
 
 
 }

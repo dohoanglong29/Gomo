@@ -5,8 +5,8 @@
 //  Created by BAC Vuong Toan (VTI.Intern) on 1/5/21.
 //
 
-
 import UIKit
+
 extension UIView {
     func addShadow(radius: CGFloat) {
         self.layer.shadowColor = UIColor.gray.cgColor
@@ -20,6 +20,4 @@ extension UIView {
         self.layer.cornerRadius = radius
         self.layer.borderColor  = color
     }
-    
-    
 }
