@@ -29,8 +29,8 @@ class Constans {
     
     // reset pass
     static let letterBox = "Vui lòng kiểm tra email của bạn!"
-    static let edit = "Sửa"
-    static let delete  = "Xoá"
+    static let edit = "Sửa món ăn "
+    static let delete  = "Xoá món ăn"
     
     // MenuItems
     static let menu_oder = "Đặt món"

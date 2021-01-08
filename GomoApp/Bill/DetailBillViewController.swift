@@ -13,9 +13,10 @@ class DetailBillViewController: UIViewController {
     @IBOutlet weak var lblAmount: UILabel!
     @IBOutlet weak var numberTable: UILabel!
     @IBOutlet weak var lblTotalPay: UILabel!
+    @IBOutlet weak var btnEditBill: UIButton!
     
     var listFood:[String] = []
-    var listPrice:[Int] = []
+    var listPrice:[Int] = [] 
     var select: String?
     var phamTram = ["0","5","10","15","20","25","30","35","40","45","50"]
     
@@ -90,6 +91,36 @@ class DetailBillViewController: UIViewController {
         }
         
     }
+    
+    
+    @IBAction func btnBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func btnPay(_ sender: Any) {
+        billDone()
+        billPay()
+    }
+  
+    @IBAction func btnScanBill(_ sender: Any) {
+        let printController = UIPrintInteractionController.shared
+        let printInfo = UIPrintInfo(dictionary:nil)
+        printInfo.outputType = UIPrintInfo.OutputType.general
+        printInfo.jobName = "print"
+        printController.printInfo = printInfo
+        printController.printingItem = subView.toImage()
+        printController.present(animated: true, completionHandler: nil)
+    }
+    
+    @IBAction func btnEditBill(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.cart) as! CartViewController
+        vc.idTable = numberTb
+        vc.editCartformBill = "edit"
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+
+    
     func billDone(){
         if let strAmount = lblTotalPay.text,
            let intAmount = Int(strAmount){
@@ -120,24 +151,7 @@ class DetailBillViewController: UIViewController {
         }
     }
     
-    @IBAction func btnBack(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
-    @IBAction func btnPay(_ sender: Any) {
-        billDone()
-        billPay()
-    }
-  
-    @IBAction func btnScanBill(_ sender: Any) {
-        let printController = UIPrintInteractionController.shared
-        let printInfo = UIPrintInfo(dictionary:nil)
-        printInfo.outputType = UIPrintInfo.OutputType.general
-        printInfo.jobName = "print"
-        printController.printInfo = printInfo
-        printController.printingItem = subView.toImage()
-        printController.present(animated: true, completionHandler: nil)
-    }
     // tạo Pickerview
     func createPickerView() {
         let pickerView = UIPickerView()

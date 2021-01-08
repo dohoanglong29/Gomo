@@ -14,6 +14,7 @@ class CartViewController: UIViewController {
     
     let curentDateTime = Date()
     var carts = [Cart]()
+    var editCartformBill = ""
     var idTable = ""
     var status = 0
     var amount = 0
@@ -26,7 +27,6 @@ class CartViewController: UIViewController {
         super.viewDidLoad()
         getDataCart()
         initComponent()
-
     }
     
     fileprivate func initComponent() {
@@ -36,6 +36,11 @@ class CartViewController: UIViewController {
         subView.addShadow(radius: 5)
         btnOder.addBoder(radius: 10, color: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1))
         btnOder.addShadow(radius: 5)
+        if editCartformBill == "edit"{
+            btnOder.setTitle("Cập nhật hoá đơn ", for: .normal)
+        }else{
+            btnOder.setTitle("Gọi món", for: .normal)
+        }
     }
     
     func getDataCart(){
@@ -50,7 +55,7 @@ class CartViewController: UIViewController {
                 for snap in snapshort {
                     let id = snap.key
                     if let value = snap.value as? [String: Any] {
-                        let notefood = value["znotefood"] as? String
+                        let notefood = value["notefood"] as? String
                         let namefood = value["namefood"] as! String
                         let imagefood = value["imagefood"] as! String
                         let countfood = value["countfood"] as! Int
@@ -74,7 +79,8 @@ class CartViewController: UIViewController {
         }
     }
     
-    @IBAction func btnOder(_ sender: Any) {
+    @IBAction func btnOder(_ sender: UIButton) {
+        
         let dateThis = FormatDay(date: Date())
         let someDateTime = FormatTime(time: curentDateTime)
         let cartDict = [
@@ -85,20 +91,35 @@ class CartViewController: UIViewController {
             "date":dateThis,
             "time":someDateTime,
             "numbertable":self.idTable,] as [String: Any]
-        if amount == 0 {
-            AlertUtil.showAlert(from: self, with: Constans.notification, message: Constans.cartnull)
+        
+        if sender.titleLabel?.text == "Gọi món"{
+            print("gọi món")
+            if amount == 0{
+                AlertUtil.showAlert(from: self, with: Constans.notification, message: Constans.cartnull)
+            }else{
+                Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 3])
+                Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present/\(Int(self.idTable) ?? 0)").updateChildValues(cartDict)
+                let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+                self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+            }
         }else{
-            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(self.idTable) ?? 0)").updateChildValues(["statu": 3])
             Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present/\(Int(self.idTable) ?? 0)").updateChildValues(cartDict)
-            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
-            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.tabbar) as! TabBarController
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
         }
+    
     }
     
     @IBAction func btnAddFood(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
         vc.idTable = idTable
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func dismissTwoViews() {
+        self.presentingViewController?
+            .presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -113,27 +134,35 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let c = self.carts[indexPath.row]
-        let delete = UITableViewRowAction(style: .destructive, title: Constans.delete) {  (action, indexPath) in
-            Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").child("\(self.idTable)").child("ListFood/\(c.id ?? "")").removeValue { (error, reference) in}
-        }
-        
-        let share = UITableViewRowAction(style: .normal, title: Constans.edit) { (action, indexPath) in
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.editFoodCart) as! EditFoodCartViewcontroler
-            vc.modalPresentationStyle = .fullScreen
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.namef = c.name ?? ""
-            vc.imagef = c.image ?? ""
-            vc.pricef = c.price ?? 0
-            vc.idCartFood = c.id ?? ""
-            vc.idTable = self.idTable
-            vc.countFood = c.count ?? 0
-            self.present(vc, animated: true, completion: nil)
-        }
-        share.backgroundColor = UIColor.blue
-        return [delete, share]
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: {_ in
+            return self.addMenuItems(for: indexPath.row)
+        })
+    }
+    
+    func addMenuItems(for index:Int) -> UIMenu {
+        let c = self.carts[index]
+        let menuItems = UIMenu(title: "", options: .displayInline, children: [
+            UIAction(title: Constans.delete, image: UIImage(named: "ic_delete"), handler: { (_) in
+                Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").child("\(self.idTable)").child("ListFood/\(c.id ?? "")").removeValue { (error, reference) in}
+            }),
+            
+            UIAction(title: Constans.edit, image: UIImage(named: "ic_task_list"), handler: { (_) in
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.editFoodCart) as! EditFoodCartViewcontroler
+                vc.modalPresentationStyle = .fullScreen
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overCurrentContext
+                vc.namef = c.name ?? ""
+                vc.imagef = c.image ?? ""
+                vc.pricef = c.price ?? 0
+                vc.idCartFood = c.id ?? ""
+                vc.idTable = self.idTable
+                vc.countFood = c.count ?? 0
+                vc.nodefood = c.note ?? ""
+                self.present(vc, animated: true, completion: nil)
+            }),
+        ])
+        return menuItems
     }
 }
 

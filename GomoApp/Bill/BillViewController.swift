@@ -112,7 +112,7 @@ extension BillViewController: UITableViewDelegate, UITableViewDataSource{
         vc.discount1 = detailBill.discouunt ?? ""
         vc.listpricefood = detailBill.listpricefood ?? ""
         vc.totalPay1 = detailBill.totalPay ?? 0
-        self.present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
