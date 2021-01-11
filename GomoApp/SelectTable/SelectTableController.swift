@@ -133,6 +133,7 @@ extension SelectTableController: UICollectionViewDelegate, UICollectionViewDataS
                     let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier:Constans.vc) as! ViewController
                     vc.idTable = String(tb.NumberTable ?? 0)
                     vc.statusTable1 = "1"
+                    vc.updateCart = "updateCart"
                     self.navigationController?.pushViewController(vc, animated: true)
                 }),
                 

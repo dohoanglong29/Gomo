@@ -42,9 +42,10 @@ class BillViewController: UIViewController {
                         let detilbill = value["detilbill"] as! String
                         let numbertable = value["numbertable"] as! String
                         let listpricefood = value["listpricefood"] as? String
+                        let listnote = value["listnote"] as? String
                         let total = value["total"] as! Int
                         let time = value["time"] as! String
-                        let bill = Bill(id: id,numberTable: numbertable, detailFood: detilbill, Total: total, date: date ,time: time,listpricefood: listpricefood)
+                        let bill = Bill(id: id,numberTable: numbertable, detailFood: detilbill, Total: total, date: date ,time: time,listpricefood: listpricefood,listnote: listnote)
                         self.bills.append(bill)
                     }
                 }
@@ -63,12 +64,13 @@ class BillViewController: UIViewController {
                         let date = value["date"] as! String
                         let detilbill = value["detilbill"] as! String
                         let listpricefood = value["listpricefood"] as? String
+                        let listnote = value["listnote"] as? String
                         let numbertable = value["numbertable"] as! String
                         let total = value["total"] as! Int
                         let time = value["time"] as? String
                         let discount = value["discount"] as? String
                         let totalPay = value["totalpay"] as? Int
-                        let bill = Bill(id: id, numberTable: numbertable, detailFood:detilbill, Total: total, date: date, discouunt: discount, time: time, listpricefood: listpricefood, totalPay: totalPay)
+                        let bill = Bill(id: id, numberTable: numbertable, detailFood:detilbill, Total: total, date: date, discouunt: discount, time: time, listpricefood: listpricefood, listnote: listnote, totalPay: totalPay)
                         self.bills.append(bill)
                     }
                 }
@@ -112,6 +114,7 @@ extension BillViewController: UITableViewDelegate, UITableViewDataSource{
         vc.discount1 = detailBill.discouunt ?? ""
         vc.listpricefood = detailBill.listpricefood ?? ""
         vc.totalPay1 = detailBill.totalPay ?? 0
+        vc.listnote = detailBill.listnote ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

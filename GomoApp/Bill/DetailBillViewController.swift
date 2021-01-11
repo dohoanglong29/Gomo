@@ -16,7 +16,9 @@ class DetailBillViewController: UIViewController {
     @IBOutlet weak var btnEditBill: UIButton!
     
     var listFood:[String] = []
-    var listPrice:[Int] = [] 
+    var listPrice:[Int] = []
+    var listNote:[String] = []
+    
     var select: String?
     var phamTram = ["0","5","10","15","20","25","30","35","40","45","50"]
     
@@ -31,6 +33,7 @@ class DetailBillViewController: UIViewController {
     var status = ""
     var time = ""
     var listpricefood = ""
+    var listnote = ""
     var moneyMinus = 0
     var discount1 = ""
     var totalPay1 = 0
@@ -61,12 +64,17 @@ class DetailBillViewController: UIViewController {
         lblCollector.text = Defined.defaults.value(forKey: "name") as? String
         let tempfood = self.detailFood.split{$0 == "/"}.map(String.init)
         let tempPrice = self.listpricefood.split{$0 == "/"}.map(String.init)
+        let tempNote = self.listnote.split{$0 == "/"}.map(String.init)
         
         for i in 0..<tempfood.count{
             self.listFood.append(tempfood[i])
         }
         for i in 0..<tempPrice.count{
             self.listPrice.append(Int(tempPrice[i]) ?? 0)
+        }
+        
+        for i in 0..<tempNote.count{
+            self.listNote.append(tempNote[i])
         }
         let total = listPrice.reduce(0, +)
         lblAmount.text = "\(Defined.formatter.string(from: NSNumber(value: total ))!)" + " đ"
@@ -84,22 +92,19 @@ class DetailBillViewController: UIViewController {
     
     func setDataBill() {
         if status == "1"{
+            btnEditBill.alpha = 0
+            btnPay1.alpha = 0
             btnPay1.isEnabled = false
             txtChiecKhau.isEnabled = false
         }else{
             btnPay1.isEnabled = true
         }
-        
-    }
-    
-    
-    @IBAction func btnBack(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func btnPay(_ sender: Any) {
         billDone()
         billPay()
+        self.navigationController?.popViewController(animated: true)
     }
   
     @IBAction func btnScanBill(_ sender: Any) {
@@ -119,8 +124,6 @@ class DetailBillViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-
-    
     func billDone(){
         if let strAmount = lblTotalPay.text,
            let intAmount = Int(strAmount){
@@ -130,6 +133,7 @@ class DetailBillViewController: UIViewController {
         let billDone = [
             "detilbill": detailFood ,
             "listpricefood": listpricefood ,
+            "listnote": listnote,
             "total": total,
             "discount": txtChiecKhau.text ?? "",
             "time":time,
@@ -146,7 +150,6 @@ class DetailBillViewController: UIViewController {
             } else {
                 Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table").child(self.numberTb).child("ListFood").removeValue()
                 Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(self.numberTb) ?? 0)").updateChildValues(["statu": 1])
-                self.dismiss(animated: true, completion: nil)
             }
         }
     }
@@ -197,7 +200,8 @@ extension DetailBillViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = DetailFoodCell.loadCell(tableView) as! DetailFoodCell
         let fo = listFood[indexPath.row]
         let pr = listPrice[indexPath.row]
-        cell.setUp(name: fo, price: pr)
+        let no = listNote[indexPath.row]
+        cell.setUp(name: fo, price: pr, note: no)
         return cell
     }
 }

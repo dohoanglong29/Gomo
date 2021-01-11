@@ -15,13 +15,15 @@ class ActionTableViewController: UIViewController {
     var idTable = ""
     var idTableThis = ""
     var amount1 = 0
-    var listFood1 = ""
     var amount2 = 0
     var listFood2 = ""
+    var listFood1 = ""
     var dateThis = ""
     var timeThis = ""
     var listpricefood1 = ""
     var listpricefood2 = ""
+    var listnote1 = ""
+    var listnote2 = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +52,7 @@ class ActionTableViewController: UIViewController {
                 "listpricefood": listpricefood1 + listpricefood2 ,
                 "total": amount1 + amount2,
                 "date":dateThis,
+                "listnote":listnote1 + listnote2,
                 "time": timeThis,
                 "numbertable":idTableThis,] as [String: Any]
             Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Bill/Present").child("/\(idTableThis)").updateChildValues(merge)
@@ -77,12 +80,14 @@ class ActionTableViewController: UIViewController {
                         let listpricefood = value["listpricefood"] as? String
                         let total = value["total"] as! Int
                         let time = value["time"] as! String
+                        let listnote = value["listnote"] as? String
                         
                         let idtableThat = txtSelectTable.text
                         // lấy thông tin của bàn được chọn
                         if id == idtableThat {
                             self.listpricefood2 = listpricefood ?? ""
-                            print("backol\(listpricefood2)")
+                            self.listnote2 = listnote ?? ""
+                            print("bacbac\(listnote2)")
                             self.amount2 = total
                             self.listFood2 = detilbill
                             self.dateThis = date
@@ -105,8 +110,13 @@ class ActionTableViewController: UIViewController {
                         let namefood = value["namefood"] as! String
                         let countfood = value["countfood"] as! Int
                         let pricefood = value["pricefood"] as! Int
+                        let listnote = value["notefood"] as? String
+                        print("\(listnote)")
+
                         // lấy tiền và danh sách món ăn
                         self.listpricefood1 += String(pricefood) + "/"
+                        self.listnote1 += String(listnote ?? "") + "/"
+                        print("hjhjhjhjh\(self.listnote1)")
                         self.amount1 += pricefood
                         self.listFood1 += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  + "/"
                     }

@@ -9,42 +9,60 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="42" id="KGk-i7-Jjw" customClass="DetailFoodCell" customModule="GomoApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="377" height="42"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="92" id="KGk-i7-Jjw" customClass="DetailFoodCell" customModule="GomoApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="438" height="92"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="377" height="42"/>
+                <rect key="frame" x="0.0" y="0.0" width="438" height="92"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQa-yu-zX7">
-                        <rect key="frame" x="20" y="10" width="226" height="22"/>
+                        <rect key="frame" x="20" y="24.5" width="263" height="19"/>
                         <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="= 89.00.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c7-58-Zwy">
-                        <rect key="frame" x="246" y="11.5" width="111" height="19"/>
+                        <rect key="frame" x="283" y="24.5" width="135" height="19"/>
                         <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ghi chú: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hn-vi-VZH">
+                        <rect key="frame" x="20" y="48.5" width="398" height="16"/>
+                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRG-Ck-g9L">
+                        <rect key="frame" x="32" y="43.5" width="374" height="5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="5" id="BGo-zN-GjG"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="IQa-yu-zX7" secondAttribute="bottom" constant="10" id="0Td-S7-aEf"/>
-                    <constraint firstItem="IQa-yu-zX7" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.6" id="7Xr-cn-3nW"/>
-                    <constraint firstItem="3c7-58-Zwy" firstAttribute="leading" secondItem="IQa-yu-zX7" secondAttribute="trailing" id="95D-Gx-SCz"/>
-                    <constraint firstItem="IQa-yu-zX7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ARn-Me-NN6"/>
-                    <constraint firstItem="IQa-yu-zX7" firstAttribute="centerY" secondItem="3c7-58-Zwy" secondAttribute="centerY" id="bSz-lS-LqL"/>
-                    <constraint firstAttribute="trailing" secondItem="3c7-58-Zwy" secondAttribute="trailing" constant="20" id="bse-AW-8nd"/>
-                    <constraint firstItem="IQa-yu-zX7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="nKC-1n-Kve"/>
+                    <constraint firstAttribute="trailing" secondItem="4hn-vi-VZH" secondAttribute="trailing" constant="20" id="ESg-It-asm"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="bRG-Ck-g9L" secondAttribute="trailing" constant="12" id="Irv-e3-MB8"/>
+                    <constraint firstItem="bRG-Ck-g9L" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="P5Z-e5-8CV"/>
+                    <constraint firstItem="4hn-vi-VZH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Xdv-7b-eIB"/>
+                    <constraint firstItem="bRG-Ck-g9L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="a2E-vX-0rI"/>
+                    <constraint firstItem="4hn-vi-VZH" firstAttribute="top" secondItem="bRG-Ck-g9L" secondAttribute="bottom" id="gJo-Fm-5NW"/>
+                    <constraint firstAttribute="trailing" secondItem="3c7-58-Zwy" secondAttribute="trailing" constant="20" id="ivR-q7-IZv"/>
+                    <constraint firstItem="IQa-yu-zX7" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.6" id="peB-Rz-PnA"/>
+                    <constraint firstItem="3c7-58-Zwy" firstAttribute="leading" secondItem="IQa-yu-zX7" secondAttribute="trailing" id="ruv-2C-lw9"/>
+                    <constraint firstItem="bRG-Ck-g9L" firstAttribute="top" secondItem="IQa-yu-zX7" secondAttribute="bottom" id="sL4-6L-UVS"/>
+                    <constraint firstItem="IQa-yu-zX7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="smS-Y5-Oah"/>
+                    <constraint firstItem="bRG-Ck-g9L" firstAttribute="top" secondItem="3c7-58-Zwy" secondAttribute="bottom" id="zTM-Yj-07G"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="lblDetailPrice" destination="3c7-58-Zwy" id="sVu-ny-esN"/>
                 <outlet property="lblDetailfood" destination="IQa-yu-zX7" id="l4P-iw-xwa"/>
+                <outlet property="lblNote" destination="4hn-vi-VZH" id="bAt-Vs-9dL"/>
             </connections>
-            <point key="canvasLocation" x="-421.01449275362324" y="7.3660714285714279"/>
+            <point key="canvasLocation" x="-376.81159420289856" y="23.4375"/>
         </tableViewCell>
     </objects>
 </document>

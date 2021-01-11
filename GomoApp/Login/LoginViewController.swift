@@ -11,15 +11,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtUserName: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var btnHidePassword: UIButton!
-    var employees = [Employees]()
-    var emailthis:String?
-    var checkEmail = ""
-    var birtday1 = ""
-    var address1 = ""
-    var avatar1 = ""
-    var email1 = ""
-    var name1 = ""
     
+    var employees = [Employees]()
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
@@ -52,11 +45,6 @@ class LoginViewController: UIViewController {
                 Auth.auth().signIn(withEmail: email, password: password) {
                     [weak self] authResult, error in
                     if authResult != nil{
-                        let user = Auth.auth().currentUser
-                        if let u = user{
-                            let email = u.email
-                            self?.emailthis = email
-                        }
                         self?.getDataEmployees()
                         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.tabbar) as! TabBarController
                         vc.modalPresentationStyle = .fullScreen
@@ -91,18 +79,12 @@ class LoginViewController: UIViewController {
                         let birtday = value["birthday"] as? String
                         let email = value["email"] as? String
                         let name = value["name"] as? String
-                        if emailthis == email {
-                            email1 = email ?? ""
-                            Defined.defaults.set(email1, forKey: "email" )
-                            address1 = address ?? ""
-                            Defined.defaults.set(address1, forKey: "address" )
-                            birtday1 = birtday ?? ""
-                            Defined.defaults.set(birtday1, forKey: "birtday" )
-                            name1 = name ?? ""
-                            Defined.defaults.set(name1, forKey: "name" )
-                            avatar1 = avatar ?? ""
-                            Defined.defaults.set(avatar1, forKey: "avatar")
-
+                        if txtUserName.text == email {
+                            Defined.defaults.set(email, forKey: "email" )
+                            Defined.defaults.set(address, forKey: "address" )
+                            Defined.defaults.set(birtday, forKey: "birtday" )
+                            Defined.defaults.set(name, forKey: "name" )
+                            Defined.defaults.set(avatar, forKey: "avatar")
                         }
                     }
                 }

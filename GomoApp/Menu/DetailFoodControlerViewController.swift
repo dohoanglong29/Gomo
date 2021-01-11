@@ -108,10 +108,16 @@ class DetailFoodControlerViewController: UIViewController {
     
     
     @IBAction func btnAddCart(_ sender: Any) {
+        var checkNoteFood = ""
+        if txtNoteFood.text == "" {
+            checkNoteFood = "null"
+        }else{
+            checkNoteFood = txtNoteFood.text ?? ""
+        }
         
         if unifyFood == NameFood{
             let writeData: [String: Any] = [
-                "notefood": txtNoteFood.text ?? "",
+                "notefood": checkNoteFood,
                 "namefood": NameFood,
                 "countfood": NumberCount + unifyCount,
                 "pricefood": NumberCount * PriceFood + unifyPrice,
@@ -120,7 +126,7 @@ class DetailFoodControlerViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }else{
             let writeData: [String: Any] = [
-                "notefood": txtNoteFood.text ?? "",
+                "notefood": checkNoteFood,
                 "namefood": NameFood,
                 "countfood": NumberCount,
                 "pricefood": NumberCount * PriceFood,

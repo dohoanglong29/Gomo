@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
     var statusTable1 = ""
     var idTable = ""
+    var updateCart = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,11 @@ class ViewController: UIViewController {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constans.cart) as! CartViewController
         vc.btnAddFood.isEnabled = false
         vc.idTable = idTable
+        if updateCart == "updateCart"{
+            vc.editCartformBill = "edit"
+        }else{
+            vc.editCartformBill =  "callFood"
+        }
         vc.statustable = statusTable1
         self.navigationController?.pushViewController(vc, animated: true)
     }

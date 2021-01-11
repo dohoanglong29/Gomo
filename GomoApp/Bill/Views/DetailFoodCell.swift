@@ -5,6 +5,7 @@ class DetailFoodCell: BaseTBCell {
 
     @IBOutlet weak var lblDetailPrice: UILabel!
     @IBOutlet weak var lblDetailfood: UILabel!
+    @IBOutlet weak var lblNote: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -13,9 +14,10 @@ class DetailFoodCell: BaseTBCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setUp(name: String, price: Int){
+    func setUp(name: String, price: Int, note:String){
         lblDetailfood.text = name
         lblDetailPrice.text = "= " + String(price)
+        lblNote.text = "Ghi chú: " + note ?? ""
     }
     
 }

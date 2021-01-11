@@ -7,30 +7,22 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
-    let name = Defined.defaults.value(forKey: "name") as? String
-    let avatar1 = Defined.defaults.value(forKey: "avatar") as? String
-    
+        
     var setiing = ["Thông tin cá nhân", "Hướng dẫn sử dụng", "Thêm bàn", "Đăng xuất"]
-    var iconSetting = [ "profile","tutorial", "select_table", "logout"]
+    var iconSetting = [ "profile","tutorial","select_table","logout"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SettingCell.registerCellByNib(tableView)
         setUp()
     }
      
     func setUp(){
-        avatar.layer.cornerRadius = avatar.bounds.width/2
-        avatar.layer.borderWidth = 1
-        avatar.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        avatar.sd_setImage(with: URL(string: avatar1 ?? ""), completed: nil)
-        lblName.text = name
-        tableView.layer.cornerRadius = 20
-        tableView.layer.shadowColor = UIColor.black.cgColor
-        tableView.layer.shadowOpacity = 0.6
-        tableView.layer.shadowOffset = .zero
-        tableView.layer.shadowRadius = 10
+        avatar.addShadow(radius: 10)
+        avatar.addBoder(radius: avatar.bounds.width/2, color: #colorLiteral(red: 0.1170637682, green: 0.6766145825, blue: 0.9572572112, alpha: 1))
+        SettingCell.registerCellByNib(tableView)
+        avatar.sd_setImage(with: URL(string: Defined.defaults.value(forKey: "avatar") as! String ), completed: nil)
+        lblName.text = Defined.defaults.value(forKey: "name") as? String
+    
     }
 }
 
@@ -42,6 +34,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = SettingCell.loadCell(tableView) as!  SettingCell
         cell.setUpData(icon: iconSetting[indexPath.row], name: setiing[indexPath.row])
+        cell.selectionStyle = .none
         return cell
     }
     

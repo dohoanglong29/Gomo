@@ -21,6 +21,7 @@ class CartViewController: UIViewController {
     var statustable = ""
     var listFood = ""
     var listPriceFood = ""
+    var listNote = ""
     var idCart = ""
     
     override func viewDidLoad() {
@@ -49,6 +50,7 @@ class CartViewController: UIViewController {
         Defined.ref.child(Constans.Ac).child(Constans.idAdmin).child("Table/\(Int(idTable) ?? 0)/ListFood").observe(DataEventType.value) { [self] (DataSnapshot) in
             self.carts.removeAll()
             listFood =  ""
+            listNote = ""
             listPriceFood = ""
             self.amount = 0
             if let snapshort = DataSnapshot.children.allObjects as? [DataSnapshot]{
@@ -70,6 +72,7 @@ class CartViewController: UIViewController {
                         self.amount += pricefood
                         self.idCart = id
                         self.listPriceFood += String(pricefood) + "/"
+                        self.listNote += (notefood ?? "") + "/"
                         self.listFood += namefood + "x " + String(countfood) + " x " + String(pricefood/countfood)  +  "/"
                         self.lblTotal.text = "\(Defined.formatter.string(from: NSNumber(value: self.amount ))!)" + " đ"
                     }
@@ -86,6 +89,7 @@ class CartViewController: UIViewController {
         let cartDict = [
             "detilbill": listFood,
             "listpricefood": listPriceFood,
+            "listnote": listNote,
             "total": amount,
             "status": 0,
             "date":dateThis,
@@ -131,6 +135,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CartCell.loadCell(tableView) as! CartCell
         cell.setUpData(data: carts[indexPath.row])
+        cell.selectionStyle = .none
         return cell
     }
     
