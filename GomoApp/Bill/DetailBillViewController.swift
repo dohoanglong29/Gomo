@@ -15,6 +15,8 @@ class DetailBillViewController: UIViewController {
     @IBOutlet weak var lblTotalPay: UILabel!
     @IBOutlet weak var btnEditBill: UIButton!
     
+    var nameCollector = Defined.defaults.value(forKey: "name") as? String
+    
     var listFood:[String] = []
     var listPrice:[Int] = []
     var listNote:[String] = []
@@ -38,6 +40,7 @@ class DetailBillViewController: UIViewController {
     var discount1 = ""
     var totalPay1 = 0
     var money = 0
+    var collector = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +64,11 @@ class DetailBillViewController: UIViewController {
         DetailFoodCell.registerCellByNib(tableView)
         Defined.formatter.groupingSeparator = "."
         Defined.formatter.numberStyle = .decimal
-        lblCollector.text = Defined.defaults.value(forKey: "name") as? String
+        if collector == ""{
+            lblCollector.text = "Nhân Viên:" + nameCollector!
+        }else{
+            lblCollector.text = "Nhân viên:" + collector
+        }
         let tempfood = self.detailFood.split{$0 == "/"}.map(String.init)
         let tempPrice = self.listpricefood.split{$0 == "/"}.map(String.init)
         let tempNote = self.listnote.split{$0 == "/"}.map(String.init)
@@ -135,6 +142,7 @@ class DetailBillViewController: UIViewController {
             "listpricefood": listpricefood ,
             "listnote": listnote,
             "total": total,
+            "collector": nameCollector as Any,
             "discount": txtChiecKhau.text ?? "",
             "time":time,
             "date":date,

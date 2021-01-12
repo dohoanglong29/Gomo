@@ -67,10 +67,11 @@ class BillViewController: UIViewController {
                         let listnote = value["listnote"] as? String
                         let numbertable = value["numbertable"] as! String
                         let total = value["total"] as! Int
+                        let collector = value["collector"] as? String
                         let time = value["time"] as? String
                         let discount = value["discount"] as? String
                         let totalPay = value["totalpay"] as? Int
-                        let bill = Bill(id: id, numberTable: numbertable, detailFood:detilbill, Total: total, date: date, discouunt: discount, time: time, listpricefood: listpricefood, listnote: listnote, totalPay: totalPay)
+                        let bill = Bill(id: id, numberTable: numbertable, detailFood:detilbill, Total: total, date: date, discouunt: discount, time: time, listpricefood: listpricefood, listnote: listnote, totalPay: totalPay ,collector: collector)
                         self.bills.append(bill)
                     }
                 }
@@ -115,6 +116,7 @@ extension BillViewController: UITableViewDelegate, UITableViewDataSource{
         vc.listpricefood = detailBill.listpricefood ?? ""
         vc.totalPay1 = detailBill.totalPay ?? 0
         vc.listnote = detailBill.listnote ?? ""
+        vc.collector = detailBill.collector ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
